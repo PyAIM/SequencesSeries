@@ -23,6 +23,7 @@
                     <li><a href="applications.html">Applications</a></li>
                     <li><a href="exercises.html">Exercises</a></li>
                     <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
                 </ul>
             </nav>
             <div class="hamburger">
@@ -64,10 +65,10 @@
                         <h3>What is a Power Series?</h3>
                         <p>A power series is a series of the form:</p>
                         <div class="math-formula">
-                            \sum_{n=0}^{\infty} c_n(x-a)^n = c_0 + c_1(x-a) + c_2(x-a)^2 + c_3(x-a)^3 + \ldots
+                            \(\sum_{n=0}^{\infty} c_n(x-a)^n = c_0 + c_1(x-a) + c_2(x-a)^2 + c_3(x-a)^3 + \ldots\)
                         </div>
                         <p>where:</p>
-                        <ul>
+                        <ul class="inner-list">
                             <li>\(a\) is a fixed number (the center of the power series)</li>
                             <li>\(c_n\) are constants (the coefficients of the power series)</li>
                             <li>\(x\) is a variable</li>
@@ -80,7 +81,7 @@
                         <h3>Example 1: Power Series Notation</h3>
                         <p>The power series \(\sum_{n=0}^{\infty} \frac{x^n}{n!}\) can be written as:</p>
                         <div class="math-formula">
-                            \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \ldots
+                            \(\sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \ldots\)
                         </div>
                         <p>This particular power series represents the exponential function \(e^x\).</p>
                     </div>
@@ -89,7 +90,7 @@
                         <h3>Special Case: Maclaurin Series</h3>
                         <p>When the center of a power series is \(a = 0\), the power series takes the form:</p>
                         <div class="math-formula">
-                            \sum_{n=0}^{\infty} c_n x^n = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + \ldots
+                            \(\sum_{n=0}^{\infty} c_n x^n = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + \ldots\)
                         </div>
                         <p>This special case is called a Maclaurin series.</p>
                     </div>
@@ -101,7 +102,7 @@
                     <div class="definition-box">
                         <h3>Radius of Convergence</h3>
                         <p>For a power series \(\sum_{n=0}^{\infty} c_n(x-a)^n\), there is a number \(R\) (possibly 0, possibly \(\infty\)) such that:</p>
-                        <ul>
+                        <ul class="inner-list">
                             <li>The series converges absolutely for \(|x-a| < R\)</li>
                             <li>The series diverges for \(|x-a| > R\)</li>
                         </ul>
@@ -111,7 +112,7 @@
                     <div class="theorem-box">
                         <h3>Finding the Radius of Convergence</h3>
                         <p>The radius of convergence \(R\) of a power series \(\sum_{n=0}^{\infty} c_n(x-a)^n\) can be found using:</p>
-                        <ol>
+                        <ol class="inner-list">
                             <li>The Ratio Test: \(R = \frac{1}{\rho}\) where \(\rho = \lim_{n \to \infty} \left|\frac{c_{n+1}}{c_n}\right|\) (if this limit exists)</li>
                             <li>The Root Test: \(R = \frac{1}{\rho}\) where \(\rho = \lim_{n \to \infty} \sqrt[n]{|c_n|}\) (if this limit exists)</li>
                         </ol>
@@ -151,7 +152,7 @@
                     <div class="note-box">
                         <h3>Possible Intervals of Convergence</h3>
                         <p>The interval of convergence can be one of the following:</p>
-                        <ul>
+                        <ul class="inner-list">
                             <li>Just the point \(\{a\}\) (when \(R = 0\))</li>
                             <li>The open interval \((a-R, a+R)\)</li>
                             <li>The half-open interval \([a-R, a+R)\) or \((a-R, a+R]\)</li>
@@ -188,7 +189,7 @@
                     <div class="theorem-box">
                         <h3>Operations on Power Series</h3>
                         <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\) and \(g(x) = \sum_{n=0}^{\infty} b_n(x-a)^n\) are power series with radii of convergence \(R_f\) and \(R_g\) respectively, then:</p>
-                        <ol>
+                        <ol class="inner-list">
                             <li><strong>Addition:</strong> \(f(x) + g(x) = \sum_{n=0}^{\infty} (a_n + b_n)(x-a)^n\) with radius of convergence at least \(\min(R_f, R_g)\)</li>
                             <li><strong>Scalar Multiplication:</strong> \(c \cdot f(x) = \sum_{n=0}^{\infty} (c \cdot a_n)(x-a)^n\) with the same radius of convergence as \(f(x)\)</li>
                             <li><strong>Multiplication:</strong> \(f(x) \cdot g(x) = \sum_{n=0}^{\infty} c_n(x-a)^n\) where \(c_n = \sum_{k=0}^{n} a_k b_{n-k}\) with radius of convergence at least \(\min(R_f, R_g)\)</li>
@@ -238,7 +239,7 @@
                         <h3>Differentiation of Power Series</h3>
                         <p>If \(f(x) = \sum_{n=0}^{\infty} c_n(x-a)^n\) has radius of convergence \(R > 0\), then \(f(x)\) is differentiable on \((a-R, a+R)\) and:</p>
                         <div class="math-formula">
-                            f'(x) = \sum_{n=1}^{\infty} n \cdot c_n(x-a)^{n-1} = \sum_{n=0}^{\infty} (n+1) \cdot c_{n+1}(x-a)^n
+                            \(f'(x) = \sum_{n=1}^{\infty} n \cdot c_n(x-a)^{n-1} = \sum_{n=0}^{\infty} (n+1) \cdot c_{n+1}(x-a)^n\)
                         </div>
                         <p>The radius of convergence of \(f'(x)\) is also \(R\).</p>
                     </div>
@@ -247,7 +248,7 @@
                         <h3>Integration of Power Series</h3>
                         <p>If \(f(x) = \sum_{n=0}^{\infty} c_n(x-a)^n\) has radius of convergence \(R > 0\), then:</p>
                         <div class="math-formula">
-                            \int f(x) \, dx = C + \sum_{n=0}^{\infty} \frac{c_n}{n+1}(x-a)^{n+1} = C + \sum_{n=1}^{\infty} \frac{c_{n-1}}{n}(x-a)^n
+                            \(\int f(x) \, dx = C + \sum_{n=0}^{\infty} \frac{c_n}{n+1}(x-a)^{n+1} = C + \sum_{n=1}^{\infty} \frac{c_{n-1}}{n}(x-a)^n\)
                         </div>
                         <p>where \(C\) is a constant of integration. The radius of convergence of the integrated series is also \(R\).</p>
                     </div>
@@ -303,11 +304,11 @@
                         <p><strong>Solution:</strong></p>
                         <p>We can use the formula for the sum of a geometric series:</p>
                         <div class="math-formula">
-                            \sum_{n=0}^{\infty} r^n = \frac{1}{1-r} \quad \text{for } |r| < 1
+                            \(\sum_{n=0}^{\infty} r^n = \frac{1}{1-r} \quad \text{for } |r| < 1\)
                         </div>
                         <p>Setting \(r = x\), we get:</p>
                         <div class="math-formula">
-                            \frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1
+                            \(\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1\)
                         </div>
                         <p>The radius of convergence is \(R = 1\).</p>
                     </div>
@@ -471,7 +472,7 @@
                         <div class="solution" style="display: none;">
                             <p>We can use the geometric series formula:</p>
                             <div class="math-formula">
-                                \frac{1}{1-r} = \sum_{n=0}^{\infty} r^n \quad \text{for } |r| < 1
+                                \(\frac{1}{1-r} = \sum_{n=0}^{\infty} r^n \quad \text{for } |r| < 1\)
                             </div>
                             <p>Substituting \(r = -x^3\):</p>
                             <div class="math-formula">

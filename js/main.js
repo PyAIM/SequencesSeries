@@ -82,9 +82,8 @@ function createLineChart(containerId, data, options = {}) {
         marginRight: 30,
         marginBottom: 50,
         marginLeft: 60,
-        xLabel: 'n',
-        yLabel: 'a_n',
-        pointColor: '#3498db',
+        xLabel: 'x',
+        yLabel: 'y',
         pointRadius: 4
     };
 
@@ -119,12 +118,6 @@ function createLineChart(containerId, data, options = {}) {
     yMin -= yPadding;
     yMax += yPadding;
 
-    // Ensure xMin starts at 0 for proper axis alignment
-    xMin = Math.min(0, xMin);
-
-    // Adjust yMin to ensure the x-axis is always visible at the bottom
-    yMin = Math.min(0, yMin);
-
     // Create scales
     const xScale = value => chartOptions.marginLeft + (value - xMin) / (xMax - xMin) * chartWidth;
     const yScale = value => chartOptions.marginTop + chartHeight - (value - yMin) / (yMax - yMin) * chartHeight;
@@ -149,66 +142,20 @@ function createLineChart(containerId, data, options = {}) {
     yAxis.setAttribute('stroke-width', 1);
     svg.appendChild(yAxis);
 
-    // Draw x-axis ticks and labels
-    const xTicks = 5;
-    for (let i = 0; i <= xTicks; i++) {
-        const xValue = xMin + (i / xTicks) * (xMax - xMin);
-        const xPos = xScale(xValue);
-
-        // Tick
-        const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        tick.setAttribute('x1', xPos);
-        tick.setAttribute('y1', yScale(0) - 5);
-        tick.setAttribute('x2', xPos);
-        tick.setAttribute('y2', yScale(0) + 5);
-        tick.setAttribute('stroke', '#333');
-        svg.appendChild(tick);
-
-        // Label
-        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        label.setAttribute('x', xPos);
-        label.setAttribute('y', yScale(0) + 20);
-        label.setAttribute('text-anchor', 'middle');
-        label.setAttribute('font-size', '12px');
-        label.textContent = xValue.toFixed(1);
-        svg.appendChild(label);
-    }
-
-    // Draw y-axis ticks and labels
-    const yTicks = 5;
-    for (let i = 0; i <= yTicks; i++) {
-        const yValue = yMin + (i / yTicks) * (yMax - yMin);
-        const yPos = yScale(yValue);
-
-        // Tick
-        const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        tick.setAttribute('x1', xScale(0) - 5);
-        tick.setAttribute('y1', yPos);
-        tick.setAttribute('x2', xScale(0) + 5);
-        tick.setAttribute('y2', yPos);
-        tick.setAttribute('stroke', '#333');
-        svg.appendChild(tick);
-
-        // Label
-        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        label.setAttribute('x', xScale(0) - 10);
-        label.setAttribute('y', yPos + 4);
-        label.setAttribute('text-anchor', 'end');
-        label.setAttribute('font-size', '12px');
-        label.textContent = yValue.toFixed(1);
-        svg.appendChild(label);
-    }
-
-    // Draw data points as discrete dots
+    // Draw data lines
     data.forEach((series) => {
-        series.points.forEach((point) => {
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('cx', xScale(point.x));
-            circle.setAttribute('cy', yScale(point.y));
-            circle.setAttribute('r', chartOptions.pointRadius);
-            circle.setAttribute('fill', chartOptions.pointColor);
-            svg.appendChild(circle);
-        });
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const pathData = series.points.map((point, i) => {
+            const x = xScale(point.x);
+            const y = yScale(point.y);
+            return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
+        }).join(' ');
+
+        path.setAttribute('d', pathData);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', series.color || '#000'); // Use the color property or default to black
+        path.setAttribute('stroke-width', 2);
+        svg.appendChild(path);
     });
 
     // Draw axis labels

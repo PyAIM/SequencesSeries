@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taylor Series - Calculus Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Calculus<span>Explorer</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html" class="active">Taylor Series</a></li>
+                    <li><a href="applications.html">Applications</a></li>
+                    <li><a href="exercises.html">Exercises</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Taylor Series</h1>
+            <p>Understanding Taylor and Maclaurin series, their construction, and applications.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container content-container">
+            <aside class="sidebar">
+                <h3>In This Section</h3>
+                <ul>
+                    <li><a href="#definition">Definition & Notation</a></li>
+                    <li><a href="#maclaurin">Maclaurin Series</a></li>
+                    <li><a href="#construction">Constructing Taylor Series</a></li>
+                    <li><a href="#common">Common Taylor Series</a></li>
+                    <li><a href="#operations">Operations with Taylor Series</a></li>
+                    <li><a href="#error">Error Estimation</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#interactive">Interactive Visualizations</a></li>
+                    <li><a href="#exercises">Practice Exercises</a></li>
+                </ul>
+            </aside>
+
+            <div class="main-content">
+                <section id="definition">
+                    <h2>Definition & Notation</h2>
+                    
+                    <div class="definition-box">
+                        <h3>What is a Taylor Series?</h3>
+                        <p>A Taylor series is a representation of a function as an infinite sum of terms calculated from the values of the function's derivatives at a single point. If the function \(f(x)\) has derivatives of all orders at \(x = a\), then the Taylor series of \(f\) centered at \(a\) is:</p>
+                        <div class="math-formula">
+                            f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \ldots
+                        </div>
+                        <p>where \(f^{(n)}(a)\) represents the \(n\)th derivative of \(f\) evaluated at \(x = a\), and \(n!\) is the factorial of \(n\).</p>
+                    </div>
+                    
+                    <p>The Taylor series provides a way to approximate functions using polynomials. The more terms we include in the series, the better the approximation becomes (within the radius of convergence).</p>
+                    
+                    <div class="note-box">
+                        <h3>Important Note</h3>
+                        <p>Not every function equals its Taylor series, even if the Taylor series converges. A function equals its Taylor series within the radius of convergence if and only if the function is analytic.</p>
+                    </div>
+                </section>
+
+                <section id="maclaurin">
+                    <h2>Maclaurin Series</h2>
+                    
+                    <div class="definition-box">
+                        <h3>What is a Maclaurin Series?</h3>
+                        <p>A Maclaurin series is a special case of a Taylor series centered at \(a = 0\). If the function \(f(x)\) has derivatives of all orders at \(x = 0\), then the Maclaurin series of \(f\) is:</p>
+                        <div class="math-formula">
+                            f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}x^n = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \ldots
+                        </div>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 1: Maclaurin Series for \(e^x\)</h3>
+                        <p>Find the Maclaurin series for \(f(x) = e^x\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We need to find the derivatives of \(f(x) = e^x\) and evaluate them at \(x = 0\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            f(x) &= e^x & f(0) &= e^0 = 1 \\
+                            f'(x) &= e^x & f'(0) &= e^0 = 1 \\
+                            f''(x) &= e^x & f''(0) &= e^0 = 1 \\
+                            f'''(x) &= e^x & f'''(0) &= e^0 = 1 \\
+                            \end{align}
+                        </div>
+                        <p>Since all derivatives of \(e^x\) are \(e^x\), all derivatives evaluated at \(x = 0\) are 1.</p>
+                        <p>Substituting into the Maclaurin series formula:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            e^x &= \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}x^n \\
+                            &= \sum_{n=0}^{\infty} \frac{1}{n!}x^n \\
+                            &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \ldots
+                            \end{align}
+                        </div>
+                        <p>This series converges for all values of \(x\) (the radius of convergence is \(\infty\)).</p>
+                    </div>
+                </section>
+
+                <section id="construction">
+                    <h2>Constructing Taylor Series</h2>
+                    
+                    <p>There are several methods to construct Taylor series for functions:</p>
+                    
+                    <h3>Method 1: Direct Computation</h3>
+                    <p>This method involves finding the derivatives of the function, evaluating them at the center point, and substituting into the Taylor series formula.</p>
+                    
+                    <div class="example-box">
+                        <h3>Example 2: Taylor Series for \(\sin(x)\) at \(a = 0\)</h3>
+                        <p>Find the Taylor series (Maclaurin series) for \(f(x) = \sin(x)\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We need to find the derivatives of \(f(x) = \sin(x)\) and evaluate them at \(x = 0\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            f(x) &= \sin(x) & f(0) &= \sin(0) = 0 \\
+                            f'(x) &= \cos(x) & f'(0) &= \cos(0) = 1 \\
+                            f''(x) &= -\sin(x) & f''(0) &= -\sin(0) = 0 \\
+                            f'''(x) &= -\cos(x) & f'''(0) &= -\cos(0) = -1 \\
+                            f^{(4)}(x) &= \sin(x) & f^{(4)}(0) &= \sin(0) = 0 \\
+                            f^{(5)}(x) &= \cos(x) & f^{(5)}(0) &= \cos(0) = 1 \\
+                            \end{align}
+                        </div>
+                        <p>We can see a pattern: the derivatives cycle through \(\sin(x)\), \(\cos(x)\), \(-\sin(x)\), and \(-\cos(x)\).</p>
+                        <p>Substituting into the Maclaurin series formula:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \sin(x) &= \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}x^n \\
+                            &= 0 + 1 \cdot x + 0 \cdot \frac{x^2}{2!} + (-1) \cdot \frac{x^3}{3!} + 0 \cdot \frac{x^4}{4!} + 1 \cdot \frac{x^5}{5!} + \ldots \\
+                            &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \ldots \\
+                            &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!}
+                            \end{align}
+                        </div>
+                        <p>This series converges for all values of \(x\) (the radius of convergence is \(\infty\)).</p>
+                    </div>
+                    
+                    <h3>Method 2: Using Known Series</h3>
+                    <p>Once we know the Taylor series for some basic functions, we can use algebraic operations, substitution, differentiation, or integration to find Taylor series for other functions.</p>
+                    
+                    <div class="example-box">
+                        <h3>Example 3: Taylor Series for \(\cos(x)\) Using \(\sin(x)\)</h3>
+                        <p>Find the Taylor series for \(f(x) = \cos(x)\) using the Taylor series for \(\sin(x)\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We know that \(\frac{d}{dx}[\sin(x)] = \cos(x)\). Using the Taylor series for \(\sin(x)\) from Example 2:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \ldots \\
+                            \frac{d}{dx}[\sin(x)] &= \frac{d}{dx}\left[x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \ldots\right] \\
+                            \cos(x) &= 1 - \frac{3x^2}{3!} + \frac{5x^4}{5!} - \frac{7x^6}{7!} + \ldots \\
+                            &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \ldots \\
+                            &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}
+                            \end{align}
+                        </div>
+                        <p>This series converges for all values of \(x\) (the radius of convergence is \(\infty\)).</p>
+                    </div>
+                    
+                    <h3>Method 3: Using the Binomial Series</h3>
+                    <p>The binomial series can be used to find Taylor series for functions of the form \((1+x)^k\):</p>
+                    <div class="math-formula">
+                        (1+x)^k = \sum_{n=0}^{\infty} \binom{k}{n} x^n = 1 + kx + \frac{k(k-1)}{2!}x^2 + \frac{k(k-1)(k-2)}{3!}x^3 + \ldots
+                    </div>
+                    <p>This series converges for \(|x| < 1\) when \(k\) is not a non-negative integer.</p>
+                </section>
+
+                <section id="common">
+                    <h2>Common Taylor Series</h2>
+                    
+                    <p>Here are some important Taylor series centered at \(a = 0\) (Maclaurin series):</p>
+                    
+                    <div class="theorem-box">
+                        <h3>Common Maclaurin Series</h3>
+                        <ol>
+                            <li>\(e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots\) (for all \(x\))</li>
+                            <li>\(\sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots\) (for all \(x\))</li>
+                            <li>\(\cos(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \ldots\) (for all \(x\))</li>
+                            <li>\(\ln(1+x) = \sum_{n=1}^{\infty} \frac{(-1)^{n+1}x^n}{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots\) (for \(|x| < 1\))</li>
+                            <li>\(\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots\) (for \(|x| < 1\))</li>
+                            <li>\((1+x)^k = \sum_{n=0}^{\infty} \binom{k}{n} x^n = 1 + kx + \frac{k(k-1)}{2!}x^2 + \ldots\) (for \(|x| < 1\) when \(k\) is not a non-negative integer)</li>
+                            <li>\(\arctan(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \ldots\) (for \(|x| \leq 1\))</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="operations">
+                    <h2>Operations with Taylor Series</h2>
+                    
+                    <p>Taylor series can be manipulated using various operations to find series representations for more complex functions:</p>
+                    
+                    <h3>1. Addition and Subtraction</h3>
+                    <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\) and \(g(x) = \sum_{n=0}^{\infty} b_n(x-a)^n\), then:</p>
+                    <div class="math-formula">
+                        f(x) \pm g(x) = \sum_{n=0}^{\infty} (a_n \pm b_n)(x-a)^n
+                    </div>
+                    
+                    <h3>2. Multiplication by a Constant</h3>
+                    <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\) and \(c\) is a constant, then:</p>
+                    <div class="math-formula">
+                        c \cdot f(x) = \sum_{n=0}^{\infty} (c \cdot a_n)(x-a)^n
+                    </div>
+                    
+                    <h3>3. Substitution</h3>
+                    <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\) and \(g(x)\) is another function, then:</p>
+                    <div class="math-formula">
+                        f(g(x)) = \sum_{n=0}^{\infty} a_n(g(x)-a)^n
+                    </div>
+                    <p>This is valid when \(|g(x)-a| < R\), where \(R\) is the radius of convergence of the original series.</p>
+                    
+                    <h3>4. Differentiation</h3>
+                    <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\), then:</p>
+                    <div class="math-formula">
+                        f'(x) = \sum_{n=1}^{\infty} n \cdot a_n(x-a)^{n-1} = \sum_{n=0}^{\infty} (n+1) \cdot a_{n+1}(x-a)^n
+                    </div>
+                    
+                    <h3>5. Integration</h3>
+                    <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\), then:</p>
+                    <div class="math-formula">
+                        \int f(x) \, dx = C + \sum_{n=0}^{\infty} \frac{a_n}{n+1}(x-a)^{n+1} = C + \sum_{n=1}^{\infty} \frac{a_{n-1}}{n}(x-a)^n
+                    </div>
+                    <p>where \(C\) is a constant of integration.</p>
+                    
+                    <div class="example-box">
+                        <h3>Example 4: Using Operations to Find Taylor Series</h3>
+                        <p>Find the Taylor series for \(f(x) = e^{x^2}\) centered at \(a = 0\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We know the Maclaurin series for \(e^x\):</p>
+                        <div class="math-formula">
+                            e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots
+                        </div>
+                        <p>Using substitution with \(x\) replaced by \(x^2\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            e^{x^2} &= \sum_{n=0}^{\infty} \frac{(x^2)^n}{n!} \\
+                            &= \sum_{n=0}^{\infty} \frac{x^{2n}}{n!} \\
+                            &= 1 + x^2 + \frac{x^4}{2!} + \frac{x^6}{3!} + \frac{x^8}{4!} + \ldots
+                            \end{align}
+                        </div>
+                        <p>This series converges for all values of \(x\) (the radius of convergence is \(\infty\)).</p>
+                    </div>
+                </section>
+
+                <section id="error">
+                    <h2>Error Estimation</h2>
+                    
+                    <p>When we use a finite number of terms from a Taylor series to approximate a function, there is an error in the approximation. This error can be estimated using Taylor's Remainder Theorem.</p>
+                    
+                    <div class="theorem-box">
+                        <h3>Taylor's Remainder Theorem</h3>
+                        <p>If \(f\) has \(n+1\) continuous derivatives on an interval containing \(a\) and \(x\), then there exists a point \(c\) between \(a\) and \(x\) such that:</p>
+                        <div class="math-formula">
+                            R_n(x) = f(x) - P_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}
+                        </div>
+                        <p>where \(P_n(x)\) is the \(n\)th-degree Taylor polynomial of \(f\) centered at \(a\), and \(R_n(x)\) is the remainder (error) term.</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 5: Error Estimation</h3>
+                        <p>Estimate the error when approximating \(\sin(0.1)\) using the 3rd-degree Taylor polynomial centered at \(a = 0\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>The 3rd-degree Taylor polynomial for \(\sin(x)\) centered at \(a = 0\) is:</p>
+                        <div class="math-formula">
+                            P_3(x) = x - \frac{x^3}{3!} = x - \frac{x^3}{6}
+                        </div>
+                        <p>Using Taylor's Remainder Theorem, the error is:</p>
+                        <div class="math-formula">
+                            R_3(x) = \frac{f^{(4)}(c)}{4!}x^4
+                        </div>
+                        <p>where \(c\) is between 0 and \(x\), and \(f^{(4)}(c) = \sin(c)\).</p>
+                        <p>Since \(|\sin(c)| \leq 1\) for all \(c\), we have:</p>
+                        <div class="math-formula">
+                            |R_3(0.1)| \leq \frac{1}{4!}(0.1)^4 = \frac{1}{24} \cdot 0.0001 \approx 4.17 \times 10^{-6}
+                        </div>
+                        <p>Therefore, the error in approximating \(\sin(0.1)\) using \(P_3(0.1) = 0.1 - \frac{(0.1)^3}{6} \approx 0.09983\) is at most \(4.17 \times 10^{-6}\).</p>
+                        <p>The actual value of \(\sin(0.1) \approx 0.09983\), so the approximation is quite accurate.</p>
+                    </div>
+                </section>
+
+                <section id="examples">
+                    <h2>Examples</h2>
+                    
+                    <div class="example-box">
+                        <h3>Example 6: Taylor Series for \(\ln(1+x)\) at \(a = 0\)</h3>
+                        <p>Find the Taylor series for \(f(x) = \ln(1+x)\) centered at \(a = 0\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We need to find the derivatives of \(f(x) = \ln(1+x)\) and evaluate them at \(x = 0\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            f(x) &= \ln(1+x) & f(0) &= \ln(1) = 0 \\
+                            f'(x) &= \frac{1}{1+x} & f'(0) &= \frac{1}{1+0} = 1 \\
+                            f''(x) &= -\frac{1}{(1+x)^2} & f''(0) &= -\frac{1}{(1+0)^2} = -1 \\
+                            f'''(x) &= \frac{2}{(1+x)^3} & f'''(0) &= \frac{2}{(1+0)^3} = 2 \\
+                            f^{(4)}(x) &= -\frac{6}{(1+x)^4} & f^{(4)}(0) &= -\frac{6}{(1+0)^4} = -6 \\
+                            \end{align}
+                        </div>
+                        <p>We can see a pattern: \(f^{(n)}(0) = (-1)^{n+1}(n-1)!\) for \(n \geq 1\).</p>
+                        <p>Substituting into the Maclaurin series formula:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \ln(1+x) &= \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}x^n \\
+                            &= 0 + \frac{1}{1!}x + \frac{-1}{2!}x^2 + \frac{2}{3!}x^3 + \frac{-6}{4!}x^4 + \ldots \\
+                            &= x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \ldots \\
+                            &= \sum_{n=1}^{\infty} \frac{(-1)^{n+1}x^n}{n}
+                            \end{align}
+                        </div>
+                        <p>This series converges for \(|x| < 1\) (the radius of convergence is 1).</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 7: Taylor Series for \(\frac{1}{1+x}\) at \(a = 0\)</h3>
+                        <p>Find the Taylor series for \(f(x) = \frac{1}{1+x}\) centered at \(a = 0\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We can use the geometric series formula:</p>
+                        <div class="math-formula">
+                            \frac{1}{1-r} = \sum_{n=0}^{\infty} r^n \quad \text{for } |r| < 1
+                        </div>
+                        <p>Substituting \(r = -x\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \frac{1}{1+x} &= \frac{1}{1-(-x)} \\
+                            &= \sum_{n=0}^{\infty} (-x)^n \\
+                            &= \sum_{n=0}^{\infty} (-1)^n x^n \\
+                            &= 1 - x + x^2 - x^3 + x^4 - \ldots
+                            \end{align}
+                        </div>
+                        <p>This series converges for \(|x| < 1\) (the radius of convergence is 1).</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 8: Taylor Series for \(\arctan(x)\) at \(a = 0\)</h3>
+                        <p>Find the Taylor series for \(f(x) = \arctan(x)\) centered at \(a = 0\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We know that \(\frac{d}{dx}[\arctan(x)] = \frac{1}{1+x^2}\).</p>
+                        <p>From Example 7, we have:</p>
+                        <div class="math-formula">
+                            \frac{1}{1+x} = \sum_{n=0}^{\infty} (-1)^n x^n \quad \text{for } |x| < 1
+                        </div>
+                        <p>Substituting \(x^2\) for \(x\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \frac{1}{1+x^2} &= \sum_{n=0}^{\infty} (-1)^n (x^2)^n \\
+                            &= \sum_{n=0}^{\infty} (-1)^n x^{2n} \\
+                            &= 1 - x^2 + x^4 - x^6 + \ldots
+                            \end{align}
+                        </div>
+                        <p>Integrating both sides:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \int \frac{1}{1+x^2} \, dx &= \int \sum_{n=0}^{\infty} (-1)^n x^{2n} \, dx \\
+                            \arctan(x) + C &= \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{2n+1} + C
+                            \end{align}
+                        </div>
+                        <p>Since \(\arctan(0) = 0\), we have \(C = 0\).</p>
+                        <div class="math-formula">
+                            \arctan(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots
+                        </div>
+                        <p>This series converges for \(|x| \leq 1\) (the radius of convergence is 1).</p>
+                    </div>
+                </section>
+
+                <section id="interactive">
+                    <h2>Interactive Visualizations</h2>
+                    
+                    <div class="interactive-container">
+                        <h3>Explore Taylor Polynomial Approximations</h3>
+                        <p>Use the controls below to explore how Taylor polynomials approximate functions with increasing accuracy as more terms are included.</p>
+                        
+                        <div class="control-panel">
+                            <label for="taylor-function-select">Select a function:</label>
+                            <select id="taylor-function-select">
+                                <option value="1">f(x) = sin(x)</option>
+                                <option value="2">f(x) = cos(x)</option>
+                                <option value="3">f(x) = e^x</option>
+                                <option value="4">f(x) = ln(1+x)</option>
+                                <option value="5">f(x) = 1/(1+x)</option>
+                            </select>
+                            
+                            <div class="slider-container">
+                                <label for="taylor-terms-slider">Number of terms in Taylor polynomial:</label>
+                                <input type="range" id="taylor-terms-slider" class="slider" min="1" max="10" value="3">
+                                <span id="taylor-terms-value">3</span>
+                            </div>
+                            
+                            <div class="slider-container">
+                                <label for="taylor-center-slider">Center point (a):</label>
+                                <input type="range" id="taylor-center-slider" class="slider" min="-3" max="3" step="0.5" value="0">
+                                <span id="taylor-center-value">0</span>
+                            </div>
+                        </div>
+                        
+                        <div id="interactive-taylor-graph" class="graph-container">
+                            <!-- Interactive graph will be inserted here by JavaScript -->
+                        </div>
+                        
+                        <div class="taylor-info">
+                            <h4>Taylor Series Information</h4>
+                            <p id="taylor-function-formula">Function: f(x) = sin(x)</p>
+                            <p id="taylor-series-formula">Taylor Series: x - x³/3! + x⁵/5! - ...</p>
+                            <p id="taylor-approximation-formula">Current Approximation: x - x³/6</p>
+                            <p id="taylor-error">Maximum Error in [-π,π]: 0.0741</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="exercises">
+                    <h2>Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1</h3>
+                        <p>Find the Taylor series for \(f(x) = \cos(2x)\) centered at \(a = 0\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We know the Maclaurin series for \(\cos(x)\):</p>
+                            <div class="math-formula">
+                                \cos(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \ldots
+                            </div>
+                            <p>Using substitution with \(x\) replaced by \(2x\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \cos(2x) &= \sum_{n=0}^{\infty} \frac{(-1)^n (2x)^{2n}}{(2n)!} \\
+                                &= \sum_{n=0}^{\infty} \frac{(-1)^n 2^{2n} x^{2n}}{(2n)!} \\
+                                &= 1 - \frac{2^2 x^2}{2!} + \frac{2^4 x^4}{4!} - \frac{2^6 x^6}{6!} + \ldots \\
+                                &= 1 - \frac{4x^2}{2!} + \frac{16x^4}{4!} - \frac{64x^6}{6!} + \ldots \\
+                                &= 1 - 2x^2 + \frac{2x^4}{3} - \frac{4x^6}{45} + \ldots
+                                \end{align}
+                            </div>
+                            <p>This series converges for all values of \(x\) (the radius of convergence is \(\infty\)).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2</h3>
+                        <p>Find the Taylor series for \(f(x) = \frac{1}{(1-x)^2}\) centered at \(a = 0\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We know the Maclaurin series for \(\frac{1}{1-x}\):</p>
+                            <div class="math-formula">
+                                \frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1
+                            </div>
+                            <p>Taking the derivative of both sides:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{d}{dx}\left(\frac{1}{1-x}\right) &= \frac{d}{dx}\left(\sum_{n=0}^{\infty} x^n\right) \\
+                                \frac{1}{(1-x)^2} &= \sum_{n=1}^{\infty} nx^{n-1} \\
+                                &= \sum_{n=0}^{\infty} (n+1)x^n \\
+                                &= 1 + 2x + 3x^2 + 4x^3 + \ldots
+                                \end{align}
+                            </div>
+                            <p>Therefore, \(f(x) = \frac{1}{(1-x)^2} = \sum_{n=0}^{\infty} (n+1)x^n\) for \(|x| < 1\) (the radius of convergence is 1).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 3</h3>
+                        <p>Find the Taylor series for \(f(x) = x\sin(x)\) centered at \(a = 0\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We know the Maclaurin series for \(\sin(x)\):</p>
+                            <div class="math-formula">
+                                \sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots
+                            </div>
+                            <p>Multiplying both sides by \(x\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                x\sin(x) &= x \cdot \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!} \\
+                                &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+2}}{(2n+1)!} \\
+                                &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+2}}{(2n+1)!} \\
+                                &= x^2 - \frac{x^4}{3!} + \frac{x^6}{5!} - \ldots
+                                \end{align}
+                            </div>
+                            <p>This series converges for all values of \(x\) (the radius of convergence is \(\infty\)).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 4</h3>
+                        <p>Use Taylor's Remainder Theorem to estimate the error when approximating \(e^{0.2}\) using the 3rd-degree Taylor polynomial centered at \(a = 0\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>The 3rd-degree Taylor polynomial for \(e^x\) centered at \(a = 0\) is:</p>
+                            <div class="math-formula">
+                                P_3(x) = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6}
+                            </div>
+                            <p>Using Taylor's Remainder Theorem, the error is:</p>
+                            <div class="math-formula">
+                                R_3(x) = \frac{f^{(4)}(c)}{4!}x^4
+                            </div>
+                            <p>where \(c\) is between 0 and \(x\), and \(f^{(4)}(c) = e^c\).</p>
+                            <p>For \(x = 0.2\), we have \(0 < c < 0.2\), so \(e^c < e^{0.2} \approx 1.2214\).</p>
+                            <div class="math-formula">
+                                |R_3(0.2)| < \frac{e^{0.2}}{4!}(0.2)^4 \approx \frac{1.2214}{24} \cdot 0.0016 \approx 8.14 \times 10^{-5}
+                            </div>
+                            <p>Therefore, the error in approximating \(e^{0.2}\) using \(P_3(0.2) = 1 + 0.2 + \frac{(0.2)^2}{2} + \frac{(0.2)^3}{6} \approx 1.22133\) is less than \(8.14 \times 10^{-5}\).</p>
+                            <p>The actual value of \(e^{0.2} \approx 1.22140\), so the approximation is quite accurate.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="navigation-buttons">
+                    <a href="power-series.html" class="btn">Previous: Power Series</a>
+                    <a href="applications.html" class="btn">Next: Applications</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="exercises.html">Practice Exercises</a></li>
+                    <li><a href="resources.html">External Resources</a></li>
+                    <li><a href="https://www.numberphile.com/" target="_blank">Numberphile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Calculus Explorer is designed to help college students master sequences, series, and power series concepts through clear explanations and interactive examples.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Calculus Explorer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/taylor-series.js"></script>
+</body>
+</html>

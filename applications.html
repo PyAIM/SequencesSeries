@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications - Calculus Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Calculus<span>Explorer</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                    <li><a href="applications.html" class="active">Applications</a></li>
+                    <li><a href="exercises.html">Exercises</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Applications of Power Series</h1>
+            <p>Discover the practical applications of power series in calculus and beyond.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container content-container">
+            <aside class="sidebar">
+                <h3>In This Section</h3>
+                <ul>
+                    <li><a href="#approximation">Function Approximation</a></li>
+                    <li><a href="#integration">Evaluating Integrals</a></li>
+                    <li><a href="#differential">Solving Differential Equations</a></li>
+                    <li><a href="#physics">Applications in Physics</a></li>
+                    <li><a href="#engineering">Applications in Engineering</a></li>
+                    <li><a href="#computation">Computational Applications</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#interactive">Interactive Visualizations</a></li>
+                    <li><a href="#exercises">Practice Exercises</a></li>
+                </ul>
+            </aside>
+
+            <div class="main-content">
+                <section id="approximation">
+                    <h2>Function Approximation</h2>
+                    
+                    <p>One of the most important applications of power series is approximating functions. Taylor series allow us to represent complicated functions as polynomials, which are much easier to work with.</p>
+                    
+                    <div class="theorem-box">
+                        <h3>Function Approximation Using Taylor Polynomials</h3>
+                        <p>If \(f(x)\) has derivatives of all orders at \(x = a\), then the \(n\)th-degree Taylor polynomial:</p>
+                        <div class="math-formula">
+                            P_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k
+                        </div>
+                        <p>provides an approximation of \(f(x)\) near \(x = a\). The error in this approximation is given by the remainder term:</p>
+                        <div class="math-formula">
+                            R_n(x) = f(x) - P_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}
+                        </div>
+                        <p>where \(c\) is some point between \(a\) and \(x\).</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 1: Approximating \(\sin(x)\)</h3>
+                        <p>Approximate \(\sin(0.3)\) using the 3rd-degree Taylor polynomial centered at \(a = 0\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>The 3rd-degree Taylor polynomial for \(\sin(x)\) centered at \(a = 0\) is:</p>
+                        <div class="math-formula">
+                            P_3(x) = x - \frac{x^3}{3!} = x - \frac{x^3}{6}
+                        </div>
+                        <p>Evaluating at \(x = 0.3\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            P_3(0.3) &= 0.3 - \frac{(0.3)^3}{6} \\
+                            &= 0.3 - \frac{0.027}{6} \\
+                            &= 0.3 - 0.0045 \\
+                            &= 0.2955
+                            \end{align}
+                        </div>
+                        <p>The actual value of \(\sin(0.3) \approx 0.29552\), so our approximation is very accurate.</p>
+                        <p>The error can be estimated using Taylor's Remainder Theorem:</p>
+                        <div class="math-formula">
+                            |R_3(0.3)| \leq \frac{|f^{(4)}(c)|}{4!}|0.3|^4 \leq \frac{1}{24} \cdot (0.3)^4 \approx 3.38 \times 10^{-4}
+                        </div>
+                        <p>where we used the fact that \(|f^{(4)}(c)| = |\sin(c)| \leq 1\).</p>
+                    </div>
+                    
+                    <h3>Applications in Calculators and Computers</h3>
+                    <p>Modern calculators and computers use Taylor series to compute values of transcendental functions like \(\sin(x)\), \(\cos(x)\), \(e^x\), and \(\ln(x)\). Instead of storing all possible values, they use polynomial approximations derived from Taylor series.</p>
+                </section>
+
+                <section id="integration">
+                    <h2>Evaluating Integrals</h2>
+                    
+                    <p>Power series can be used to evaluate integrals that cannot be computed using elementary techniques.</p>
+                    
+                    <div class="theorem-box">
+                        <h3>Integration Using Power Series</h3>
+                        <p>If a function \(f(x)\) can be represented as a power series:</p>
+                        <div class="math-formula">
+                            f(x) = \sum_{n=0}^{\infty} a_n x^n
+                        </div>
+                        <p>Then its indefinite integral is:</p>
+                        <div class="math-formula">
+                            \int f(x) \, dx = C + \sum_{n=0}^{\infty} \frac{a_n}{n+1} x^{n+1}
+                        </div>
+                        <p>where \(C\) is a constant of integration.</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 2: Evaluating a Non-Elementary Integral</h3>
+                        <p>Evaluate the integral \(\int_0^{0.5} e^{-x^2} \, dx\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>The function \(e^{-x^2}\) doesn't have an elementary antiderivative. We can use the Maclaurin series for \(e^x\) and substitute \(-x^2\) for \(x\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            e^{-x^2} &= \sum_{n=0}^{\infty} \frac{(-x^2)^n}{n!} \\
+                            &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{n!} \\
+                            &= 1 - x^2 + \frac{x^4}{2!} - \frac{x^6}{3!} + \frac{x^8}{4!} - \ldots
+                            \end{align}
+                        </div>
+                        <p>Integrating term by term:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \int e^{-x^2} \, dx &= \int \left(1 - x^2 + \frac{x^4}{2!} - \frac{x^6}{3!} + \frac{x^8}{4!} - \ldots\right) \, dx \\
+                            &= x - \frac{x^3}{3} + \frac{x^5}{5 \cdot 2!} - \frac{x^7}{7 \cdot 3!} + \frac{x^9}{9 \cdot 4!} - \ldots + C
+                            \end{align}
+                        </div>
+                        <p>Evaluating the definite integral:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \int_0^{0.5} e^{-x^2} \, dx &= \left[x - \frac{x^3}{3} + \frac{x^5}{5 \cdot 2!} - \frac{x^7}{7 \cdot 3!} + \frac{x^9}{9 \cdot 4!} - \ldots\right]_0^{0.5} \\
+                            &= \left(0.5 - \frac{(0.5)^3}{3} + \frac{(0.5)^5}{5 \cdot 2!} - \frac{(0.5)^7}{7 \cdot 3!} + \frac{(0.5)^9}{9 \cdot 4!} - \ldots\right) - 0 \\
+                            &\approx 0.5 - 0.0417 + 0.0026 - 0.0001 + \ldots \\
+                            &\approx 0.4608
+                            \end{align}
+                        </div>
+                        <p>Therefore, \(\int_0^{0.5} e^{-x^2} \, dx \approx 0.4608\).</p>
+                        <p>Note: This integral is related to the error function \(\text{erf}(x)\), which is important in probability theory and statistics.</p>
+                    </div>
+                </section>
+
+                <section id="differential">
+                    <h2>Solving Differential Equations</h2>
+                    
+                    <p>Power series methods provide a powerful technique for solving differential equations, especially when other methods fail.</p>
+                    
+                    <div class="theorem-box">
+                        <h3>Power Series Method for Differential Equations</h3>
+                        <p>To solve a differential equation using the power series method:</p>
+                        <ol>
+                            <li>Assume a solution of the form \(y(x) = \sum_{n=0}^{\infty} a_n x^n\)</li>
+                            <li>Substitute this series into the differential equation</li>
+                            <li>Collect like terms and set the coefficient of each power of \(x\) equal to zero</li>
+                            <li>Solve for the coefficients \(a_n\) recursively</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 3: Solving a Differential Equation</h3>
+                        <p>Find a power series solution for the differential equation \(y' - y = 0\) with initial condition \(y(0) = 1\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>Let's assume a solution of the form:</p>
+                        <div class="math-formula">
+                            y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots
+                        </div>
+                        <p>Taking the derivative:</p>
+                        <div class="math-formula">
+                            y'(x) = \sum_{n=1}^{\infty} n a_n x^{n-1} = a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + \ldots
+                        </div>
+                        <p>Substituting into the differential equation \(y' - y = 0\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            y' - y &= 0 \\
+                            (a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + \ldots) - (a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots) &= 0 \\
+                            (a_1 - a_0) + (2a_2 - a_1)x + (3a_3 - a_2)x^2 + (4a_4 - a_3)x^3 + \ldots &= 0
+                            \end{align}
+                        </div>
+                        <p>For this equation to be satisfied for all \(x\), the coefficient of each power of \(x\) must be zero:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            a_1 - a_0 &= 0 \implies a_1 = a_0 \\
+                            2a_2 - a_1 &= 0 \implies a_2 = \frac{a_1}{2} = \frac{a_0}{2} \\
+                            3a_3 - a_2 &= 0 \implies a_3 = \frac{a_2}{3} = \frac{a_0}{2 \cdot 3} = \frac{a_0}{3!} \\
+                            4a_4 - a_3 &= 0 \implies a_4 = \frac{a_3}{4} = \frac{a_0}{3! \cdot 4} = \frac{a_0}{4!}
+                            \end{align}
+                        </div>
+                        <p>We can see a pattern: \(a_n = \frac{a_0}{n!}\) for \(n \geq 0\).</p>
+                        <p>Using the initial condition \(y(0) = 1\), we have \(a_0 = 1\).</p>
+                        <p>Therefore, \(a_n = \frac{1}{n!}\) for \(n \geq 0\), and the solution is:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            y(x) &= \sum_{n=0}^{\infty} \frac{x^n}{n!} \\
+                            &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \ldots \\
+                            &= e^x
+                            \end{align}
+                        </div>
+                        <p>This makes sense because \(e^x\) is indeed the solution to \(y' - y = 0\) with \(y(0) = 1\).</p>
+                    </div>
+                    
+                    <h3>Important Differential Equations</h3>
+                    <p>Many important differential equations in physics and engineering can be solved using power series methods, including:</p>
+                    <ul>
+                        <li>Bessel's equation: \(x^2y'' + xy' + (x^2 - n^2)y = 0\)</li>
+                        <li>Legendre's equation: \((1-x^2)y'' - 2xy' + n(n+1)y = 0\)</li>
+                        <li>Airy's equation: \(y'' - xy = 0\)</li>
+                    </ul>
+                    <p>The solutions to these equations (Bessel functions, Legendre polynomials, and Airy functions) are widely used in physics and engineering applications.</p>
+                </section>
+
+                <section id="physics">
+                    <h2>Applications in Physics</h2>
+                    
+                    <p>Power series and Taylor series have numerous applications in physics, helping to solve complex problems and model physical phenomena.</p>
+                    
+                    <h3>Quantum Mechanics</h3>
+                    <p>In quantum mechanics, power series are used to:</p>
+                    <ul>
+                        <li>Solve the Schrödinger equation for various potentials</li>
+                        <li>Develop perturbation theory for approximating solutions to complex problems</li>
+                        <li>Express wave functions for quantum systems</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h3>Example 4: Quantum Harmonic Oscillator</h3>
+                        <p>The quantum harmonic oscillator is described by the differential equation:</p>
+                        <div class="math-formula">
+                            \frac{d^2\psi}{dx^2} + (2E - x^2)\psi = 0
+                        </div>
+                        <p>This equation can be solved using power series methods, leading to the Hermite polynomials that describe the wave functions of the oscillator.</p>
+                    </div>
+                    
+                    <h3>Electromagnetism</h3>
+                    <p>In electromagnetism, power series are used to:</p>
+                    <ul>
+                        <li>Expand electromagnetic potentials in multipole expansions</li>
+                        <li>Solve Maxwell's equations in complex geometries</li>
+                        <li>Analyze wave propagation in various media</li>
+                    </ul>
+                    
+                    <h3>Statistical Mechanics</h3>
+                    <p>In statistical mechanics, power series are used to:</p>
+                    <ul>
+                        <li>Develop virial expansions for non-ideal gases</li>
+                        <li>Calculate partition functions and thermodynamic properties</li>
+                        <li>Analyze phase transitions and critical phenomena</li>
+                    </ul>
+                </section>
+
+                <section id="engineering">
+                    <h2>Applications in Engineering</h2>
+                    
+                    <p>Power series methods are widely used in various engineering disciplines to model and analyze complex systems.</p>
+                    
+                    <h3>Control Systems</h3>
+                    <p>In control systems engineering, power series are used to:</p>
+                    <ul>
+                        <li>Analyze system stability through transfer functions</li>
+                        <li>Design controllers for linear and nonlinear systems</li>
+                        <li>Model time-delay systems using Padé approximations</li>
+                    </ul>
+                    
+                    <h3>Signal Processing</h3>
+                    <p>In signal processing, power series are used to:</p>
+                    <ul>
+                        <li>Develop Fourier series representations of periodic signals</li>
+                        <li>Design digital filters</li>
+                        <li>Analyze frequency responses of systems</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h3>Example 5: Fourier Series</h3>
+                        <p>The Fourier series represents a periodic function as a sum of sines and cosines:</p>
+                        <div class="math-formula">
+                            f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos(nx) + b_n \sin(nx)\right]
+                        </div>
+                        <p>This is a type of power series that is particularly useful in signal processing and communications engineering.</p>
+                    </div>
+                    
+                    <h3>Structural Analysis</h3>
+                    <p>In structural engineering, power series are used to:</p>
+                    <ul>
+                        <li>Analyze beam deflections under various loading conditions</li>
+                        <li>Model vibrations in structures</li>
+                        <li>Solve complex boundary value problems</li>
+                    </ul>
+                </section>
+
+                <section id="computation">
+                    <h2>Computational Applications</h2>
+                    
+                    <p>Power series methods are fundamental in computational mathematics and numerical analysis.</p>
+                    
+                    <h3>Numerical Integration</h3>
+                    <p>Power series can be used to develop numerical integration techniques, such as:</p>
+                    <ul>
+                        <li>Gaussian quadrature methods</li>
+                        <li>Romberg integration</li>
+                        <li>Adaptive integration algorithms</li>
+                    </ul>
+                    
+                    <h3>Approximation Theory</h3>
+                    <p>In approximation theory, power series are used to:</p>
+                    <ul>
+                        <li>Develop Chebyshev approximations for functions</li>
+                        <li>Create Padé approximants for rational function approximations</li>
+                        <li>Design interpolation schemes</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h3>Example 6: Padé Approximation</h3>
+                        <p>A Padé approximant is a rational function approximation of a function. For example, a [2,2] Padé approximant for \(e^x\) is:</p>
+                        <div class="math-formula">
+                            e^x \approx \frac{1 + \frac{x}{2} + \frac{x^2}{12}}{1 - \frac{x}{2} + \frac{x^2}{12}}
+                        </div>
+                        <p>This approximation is more accurate than a Taylor polynomial of the same degree over a larger range of \(x\) values.</p>
+                    </div>
+                    
+                    <h3>Computer Algebra Systems</h3>
+                    <p>Power series methods are implemented in computer algebra systems to:</p>
+                    <ul>
+                        <li>Solve differential equations symbolically</li>
+                        <li>Compute limits and asymptotic expansions</li>
+                        <li>Perform symbolic integration</li>
+                    </ul>
+                </section>
+
+                <section id="examples">
+                    <h2>Examples</h2>
+                    
+                    <div class="example-box">
+                        <h3>Example 7: Approximating \(\pi\) Using Power Series</h3>
+                        <p>We can use the power series for \(\arctan(x)\) to approximate \(\pi\):</p>
+                        <div class="math-formula">
+                            \arctan(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots
+                        </div>
+                        <p>Since \(\arctan(1) = \frac{\pi}{4}\), we have:</p>
+                        <div class="math-formula">
+                            \frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots
+                        </div>
+                        <p>Therefore:</p>
+                        <div class="math-formula">
+                            \pi = 4\left(1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots\right)
+                        </div>
+                        <p>This is known as the Leibniz formula for \(\pi\). However, it converges very slowly. A faster-converging formula uses \(\arctan\) identities:</p>
+                        <div class="math-formula">
+                            \pi = 16\arctan\left(\frac{1}{5}\right) - 4\arctan\left(\frac{1}{239}\right)
+                        </div>
+                        <p>Using the power series for \(\arctan\), this formula converges much more quickly.</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 8: Analyzing a Pendulum</h3>
+                        <p>The period of a simple pendulum of length \(L\) with maximum angle \(\theta_0\) is given by:</p>
+                        <div class="math-formula">
+                            T = 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{1}{4}\sin^2\left(\frac{\theta_0}{2}\right) + \frac{9}{64}\sin^4\left(\frac{\theta_0}{2}\right) + \ldots\right)
+                        </div>
+                        <p>This is a power series expansion of the complete elliptic integral of the first kind. For small angles, we can approximate:</p>
+                        <div class="math-formula">
+                            T \approx 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{\theta_0^2}{16} + \ldots\right)
+                        </div>
+                        <p>For \(\theta_0 = 30°\) (or \(\frac{\pi}{6}\) radians), the first-order approximation gives:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            T &\approx 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{(\pi/6)^2}{16}\right) \\
+                            &\approx 2\pi\sqrt{\frac{L}{g}} \cdot 1.0103 \\
+                            &\approx 1.0103 \cdot T_0
+                            \end{align}
+                        </div>
+                        <p>where \(T_0 = 2\pi\sqrt{\frac{L}{g}}\) is the period for small oscillations. This shows that the period increases by about 1% for a maximum angle of 30°.</p>
+                    </div>
+                </section>
+
+                <section id="interactive">
+                    <h2>Interactive Visualizations</h2>
+                    
+                    <div class="interactive-container">
+                        <h3>Explore Applications of Power Series</h3>
+                        <p>Use the controls below to explore different applications of power series and see how they work in practice.</p>
+                        
+                        <div class="control-panel">
+                            <label for="application-select">Select an application:</label>
+                            <select id="application-select">
+                                <option value="1">Function Approximation</option>
+                                <option value="2">Numerical Integration</option>
+                                <option value="3">Differential Equation Solution</option>
+                                <option value="4">Pendulum Period Analysis</option>
+                            </select>
+                            
+                            <div class="slider-container">
+                                <label for="terms-slider">Number of terms to include:</label>
+                                <input type="range" id="terms-slider" class="slider" min="1" max="10" value="3">
+                                <span id="terms-value">3</span>
+                            </div>
+                            
+                            <div class="slider-container">
+                                <label for="parameter-slider">Parameter value:</label>
+                                <input type="range" id="parameter-slider" class="slider" min="0" max="1" step="0.1" value="0.5">
+                                <span id="parameter-value">0.5</span>
+                            </div>
+                        </div>
+                        
+                        <div id="interactive-application-graph" class="graph-container">
+                            <!-- Interactive graph will be inserted here by JavaScript -->
+                        </div>
+                        
+                        <div class="application-info">
+                            <h4>Application Information</h4>
+                            <p id="application-description">Function Approximation: Using Taylor polynomials to approximate functions</p>
+                            <p id="application-formula">Formula: f(x) ≈ P₃(x) = 1 + x + x²/2 + x³/6</p>
+                            <p id="application-error">Error: |f(x) - P₃(x)| ≤ 0.0041 for |x| ≤ 0.5</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="exercises">
+                    <h2>Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1</h3>
+                        <p>Use a Taylor series to approximate \(\int_0^{0.4} \sin(x^2) \, dx\) with an error of less than \(10^{-4}\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We'll use the Taylor series for \(\sin(x)\) and substitute \(x^2\) for \(x\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sin(x^2) &= \sum_{n=0}^{\infty} \frac{(-1)^n (x^2)^{2n+1}}{(2n+1)!} \\
+                                &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{4n+2}}{(2n+1)!} \\
+                                &= x^2 - \frac{x^6}{3!} + \frac{x^{10}}{5!} - \frac{x^{14}}{7!} + \ldots
+                                \end{align}
+                            </div>
+                            <p>Integrating term by term:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int \sin(x^2) \, dx &= \int \left(x^2 - \frac{x^6}{3!} + \frac{x^{10}}{5!} - \frac{x^{14}}{7!} + \ldots\right) \, dx \\
+                                &= \frac{x^3}{3} - \frac{x^7}{7 \cdot 3!} + \frac{x^{11}}{11 \cdot 5!} - \frac{x^{15}}{15 \cdot 7!} + \ldots + C
+                                \end{align}
+                            </div>
+                            <p>Evaluating the definite integral:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int_0^{0.4} \sin(x^2) \, dx &= \left[\frac{x^3}{3} - \frac{x^7}{7 \cdot 3!} + \frac{x^{11}}{11 \cdot 5!} - \frac{x^{15}}{15 \cdot 7!} + \ldots\right]_0^{0.4} \\
+                                &= \frac{(0.4)^3}{3} - \frac{(0.4)^7}{7 \cdot 3!} + \frac{(0.4)^{11}}{11 \cdot 5!} - \ldots \\
+                                &= \frac{0.064}{3} - \frac{0.0004096}{42} + \frac{0.00000017}{1320} - \ldots \\
+                                &\approx 0.02133 - 0.00001 + \ldots
+                                \end{align}
+                            </div>
+                            <p>To estimate the error, we need to find how many terms to include. The error after \(n\) terms is bounded by the first omitted term. For \(n = 2\) (including terms up to \(x^7\)), the error is approximately:</p>
+                            <div class="math-formula">
+                                \left|\frac{(0.4)^{11}}{11 \cdot 5!}\right| \approx \frac{0.00000017}{1320} \approx 1.3 \times 10^{-10}
+                            </div>
+                            <p>This is much less than \(10^{-4}\), so two terms are sufficient.</p>
+                            <p>Therefore, \(\int_0^{0.4} \sin(x^2) \, dx \approx 0.02133 - 0.00001 = 0.02132\) with an error less than \(10^{-4}\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2</h3>
+                        <p>Use power series to solve the differential equation \(y'' + xy = 0\) with initial conditions \(y(0) = 1\) and \(y'(0) = 0\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's assume a solution of the form:</p>
+                            <div class="math-formula">
+                                y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots
+                            </div>
+                            <p>Taking the second derivative:</p>
+                            <div class="math-formula">
+                                y''(x) = \sum_{n=2}^{\infty} n(n-1) a_n x^{n-2} = 2a_2 + 6a_3 x + 12a_4 x^2 + 20a_5 x^3 + \ldots
+                            </div>
+                            <p>Substituting into the differential equation \(y'' + xy = 0\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                y'' + xy &= 0 \\
+                                (2a_2 + 6a_3 x + 12a_4 x^2 + 20a_5 x^3 + \ldots) + x(a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots) &= 0 \\
+                                2a_2 + 6a_3 x + 12a_4 x^2 + 20a_5 x^3 + \ldots + a_0 x + a_1 x^2 + a_2 x^3 + a_3 x^4 + \ldots &= 0
+                                \end{align}
+                            </div>
+                            <p>Collecting like terms:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                2a_2 + (6a_3 + a_0)x + (12a_4 + a_1)x^2 + (20a_5 + a_2)x^3 + (30a_6 + a_3)x^4 + \ldots &= 0
+                                \end{align}
+                            </div>
+                            <p>For this equation to be satisfied for all \(x\), the coefficient of each power of \(x\) must be zero:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                2a_2 &= 0 \implies a_2 = 0 \\
+                                6a_3 + a_0 &= 0 \implies a_3 = -\frac{a_0}{6} \\
+                                12a_4 + a_1 &= 0 \implies a_4 = -\frac{a_1}{12} \\
+                                20a_5 + a_2 &= 0 \implies a_5 = -\frac{a_2}{20} = 0 \\
+                                30a_6 + a_3 &= 0 \implies a_6 = -\frac{a_3}{30} = \frac{a_0}{180}
+                                \end{align}
+                            </div>
+                            <p>Using the initial conditions:</p>
+                            <ul>
+                                <li>\(y(0) = 1 \implies a_0 = 1\)</li>
+                                <li>\(y'(0) = 0 \implies a_1 = 0\)</li>
+                            </ul>
+                            <p>Therefore:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                a_0 &= 1 \\
+                                a_1 &= 0 \\
+                                a_2 &= 0 \\
+                                a_3 &= -\frac{1}{6} \\
+                                a_4 &= 0 \\
+                                a_5 &= 0 \\
+                                a_6 &= \frac{1}{180} \\
+                                \end{align}
+                            </div>
+                            <p>Continuing this pattern, we get:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                y(x) &= 1 - \frac{x^3}{6} + \frac{x^6}{180} - \frac{x^9}{9!} + \ldots \\
+                                &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{3n}}{(3n)!}
+                                \end{align}
+                            </div>
+                            <p>This is the power series for the Airy function \(\text{Ai}(x)\), which is a solution to Airy's differential equation \(y'' - xy = 0\). Our equation is \(y'' + xy = 0\), so our solution is related to \(\text{Ai}(-x)\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 3</h3>
+                        <p>A rocket is launched vertically with an initial velocity of 100 m/s. The acceleration due to gravity is \(g = 9.8\) m/s², and air resistance is proportional to the square of the velocity with a coefficient of \(k = 0.002\) s²/m². Use a Taylor series to approximate the maximum height reached by the rocket.</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>The equation of motion for the rocket is:</p>
+                            <div class="math-formula">
+                                \frac{d^2y}{dt^2} = -g - k\left(\frac{dy}{dt}\right)^2
+                            </div>
+                            <p>with initial conditions \(y(0) = 0\) and \(\frac{dy}{dt}(0) = 100\).</p>
+                            <p>Let's use a Taylor series to approximate the solution:</p>
+                            <div class="math-formula">
+                                y(t) = y(0) + y'(0)t + \frac{y''(0)}{2!}t^2 + \frac{y'''(0)}{3!}t^3 + \frac{y^{(4)}(0)}{4!}t^4 + \ldots
+                            </div>
+                            <p>We know:</p>
+                            <ul>
+                                <li>\(y(0) = 0\)</li>
+                                <li>\(y'(0) = 100\)</li>
+                                <li>\(y''(0) = -g - k(y'(0))^2 = -9.8 - 0.002 \cdot (100)^2 = -9.8 - 20 = -29.8\)</li>
+                            </ul>
+                            <p>To find \(y'''(0)\), we differentiate the equation of motion:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{d^3y}{dt^3} &= -2k\frac{dy}{dt}\frac{d^2y}{dt^2} \\
+                                y'''(0) &= -2k \cdot y'(0) \cdot y''(0) \\
+                                &= -2 \cdot 0.002 \cdot 100 \cdot (-29.8) \\
+                                &= 11.92
+                                \end{align}
+                            </div>
+                            <p>Therefore:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                y(t) &= 0 + 100t + \frac{-29.8}{2}t^2 + \frac{11.92}{6}t^3 + \ldots \\
+                                &= 100t - 14.9t^2 + 1.99t^3 + \ldots
+                                \end{align}
+                            </div>
+                            <p>The rocket reaches its maximum height when \(\frac{dy}{dt} = 0\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{dy}{dt} &= 100 - 29.8t + 5.96t^2 + \ldots = 0
+                                \end{align}
+                            </div>
+                            <p>Using the quadratic formula to solve for \(t\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                t &\approx \frac{29.8 \pm \sqrt{29.8^2 - 4 \cdot 5.96 \cdot 100}}{2 \cdot 5.96} \\
+                                &\approx \frac{29.8 \pm \sqrt{888.04 - 2384}}{11.92} \\
+                                &\approx \frac{29.8 \pm \sqrt{-1495.96}}{11.92}
+                                \end{align}
+                            </div>
+                            <p>This gives complex roots, which indicates that our approximation is not accurate enough for large values of \(t\). Let's use a different approach.</p>
+                            <p>The maximum height occurs when the velocity is zero. For a simpler approximation, we can ignore air resistance initially:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{d^2y}{dt^2} &= -g \\
+                                \frac{dy}{dt} &= -gt + v_0 \\
+                                \frac{dy}{dt} &= 0 \implies t = \frac{v_0}{g} = \frac{100}{9.8} \approx 10.2 \text{ seconds}
+                                \end{align}
+                            </div>
+                            <p>Using our Taylor series with \(t = 10.2\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                y(10.2) &= 100 \cdot 10.2 - 14.9 \cdot (10.2)^2 + 1.99 \cdot (10.2)^3 + \ldots \\
+                                &= 1020 - 1550 + 2120 + \ldots
+                                \end{align}
+                            </div>
+                            <p>The large values and alternating signs indicate that our Taylor series is not converging well for this value of \(t\).</p>
+                            <p>A better approach is to use numerical methods or to solve the differential equation directly. However, we can estimate that the maximum height is approximately 400-500 meters, which is less than the 510 meters predicted by the model without air resistance.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="navigation-buttons">
+                    <a href="taylor-series.html" class="btn">Previous: Taylor Series</a>
+                    <a href="exercises.html" class="btn">Next: Exercises</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="exercises.html">Practice Exercises</a></li>
+                    <li><a href="resources.html">External Resources</a></li>
+                    <li><a href="https://www.numberphile.com/" target="_blank">Numberphile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Calculus Explorer is designed to help college students master sequences, series, and power series concepts through clear explanations and interactive examples.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Calculus Explorer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/applications.js"></script>
+</body>
+</html>

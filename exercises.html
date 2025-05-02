@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises - Calculus Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Calculus<span>Explorer</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                    <li><a href="applications.html">Applications</a></li>
+                    <li><a href="exercises.html" class="active">Exercises</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Practice Exercises</h1>
+            <p>Test your understanding of sequences, series, and power series with these comprehensive exercises.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container content-container">
+            <aside class="sidebar">
+                <h3>Exercise Categories</h3>
+                <ul>
+                    <li><a href="#sequences">Sequences</a></li>
+                    <li><a href="#series">Series</a></li>
+                    <li><a href="#convergence">Convergence Tests</a></li>
+                    <li><a href="#power-series">Power Series</a></li>
+                    <li><a href="#taylor-series">Taylor Series</a></li>
+                    <li><a href="#applications">Applications</a></li>
+                    <li><a href="#challenge">Challenge Problems</a></li>
+                </ul>
+            </aside>
+
+            <div class="main-content">
+                <section id="sequences">
+                    <h2>Sequences Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1</h3>
+                        <p>Determine whether the sequence \(a_n = \frac{3n^2 - 2n + 1}{5n^2 + 4}\) converges or diverges. If it converges, find the limit.</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>To find the limit of the sequence, we can divide both the numerator and denominator by the highest power of \(n\), which is \(n^2\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \frac{3n^2 - 2n + 1}{5n^2 + 4} &= \lim_{n \to \infty} \frac{3 - \frac{2}{n} + \frac{1}{n^2}}{5 + \frac{4}{n^2}} \\
+                                &= \frac{3 - 0 + 0}{5 + 0} \\
+                                &= \frac{3}{5}
+                                \end{align}
+                            </div>
+                            <p>Therefore, the sequence converges to \(\frac{3}{5}\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2</h3>
+                        <p>Determine whether the sequence \(a_n = \frac{(-1)^n n}{n+1}\) converges or diverges. If it converges, find the limit.</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's examine the behavior of this sequence:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                a_n &= \frac{(-1)^n n}{n+1} \\
+                                |a_n| &= \frac{n}{n+1}
+                                \end{align}
+                            </div>
+                            <p>The absolute value of the sequence approaches 1 as \(n\) approaches infinity:</p>
+                            <div class="math-formula">
+                                \lim_{n \to \infty} |a_n| = \lim_{n \to \infty} \frac{n}{n+1} = \lim_{n \to \infty} \frac{1}{1 + \frac{1}{n}} = 1
+                            </div>
+                            <p>However, the sequence alternates between positive and negative values due to the \((-1)^n\) term. Since the absolute value approaches 1 and the sign keeps changing, the sequence does not converge to a single value.</p>
+                            <p>Therefore, the sequence diverges.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 3</h3>
+                        <p>Find a formula for the general term \(a_n\) of the sequence 2, 6, 18, 54, 162, ...</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's examine the pattern in this sequence:</p>
+                            <ul>
+                                <li>\(a_1 = 2\)</li>
+                                <li>\(a_2 = 6\)</li>
+                                <li>\(a_3 = 18\)</li>
+                                <li>\(a_4 = 54\)</li>
+                                <li>\(a_5 = 162\)</li>
+                            </ul>
+                            <p>Looking at the ratio between consecutive terms:</p>
+                            <ul>
+                                <li>\(\frac{a_2}{a_1} = \frac{6}{2} = 3\)</li>
+                                <li>\(\frac{a_3}{a_2} = \frac{18}{6} = 3\)</li>
+                                <li>\(\frac{a_4}{a_3} = \frac{54}{18} = 3\)</li>
+                                <li>\(\frac{a_5}{a_4} = \frac{162}{54} = 3\)</li>
+                            </ul>
+                            <p>This is a geometric sequence with first term \(a_1 = 2\) and common ratio \(r = 3\).</p>
+                            <p>The formula for the general term of a geometric sequence is \(a_n = a_1 \cdot r^{n-1}\).</p>
+                            <p>Therefore, \(a_n = 2 \cdot 3^{n-1}\).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="series">
+                    <h2>Series Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 4</h3>
+                        <p>Determine whether the series \(\sum_{n=1}^{\infty} \frac{2^n}{n \cdot 3^n}\) converges or diverges. If it converges, find the sum.</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's rewrite the series:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=1}^{\infty} \frac{2^n}{n \cdot 3^n} &= \sum_{n=1}^{\infty} \frac{1}{n} \cdot \left(\frac{2}{3}\right)^n
+                                \end{align}
+                            </div>
+                            <p>This is similar to the form of a power series. Let's use the ratio test to determine convergence:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| &= \lim_{n \to \infty} \left|\frac{\frac{2^{n+1}}{(n+1) \cdot 3^{n+1}}}{\frac{2^n}{n \cdot 3^n}}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{2^{n+1}}{(n+1) \cdot 3^{n+1}} \cdot \frac{n \cdot 3^n}{2^n}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{2 \cdot n}{(n+1) \cdot 3}\right| \\
+                                &= \lim_{n \to \infty} \frac{2n}{3(n+1)} \\
+                                &= \lim_{n \to \infty} \frac{2}{3} \cdot \frac{n}{n+1} \\
+                                &= \frac{2}{3} \cdot 1 \\
+                                &= \frac{2}{3}
+                                \end{align}
+                            </div>
+                            <p>Since \(\left|\frac{a_{n+1}}{a_n}\right| = \frac{2}{3} < 1\), the series converges by the ratio test.</p>
+                            <p>To find the sum, we can use the fact that this is related to the Taylor series for \(-\ln(1-x)\):</p>
+                            <div class="math-formula">
+                                -\ln(1-x) = \sum_{n=1}^{\infty} \frac{x^n}{n} \quad \text{for } |x| < 1
+                            </div>
+                            <p>With \(x = \frac{2}{3}\), we get:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=1}^{\infty} \frac{1}{n} \cdot \left(\frac{2}{3}\right)^n &= -\ln\left(1-\frac{2}{3}\right) \\
+                                &= -\ln\left(\frac{1}{3}\right) \\
+                                &= -\ln(1) + \ln(3) \\
+                                &= \ln(3)
+                                \end{align}
+                            </div>
+                            <p>Therefore, the series converges to \(\ln(3)\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 5</h3>
+                        <p>Determine whether the series \(\sum_{n=1}^{\infty} \frac{n^2}{n^4 + 1}\) converges or diverges.</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's examine the behavior of the general term as \(n\) approaches infinity:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \frac{n^2}{n^4 + 1} &= \lim_{n \to \infty} \frac{n^2}{n^4(1 + \frac{1}{n^4})} \\
+                                &= \lim_{n \to \infty} \frac{n^2}{n^4} \cdot \frac{1}{1 + \frac{1}{n^4}} \\
+                                &= \lim_{n \to \infty} \frac{1}{n^2} \cdot 1 \\
+                                &= \lim_{n \to \infty} \frac{1}{n^2} \\
+                                &= 0
+                                \end{align}
+                            </div>
+                            <p>Since the limit of the general term is 0, the series might converge (this is a necessary but not sufficient condition for convergence).</p>
+                            <p>Let's compare this series with a known series. For large values of \(n\), we have:</p>
+                            <div class="math-formula">
+                                \frac{n^2}{n^4 + 1} \sim \frac{n^2}{n^4} = \frac{1}{n^2}
+                            </div>
+                            <p>We know that \(\sum_{n=1}^{\infty} \frac{1}{n^2}\) is a convergent p-series (with \(p = 2 > 1\)).</p>
+                            <p>More formally, we can use the limit comparison test with \(b_n = \frac{1}{n^2}\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \frac{a_n}{b_n} &= \lim_{n \to \infty} \frac{\frac{n^2}{n^4 + 1}}{\frac{1}{n^2}} \\
+                                &= \lim_{n \to \infty} \frac{n^4}{n^4 + 1} \\
+                                &= \lim_{n \to \infty} \frac{1}{1 + \frac{1}{n^4}} \\
+                                &= 1
+                                \end{align}
+                            </div>
+                            <p>Since this limit is finite and positive, and \(\sum b_n\) converges, by the limit comparison test, \(\sum a_n\) also converges.</p>
+                            <p>Therefore, the series \(\sum_{n=1}^{\infty} \frac{n^2}{n^4 + 1}\) converges.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 6</h3>
+                        <p>Find the sum of the series \(\sum_{n=0}^{\infty} \frac{3 \cdot 2^n}{5^{n+1}}\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's rewrite the series:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=0}^{\infty} \frac{3 \cdot 2^n}{5^{n+1}} &= \sum_{n=0}^{\infty} \frac{3}{5} \cdot \frac{2^n}{5^n} \\
+                                &= \frac{3}{5} \sum_{n=0}^{\infty} \left(\frac{2}{5}\right)^n
+                                \end{align}
+                            </div>
+                            <p>This is a geometric series with first term \(a = 1\) and common ratio \(r = \frac{2}{5}\).</p>
+                            <p>Since \(|r| = \frac{2}{5} < 1\), the series converges, and the sum is given by:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=0}^{\infty} \left(\frac{2}{5}\right)^n &= \frac{1}{1 - \frac{2}{5}} \\
+                                &= \frac{1}{\frac{3}{5}} \\
+                                &= \frac{5}{3}
+                                \end{align}
+                            </div>
+                            <p>Therefore:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=0}^{\infty} \frac{3 \cdot 2^n}{5^{n+1}} &= \frac{3}{5} \cdot \frac{5}{3} \\
+                                &= 1
+                                \end{align}
+                            </div>
+                            <p>The sum of the series is 1.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="convergence">
+                    <h2>Convergence Tests Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 7</h3>
+                        <p>Determine whether the series \(\sum_{n=1}^{\infty} \frac{n!}{n^n}\) converges or diverges using an appropriate test.</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's use the ratio test for this series. Let \(a_n = \frac{n!}{n^n}\).</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| &= \lim_{n \to \infty} \left|\frac{\frac{(n+1)!}{(n+1)^{n+1}}}{\frac{n!}{n^n}}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{(n+1)! \cdot n^n}{(n+1)^{n+1} \cdot n!}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{(n+1) \cdot n^n}{(n+1)^{n+1}}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{n^n}{(n+1)^n}\right| \\
+                                &= \lim_{n \to \infty} \left|\left(\frac{n}{n+1}\right)^n\right| \\
+                                &= \lim_{n \to \infty} \left|\left(\frac{1}{1 + \frac{1}{n}}\right)^n\right| \\
+                                &= \lim_{n \to \infty} \left|\left(\left(1 + \frac{1}{n}\right)^{-1}\right)^n\right| \\
+                                &= \lim_{n \to \infty} \left|\left(1 + \frac{1}{n}\right)^{-n}\right| \\
+                                &= \frac{1}{e}
+                                \end{align}
+                            </div>
+                            <p>Since \(\left|\frac{a_{n+1}}{a_n}\right| = \frac{1}{e} < 1\), the series converges by the ratio test.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 8</h3>
+                        <p>Determine whether the series \(\sum_{n=2}^{\infty} \frac{1}{n \ln(n)}\) converges or diverges using an appropriate test.</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's use the integral test for this series. We need to check if the improper integral \(\int_{2}^{\infty} \frac{1}{x \ln(x)} \, dx\) converges.</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int \frac{1}{x \ln(x)} \, dx &= \int \frac{1}{\ln(x)} \cdot \frac{1}{x} \, dx
+                                \end{align}
+                            </div>
+                            <p>Let \(u = \ln(x)\), then \(du = \frac{1}{x} \, dx\).</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int \frac{1}{x \ln(x)} \, dx &= \int \frac{1}{u} \, du \\
+                                &= \ln|u| + C \\
+                                &= \ln|\ln(x)| + C
+                                \end{align}
+                            </div>
+                            <p>Now, let's evaluate the improper integral:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int_{2}^{\infty} \frac{1}{x \ln(x)} \, dx &= \lim_{b \to \infty} \int_{2}^{b} \frac{1}{x \ln(x)} \, dx \\
+                                &= \lim_{b \to \infty} \left[ \ln|\ln(x)| \right]_{2}^{b} \\
+                                &= \lim_{b \to \infty} \left[ \ln(\ln(b)) - \ln(\ln(2)) \right] \\
+                                &= \infty - \ln(\ln(2)) \\
+                                &= \infty
+                                \end{align}
+                            </div>
+                            <p>Since the improper integral diverges, by the integral test, the series \(\sum_{n=2}^{\infty} \frac{1}{n \ln(n)}\) also diverges.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 9</h3>
+                        <p>Determine whether the series \(\sum_{n=1}^{\infty} \frac{(-1)^n}{\sqrt{n}}\) converges or diverges using an appropriate test.</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>This is an alternating series of the form \(\sum_{n=1}^{\infty} (-1)^n b_n\) where \(b_n = \frac{1}{\sqrt{n}}\).</p>
+                            <p>To apply the alternating series test, we need to check two conditions:</p>
+                            <ol>
+                                <li>\(b_n > 0\) for all \(n\)</li>
+                                <li>\(b_n\) is decreasing</li>
+                                <li>\(\lim_{n \to \infty} b_n = 0\)</li>
+                            </ol>
+                            <p>Checking these conditions:</p>
+                            <ol>
+                                <li>\(b_n = \frac{1}{\sqrt{n}} > 0\) for all \(n \geq 1\). ✓</li>
+                                <li>To check if \(b_n\) is decreasing, we need to verify that \(b_{n+1} \leq b_n\) for all \(n\):
+                                    <div class="math-formula">
+                                        \begin{align}
+                                        b_{n+1} &\leq b_n \\
+                                        \frac{1}{\sqrt{n+1}} &\leq \frac{1}{\sqrt{n}} \\
+                                        \sqrt{n} &\leq \sqrt{n+1}
+                                        \end{align}
+                                    </div>
+                                    This is true for all \(n \geq 1\), so \(b_n\) is decreasing. ✓
+                                </li>
+                                <li>
+                                    <div class="math-formula">
+                                        \lim_{n \to \infty} b_n = \lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0
+                                    </div>
+                                    ✓
+                                </li>
+                            </ol>
+                            <p>Since all three conditions are satisfied, by the alternating series test, the series \(\sum_{n=1}^{\infty} \frac{(-1)^n}{\sqrt{n}}\) converges.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="power-series">
+                    <h2>Power Series Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 10</h3>
+                        <p>Find the radius and interval of convergence for the power series \(\sum_{n=0}^{\infty} \frac{(x-3)^n}{n \cdot 2^n}\) (assume \(\frac{1}{0} = 1\) for \(n = 0\)).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's use the ratio test to find the radius of convergence. Let \(a_n = \frac{(x-3)^n}{n \cdot 2^n}\) for \(n \geq 1\) (we'll handle the \(n = 0\) term separately).</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| &= \lim_{n \to \infty} \left|\frac{\frac{(x-3)^{n+1}}{(n+1) \cdot 2^{n+1}}}{\frac{(x-3)^n}{n \cdot 2^n}}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{(x-3)^{n+1} \cdot n \cdot 2^n}{(n+1) \cdot 2^{n+1} \cdot (x-3)^n}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{(x-3) \cdot n}{(n+1) \cdot 2}\right| \\
+                                &= \lim_{n \to \infty} \frac{|x-3| \cdot n}{(n+1) \cdot 2} \\
+                                &= \frac{|x-3|}{2} \cdot \lim_{n \to \infty} \frac{n}{n+1} \\
+                                &= \frac{|x-3|}{2} \cdot 1 \\
+                                &= \frac{|x-3|}{2}
+                                \end{align}
+                            </div>
+                            <p>For convergence, we need \(\frac{|x-3|}{2} < 1\), which gives us:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                |x-3| &< 2 \\
+                                -2 &< x-3 < 2 \\
+                                1 &< x < 5
+                                \end{align}
+                            </div>
+                            <p>So the radius of convergence is \(R = 2\).</p>
+                            <p>Now we need to check the endpoints \(x = 1\) and \(x = 5\):</p>
+                            <p>At \(x = 1\), the series becomes \(\sum_{n=0}^{\infty} \frac{(1-3)^n}{n \cdot 2^n} = \sum_{n=0}^{\infty} \frac{(-2)^n}{n \cdot 2^n} = \sum_{n=0}^{\infty} \frac{(-1)^n}{n}\).</p>
+                            <p>For \(n \geq 1\), this is the alternating harmonic series, which converges. The \(n = 0\) term is defined as 1, so it doesn't affect convergence.</p>
+                            <p>At \(x = 5\), the series becomes \(\sum_{n=0}^{\infty} \frac{(5-3)^n}{n \cdot 2^n} = \sum_{n=0}^{\infty} \frac{2^n}{n \cdot 2^n} = \sum_{n=0}^{\infty} \frac{1}{n}\).</p>
+                            <p>For \(n \geq 1\), this is the harmonic series, which diverges.</p>
+                            <p>Therefore, the interval of convergence is \([1, 5)\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 11</h3>
+                        <p>Find a power series representation for the function \(f(x) = \frac{x}{(1-x)^2}\) centered at \(a = 0\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We know that the power series for \(\frac{1}{1-x}\) is:</p>
+                            <div class="math-formula">
+                                \frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1
+                            </div>
+                            <p>Taking the derivative of both sides:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{d}{dx}\left(\frac{1}{1-x}\right) &= \frac{d}{dx}\left(\sum_{n=0}^{\infty} x^n\right) \\
+                                \frac{1}{(1-x)^2} &= \sum_{n=1}^{\infty} n x^{n-1} \\
+                                \frac{1}{(1-x)^2} &= \sum_{n=0}^{\infty} (n+1) x^n
+                                \end{align}
+                            </div>
+                            <p>Multiplying both sides by \(x\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{x}{(1-x)^2} &= x \cdot \sum_{n=0}^{\infty} (n+1) x^n \\
+                                &= \sum_{n=0}^{\infty} (n+1) x^{n+1} \\
+                                &= \sum_{n=1}^{\infty} n x^n
+                                \end{align}
+                            </div>
+                            <p>Therefore, \(f(x) = \frac{x}{(1-x)^2} = \sum_{n=1}^{\infty} n x^n = x + 2x^2 + 3x^3 + 4x^4 + \ldots\) for \(|x| < 1\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 12</h3>
+                        <p>Find the sum of the series \(\sum_{n=1}^{\infty} n(n+1)x^n\) for \(|x| < 1\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's rewrite the general term:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                n(n+1)x^n &= n^2 x^n + n x^n
+                                \end{align}
+                            </div>
+                            <p>So we have:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=1}^{\infty} n(n+1)x^n &= \sum_{n=1}^{\infty} n^2 x^n + \sum_{n=1}^{\infty} n x^n
+                                \end{align}
+                            </div>
+                            <p>We know from the previous exercise that:</p>
+                            <div class="math-formula">
+                                \sum_{n=1}^{\infty} n x^n = \frac{x}{(1-x)^2} \quad \text{for } |x| < 1
+                            </div>
+                            <p>To find \(\sum_{n=1}^{\infty} n^2 x^n\), we can take the derivative of \(\sum_{n=1}^{\infty} n x^n\) with respect to \(x\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{d}{dx}\left(\sum_{n=1}^{\infty} n x^n\right) &= \sum_{n=1}^{\infty} n \cdot \frac{d}{dx}(x^n) \\
+                                \frac{d}{dx}\left(\frac{x}{(1-x)^2}\right) &= \sum_{n=1}^{\infty} n^2 x^{n-1} \\
+                                \frac{(1-x)^2 \cdot 1 - x \cdot 2(1-x) \cdot (-1)}{(1-x)^4} &= \sum_{n=1}^{\infty} n^2 x^{n-1} \\
+                                \frac{(1-x)^2 + 2x(1-x)}{(1-x)^4} &= \sum_{n=1}^{\infty} n^2 x^{n-1} \\
+                                \frac{(1-x)^2 + 2x - 2x^2}{(1-x)^4} &= \sum_{n=1}^{\infty} n^2 x^{n-1} \\
+                                \frac{1 - 2x + x^2 + 2x - 2x^2}{(1-x)^4} &= \sum_{n=1}^{\infty} n^2 x^{n-1} \\
+                                \frac{1 - x^2}{(1-x)^4} &= \sum_{n=1}^{\infty} n^2 x^{n-1}
+                                \end{align}
+                            </div>
+                            <p>Multiplying both sides by \(x\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{x(1 - x^2)}{(1-x)^4} &= \sum_{n=1}^{\infty} n^2 x^n \\
+                                \frac{x - x^3}{(1-x)^4} &= \sum_{n=1}^{\infty} n^2 x^n
+                                \end{align}
+                            </div>
+                            <p>Now we can find the sum of the original series:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=1}^{\infty} n(n+1)x^n &= \sum_{n=1}^{\infty} n^2 x^n + \sum_{n=1}^{\infty} n x^n \\
+                                &= \frac{x - x^3}{(1-x)^4} + \frac{x}{(1-x)^2} \\
+                                &= \frac{x - x^3}{(1-x)^4} + \frac{x(1-x)^2}{(1-x)^4} \\
+                                &= \frac{x - x^3 + x(1-x)^2}{(1-x)^4} \\
+                                &= \frac{x - x^3 + x(1 - 2x + x^2)}{(1-x)^4} \\
+                                &= \frac{x - x^3 + x - 2x^2 + x^3}{(1-x)^4} \\
+                                &= \frac{2x - 2x^2}{(1-x)^4} \\
+                                &= \frac{2x(1-x)}{(1-x)^4} \\
+                                &= \frac{2x}{(1-x)^3}
+                                \end{align}
+                            </div>
+                            <p>Therefore, \(\sum_{n=1}^{\infty} n(n+1)x^n = \frac{2x}{(1-x)^3}\) for \(|x| < 1\).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="taylor-series">
+                    <h2>Taylor Series Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 13</h3>
+                        <p>Find the Taylor series for \(f(x) = \ln(1+x)\) centered at \(a = 1\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>To find the Taylor series centered at \(a = 1\), we need to compute the derivatives of \(f(x) = \ln(1+x)\) and evaluate them at \(x = 1\).</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                f(x) &= \ln(1+x) & f(1) &= \ln(2) \\
+                                f'(x) &= \frac{1}{1+x} & f'(1) &= \frac{1}{2} \\
+                                f''(x) &= -\frac{1}{(1+x)^2} & f''(1) &= -\frac{1}{4} \\
+                                f'''(x) &= \frac{2}{(1+x)^3} & f'''(1) &= \frac{2}{8} = \frac{1}{4} \\
+                                f^{(4)}(x) &= -\frac{6}{(1+x)^4} & f^{(4)}(1) &= -\frac{6}{16} = -\frac{3}{8} \\
+                                \end{align}
+                            </div>
+                            <p>Using the Taylor series formula:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                f(x) &= \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n \\
+                                \ln(1+x) &= \ln(2) + \frac{1}{2}(x-1) - \frac{1}{4} \cdot \frac{(x-1)^2}{2!} + \frac{1}{4} \cdot \frac{(x-1)^3}{3!} - \frac{3}{8} \cdot \frac{(x-1)^4}{4!} + \ldots \\
+                                &= \ln(2) + \frac{1}{2}(x-1) - \frac{1}{8}(x-1)^2 + \frac{1}{24}(x-1)^3 - \frac{3}{192}(x-1)^4 + \ldots
+                                \end{align}
+                            </div>
+                            <p>Therefore, the Taylor series for \(\ln(1+x)\) centered at \(a = 1\) is:</p>
+                            <div class="math-formula">
+                                \ln(1+x) = \ln(2) + \frac{1}{2}(x-1) - \frac{1}{8}(x-1)^2 + \frac{1}{24}(x-1)^3 - \frac{3}{192}(x-1)^4 + \ldots
+                            </div>
+                            <p>This series converges for \(|x-1| < 1\), or \(0 < x < 2\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 14</h3>
+                        <p>Use Taylor's Theorem to approximate \(\sin(0.2)\) with an error of less than \(10^{-6}\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We'll use the Taylor series for \(\sin(x)\) centered at \(a = 0\):</p>
+                            <div class="math-formula">
+                                \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \ldots
+                            </div>
+                            <p>By Taylor's Remainder Theorem, if we use the \(n\)th-degree Taylor polynomial \(P_n(x)\), the error is:</p>
+                            <div class="math-formula">
+                                |R_n(x)| = \left|\frac{f^{(n+1)}(c)}{(n+1)!}x^{n+1}\right|
+                            </div>
+                            <p>where \(c\) is some point between 0 and \(x\).</p>
+                            <p>For \(\sin(x)\), the derivatives cycle through \(\sin(x)\), \(\cos(x)\), \(-\sin(x)\), and \(-\cos(x)\). Since these functions are bounded by 1 in absolute value, we have:</p>
+                            <div class="math-formula">
+                                |R_n(0.2)| \leq \frac{1}{(n+1)!}|0.2|^{n+1}
+                            </div>
+                            <p>We need to find the smallest \(n\) such that:</p>
+                            <div class="math-formula">
+                                \frac{|0.2|^{n+1}}{(n+1)!} < 10^{-6}
+                            </div>
+                            <p>Let's try some values:</p>
+                            <ul>
+                                <li>For \(n = 3\): \(\frac{|0.2|^4}{4!} = \frac{0.0016}{24} \approx 6.67 \times 10^{-5}\) (not small enough)</li>
+                                <li>For \(n = 5\): \(\frac{|0.2|^6}{6!} = \frac{0.000064}{720} \approx 8.89 \times 10^{-8}\) (small enough)</li>
+                            </ul>
+                            <p>So we need to use the 5th-degree Taylor polynomial:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                P_5(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} \\
+                                P_5(0.2) &= 0.2 - \frac{0.2^3}{6} + \frac{0.2^5}{120} \\
+                                &= 0.2 - \frac{0.008}{6} + \frac{0.00032}{120} \\
+                                &= 0.2 - 0.00133333 + 0.00000267 \\
+                                &\approx 0.19867
+                                \end{align}
+                            </div>
+                            <p>Therefore, \(\sin(0.2) \approx 0.19867\) with an error less than \(10^{-6}\).</p>
+                            <p>The actual value of \(\sin(0.2) \approx 0.19867\), confirming our approximation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 15</h3>
+                        <p>Find the Maclaurin series for \(f(x) = \frac{1}{1-x^2}\) by using known series.</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We know the Maclaurin series for \(\frac{1}{1-x}\):</p>
+                            <div class="math-formula">
+                                \frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1
+                            </div>
+                            <p>We can rewrite \(\frac{1}{1-x^2}\) as:</p>
+                            <div class="math-formula">
+                                \frac{1}{1-x^2} = \frac{1}{1-(x^2)}
+                            </div>
+                            <p>Substituting \(x^2\) for \(x\) in the known series:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{1}{1-x^2} &= \sum_{n=0}^{\infty} (x^2)^n \\
+                                &= \sum_{n=0}^{\infty} x^{2n} \\
+                                &= 1 + x^2 + x^4 + x^6 + \ldots
+                                \end{align}
+                            </div>
+                            <p>Therefore, the Maclaurin series for \(f(x) = \frac{1}{1-x^2}\) is:</p>
+                            <div class="math-formula">
+                                \frac{1}{1-x^2} = \sum_{n=0}^{\infty} x^{2n} = 1 + x^2 + x^4 + x^6 + \ldots \quad \text{for } |x| < 1
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="applications">
+                    <h2>Applications Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 16</h3>
+                        <p>Use a power series to evaluate the integral \(\int_0^{0.5} e^{-x^2} \, dx\) with an error of less than \(10^{-4}\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We'll use the Maclaurin series for \(e^x\) and substitute \(-x^2\) for \(x\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                e^{-x^2} &= \sum_{n=0}^{\infty} \frac{(-x^2)^n}{n!} \\
+                                &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{n!} \\
+                                &= 1 - x^2 + \frac{x^4}{2!} - \frac{x^6}{3!} + \frac{x^8}{4!} - \ldots
+                                \end{align}
+                            </div>
+                            <p>Integrating term by term:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int e^{-x^2} \, dx &= \int \left(1 - x^2 + \frac{x^4}{2!} - \frac{x^6}{3!} + \frac{x^8}{4!} - \ldots\right) \, dx \\
+                                &= x - \frac{x^3}{3} + \frac{x^5}{5 \cdot 2!} - \frac{x^7}{7 \cdot 3!} + \frac{x^9}{9 \cdot 4!} - \ldots + C
+                                \end{align}
+                            </div>
+                            <p>Evaluating the definite integral:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int_0^{0.5} e^{-x^2} \, dx &= \left[x - \frac{x^3}{3} + \frac{x^5}{5 \cdot 2!} - \frac{x^7}{7 \cdot 3!} + \frac{x^9}{9 \cdot 4!} - \ldots\right]_0^{0.5} \\
+                                &= \left(0.5 - \frac{0.5^3}{3} + \frac{0.5^5}{5 \cdot 2!} - \frac{0.5^7}{7 \cdot 3!} + \frac{0.5^9}{9 \cdot 4!} - \ldots\right) - 0 \\
+                                \end{align}
+                            </div>
+                            <p>Let's compute the first few terms:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                0.5 - \frac{0.5^3}{3} &= 0.5 - \frac{0.125}{3} \approx 0.5 - 0.041667 = 0.458333 \\
+                                \frac{0.5^5}{5 \cdot 2!} &= \frac{0.03125}{10} = 0.003125 \\
+                                \frac{0.5^7}{7 \cdot 3!} &= \frac{0.0078125}{42} \approx 0.000186 \\
+                                \frac{0.5^9}{9 \cdot 4!} &= \frac{0.001953125}{216} \approx 0.000009
+                                \end{align}
+                            </div>
+                            <p>So we have:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int_0^{0.5} e^{-x^2} \, dx &\approx 0.458333 + 0.003125 - 0.000186 + 0.000009 - \ldots \\
+                                &\approx 0.461281
+                                \end{align}
+                            </div>
+                            <p>To estimate the error, we need to bound the next term:</p>
+                            <div class="math-formula">
+                                \left|\frac{0.5^{11}}{11 \cdot 5!}\right| = \frac{0.00048828125}{1320} \approx 3.7 \times 10^{-7}
+                            </div>
+                            <p>Since this is less than \(10^{-4}\), our approximation is accurate enough.</p>
+                            <p>Therefore, \(\int_0^{0.5} e^{-x^2} \, dx \approx 0.4613\) with an error less than \(10^{-4}\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 17</h3>
+                        <p>Use power series to solve the differential equation \(y' + y = x\) with initial condition \(y(0) = 1\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's assume a solution of the form:</p>
+                            <div class="math-formula">
+                                y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots
+                            </div>
+                            <p>Taking the derivative:</p>
+                            <div class="math-formula">
+                                y'(x) = \sum_{n=1}^{\infty} n a_n x^{n-1} = a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + \ldots
+                            </div>
+                            <p>Substituting into the differential equation \(y' + y = x\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                y' + y &= x \\
+                                (a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + \ldots) + (a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots) &= x \\
+                                a_1 + a_0 + (2a_2 + a_1)x + (3a_3 + a_2)x^2 + (4a_4 + a_3)x^3 + \ldots &= x
+                                \end{align}
+                            </div>
+                            <p>Comparing coefficients on both sides:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                a_1 + a_0 &= 0 \implies a_1 = -a_0 \\
+                                2a_2 + a_1 &= 1 \implies a_2 = \frac{1 - a_1}{2} = \frac{1 + a_0}{2} \\
+                                3a_3 + a_2 &= 0 \implies a_3 = -\frac{a_2}{3} = -\frac{1 + a_0}{6} \\
+                                4a_4 + a_3 &= 0 \implies a_4 = -\frac{a_3}{4} = \frac{1 + a_0}{24} \\
+                                \end{align}
+                            </div>
+                            <p>Using the initial condition \(y(0) = 1\), we have \(a_0 = 1\).</p>
+                            <p>Therefore:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                a_0 &= 1 \\
+                                a_1 &= -1 \\
+                                a_2 &= \frac{1 + 1}{2} = 1 \\
+                                a_3 &= -\frac{1 + 1}{6} = -\frac{1}{3} \\
+                                a_4 &= \frac{1 + 1}{24} = \frac{1}{12} \\
+                                \end{align}
+                            </div>
+                            <p>The solution is:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                y(x) &= 1 - x + x^2 - \frac{1}{3}x^3 + \frac{1}{12}x^4 - \ldots \\
+                                &= 1 - x + x^2 - \frac{x^3}{3} + \frac{x^4}{12} - \ldots
+                                \end{align}
+                            </div>
+                            <p>This is the power series solution to the differential equation \(y' + y = x\) with initial condition \(y(0) = 1\).</p>
+                            <p>Note: The exact solution to this differential equation is \(y(x) = x - 1 + 2e^{-x}\), which can be verified by substituting back into the original equation.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="challenge">
+                    <h2>Challenge Problems</h2>
+                    
+                    <div class="exercise">
+                        <h3>Challenge 1</h3>
+                        <p>Prove that \(\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>This is a famous problem known as the Basel problem, first solved by Euler. We'll use the Fourier series approach.</p>
+                            <p>Consider the function \(f(x) = x^2\) for \(-\pi \leq x \leq \pi\). The Fourier series for this function is:</p>
+                            <div class="math-formula">
+                                f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos(nx) + b_n \sin(nx)\right]
+                            </div>
+                            <p>where:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                a_0 &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^2 \, dx = \frac{1}{\pi} \left[\frac{x^3}{3}\right]_{-\pi}^{\pi} = \frac{1}{\pi} \cdot \frac{2\pi^3}{3} = \frac{2\pi^2}{3} \\
+                                a_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^2 \cos(nx) \, dx
+                                \end{align}
+                            </div>
+                            <p>Using integration by parts twice:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                a_n &= \frac{1}{\pi} \left[x^2 \cdot \frac{\sin(nx)}{n}\right]_{-\pi}^{\pi} - \frac{1}{\pi} \int_{-\pi}^{\pi} 2x \cdot \frac{\sin(nx)}{n} \, dx \\
+                                &= 0 - \frac{2}{n\pi} \left[x \cdot \frac{-\cos(nx)}{n}\right]_{-\pi}^{\pi} + \frac{2}{n\pi} \int_{-\pi}^{\pi} \frac{-\cos(nx)}{n} \, dx \\
+                                &= \frac{2}{n\pi} \cdot \frac{2\pi \cos(n\pi)}{n} - \frac{2}{n^2\pi} \left[\frac{\sin(nx)}{n}\right]_{-\pi}^{\pi} \\
+                                &= \frac{4\cos(n\pi)}{n^2} - 0 \\
+                                &= \frac{4(-1)^n}{n^2}
+                                \end{align}
+                            </div>
+                            <p>Since \(f(x) = x^2\) is an even function, all \(b_n = 0\).</p>
+                            <p>Therefore, the Fourier series is:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                x^2 &= \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos(nx) \\
+                                &= \frac{\pi^2}{3} + \sum_{n=1}^{\infty} \frac{4(-1)^n}{n^2} \cos(nx)
+                                \end{align}
+                            </div>
+                            <p>Evaluating at \(x = 0\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                0^2 &= \frac{\pi^2}{3} + \sum_{n=1}^{\infty} \frac{4(-1)^n}{n^2} \cos(0) \\
+                                0 &= \frac{\pi^2}{3} + \sum_{n=1}^{\infty} \frac{4(-1)^n}{n^2} \\
+                                -\frac{\pi^2}{3} &= \sum_{n=1}^{\infty} \frac{4(-1)^n}{n^2} \\
+                                -\frac{\pi^2}{3} &= 4\sum_{n=1}^{\infty} \frac{(-1)^n}{n^2} \\
+                                -\frac{\pi^2}{3} &= 4 \cdot \left(-\sum_{n=1}^{\infty} \frac{1}{n^2} \cdot \frac{1 - 2 \cdot \mathbf{1}_{n \text{ is odd}}}{1}\right) \\
+                                -\frac{\pi^2}{3} &= 4 \cdot \left(-\sum_{n=1}^{\infty} \frac{1}{n^2} + 2\sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2}\right) \\
+                                -\frac{\pi^2}{3} &= -4\sum_{n=1}^{\infty} \frac{1}{n^2} + 8\sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2} \\
+                                \end{align}
+                            </div>
+                            <p>We also know that:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=1}^{\infty} \frac{1}{n^2} &= \sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2} + \sum_{n=1, n \text{ even}}^{\infty} \frac{1}{n^2} \\
+                                &= \sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2} + \sum_{k=1}^{\infty} \frac{1}{(2k)^2} \\
+                                &= \sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2} + \frac{1}{4}\sum_{k=1}^{\infty} \frac{1}{k^2} \\
+                                &= \sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2} + \frac{1}{4}\sum_{n=1}^{\infty} \frac{1}{n^2}
+                                \end{align}
+                            </div>
+                            <p>Solving for \(\sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2}\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=1}^{\infty} \frac{1}{n^2} &= \sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2} + \frac{1}{4}\sum_{n=1}^{\infty} \frac{1}{n^2} \\
+                                \frac{3}{4}\sum_{n=1}^{\infty} \frac{1}{n^2} &= \sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2} \\
+                                \sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2} &= \frac{3}{4}\sum_{n=1}^{\infty} \frac{1}{n^2}
+                                \end{align}
+                            </div>
+                            <p>Substituting back:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                -\frac{\pi^2}{3} &= -4\sum_{n=1}^{\infty} \frac{1}{n^2} + 8\sum_{n=1, n \text{ odd}}^{\infty} \frac{1}{n^2} \\
+                                -\frac{\pi^2}{3} &= -4\sum_{n=1}^{\infty} \frac{1}{n^2} + 8 \cdot \frac{3}{4}\sum_{n=1}^{\infty} \frac{1}{n^2} \\
+                                -\frac{\pi^2}{3} &= -4\sum_{n=1}^{\infty} \frac{1}{n^2} + 6\sum_{n=1}^{\infty} \frac{1}{n^2} \\
+                                -\frac{\pi^2}{3} &= 2\sum_{n=1}^{\infty} \frac{1}{n^2} \\
+                                \sum_{n=1}^{\infty} \frac{1}{n^2} &= -\frac{\pi^2}{6} \cdot (-1) = \frac{\pi^2}{6}
+                                \end{align}
+                            </div>
+                            <p>Therefore, \(\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Challenge 2</h3>
+                        <p>Find a power series representation for \(f(x) = \int_0^x \frac{\sin(t)}{t} \, dt\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We know the Maclaurin series for \(\sin(t)\):</p>
+                            <div class="math-formula">
+                                \sin(t) = \sum_{n=0}^{\infty} \frac{(-1)^n t^{2n+1}}{(2n+1)!} = t - \frac{t^3}{3!} + \frac{t^5}{5!} - \ldots
+                            </div>
+                            <p>Dividing by \(t\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{\sin(t)}{t} &= \frac{1}{t} \sum_{n=0}^{\infty} \frac{(-1)^n t^{2n+1}}{(2n+1)!} \\
+                                &= \sum_{n=0}^{\infty} \frac{(-1)^n t^{2n}}{(2n+1)!} \\
+                                &= 1 - \frac{t^2}{3!} + \frac{t^4}{5!} - \frac{t^6}{7!} + \ldots
+                                \end{align}
+                            </div>
+                            <p>Integrating term by term:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int \frac{\sin(t)}{t} \, dt &= \int \left(1 - \frac{t^2}{3!} + \frac{t^4}{5!} - \frac{t^6}{7!} + \ldots\right) \, dt \\
+                                &= t - \frac{t^3}{3 \cdot 3!} + \frac{t^5}{5 \cdot 5!} - \frac{t^7}{7 \cdot 7!} + \ldots + C
+                                \end{align}
+                            </div>
+                            <p>Using the limits of integration:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                f(x) &= \int_0^x \frac{\sin(t)}{t} \, dt \\
+                                &= \left[t - \frac{t^3}{3 \cdot 3!} + \frac{t^5}{5 \cdot 5!} - \frac{t^7}{7 \cdot 7!} + \ldots\right]_0^x \\
+                                &= x - \frac{x^3}{3 \cdot 3!} + \frac{x^5}{5 \cdot 5!} - \frac{x^7}{7 \cdot 7!} + \ldots
+                                \end{align}
+                            </div>
+                            <p>Therefore, the power series representation for \(f(x) = \int_0^x \frac{\sin(t)}{t} \, dt\) is:</p>
+                            <div class="math-formula">
+                                f(x) = x - \frac{x^3}{18} + \frac{x^5}{600} - \frac{x^7}{35280} + \ldots = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)(2n+1)!}
+                            </div>
+                            <p>This function is known as the sine integral \(\text{Si}(x)\).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="navigation-buttons">
+                    <a href="applications.html" class="btn">Previous: Applications</a>
+                    <a href="resources.html" class="btn">Next: Resources</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="exercises.html">Practice Exercises</a></li>
+                    <li><a href="resources.html">External Resources</a></li>
+                    <li><a href="https://www.numberphile.com/" target="_blank">Numberphile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Calculus Explorer is designed to help college students master sequences, series, and power series concepts through clear explanations and interactive examples.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Calculus Explorer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

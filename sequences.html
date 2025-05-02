@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequences - Calculus Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="js/mathjax-config.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Calculus<span>Explorer</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html" class="active">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                    <li><a href="applications.html">Applications</a></li>
+                    <li><a href="exercises.html">Exercises</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Sequences</h1>
+            <p>Understanding the foundation of infinite sequences, convergence, and limits.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container content-container">
+            <aside class="sidebar">
+                <h3>In This Section</h3>
+                <ul>
+                    <li><a href="#definition">Definition & Notation</a></li>
+                    <li><a href="#graphical">Graphical Representation</a></li>
+                    <li><a href="#limits">Limits of Sequences</a></li>
+                    <li><a href="#convergence">Convergence & Divergence</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#interactive">Interactive Visualizations</a></li>
+                    <li><a href="#exercises">Practice Exercises</a></li>
+                </ul>
+            </aside>
+
+            <div class="main-content">
+                <section id="definition">
+                    <h2>Definition & Notation</h2>
+                    
+                    <div class="definition-box">
+                        <h3>What is a Sequence?</h3>
+                        <p>A sequence is an ordered list of numbers that follow a specific pattern. In calculus, we typically work with infinite sequences, which continue indefinitely.</p>
+                        <p>Mathematically, a sequence can be defined as a function whose domain is the set of natural numbers (or a subset of the natural numbers).</p>
+                    </div>
+                    
+                    <h3>Notation</h3>
+                    <p>We denote a sequence using various notations:</p>
+                    
+                    <div class="math-formula">
+                        \begin{align}
+                        \{a_1, a_2, a_3, \ldots, a_n, \ldots\} \\
+                        \{a_n\} \\
+                        \{a_n\}_{n=1}^{\infty}
+                        \end{align}
+                    </div>
+                    <p>Where:</p>
+                    <ul class="inner-list">
+                        <li>\(a_1\) is the first term</li>
+                        <li>\(a_2\) is the second term</li>
+                        <li>\(a_n\) is the general term or the \(n^{th}\) term</li>
+                    </ul>
+                    <p>The general term \(a_n\) is often given by a formula that depends on \(n\).</p>
+                    
+                    <div class="example-box">
+                        <h3>Example 1: Sequence Notation</h3>
+                        <p>For the sequence \(\{a_n\} = \{\frac{n+1}{n^2}\}_{n=1}^{\infty}\), the first few terms are:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            a_1 &= \frac{1+1}{1^2} = \frac{2}{1} = 2 \\
+                            a_2 &= \frac{2+1}{2^2} = \frac{3}{4} = 0.75 \\
+                            a_3 &= \frac{3+1}{3^2} = \frac{4}{9} \approx 0.444 \\
+                            a_4 &= \frac{4+1}{4^2} = \frac{5}{16} = 0.3125 \\
+                            a_5 &= \frac{5+1}{5^2} = \frac{6}{25} = 0.24
+                            \end{align}
+                        </div>
+                    </div>
+                </section>
+
+                <section id="graphical">
+                    <h2>Graphical Representation</h2>
+                    
+                    <p>A sequence can be visualized by plotting the points \((n, a_n)\) on a coordinate plane, where \(n\) represents the position in the sequence and \(a_n\) represents the value of the term.</p>
+                    
+                    <div class="note-box">
+                        <h3>Important Note</h3>
+                        <p>When graphing sequences, remember that \(n\) can only take integer values, so the graph consists of discrete points rather than a continuous curve.</p>
+                    </div>
+                    
+                    <div class="interactive-container">
+                        <h3>Interactive Sequence Graph</h3>
+                        <p>The graph below shows the sequence \(\{a_n\} = \{\frac{n+1}{n^2}\}_{n=1}^{\infty}\). Notice how the points get closer to the x-axis as \(n\) increases.</p>
+                        <div id="sequence-graph" class="graph-container">
+                            <!-- Interactive graph will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+
+                <section id="limits">
+                    <h2>Limits of Sequences</h2>
+                    
+                    <div class="definition-box">
+                        <h3>Limit of a Sequence</h3>
+                        <p>We say that a sequence \(\{a_n\}\) has a limit \(L\) if the terms of the sequence get arbitrarily close to \(L\) as \(n\) becomes very large.</p>
+                        <div class="math-formula">
+                            \(\lim_{n \to \infty} a_n = L\)
+                        </div>
+                    </div>
+                    
+                    <h3>Working Definition of Limit</h3>
+                    <p>We say that \(\lim_{n \to \infty} a_n = L\) if we can make \(a_n\) as close to \(L\) as we want by taking \(n\) sufficiently large.</p>
+                    
+                    <h3>Precise Definition of Limit</h3>
+                    <p>More formally, \(\lim_{n \to \infty} a_n = L\) if for every \(\varepsilon > 0\), there exists an integer \(N\) such that:</p>
+                    <div class="math-formula">
+                        \(|a_n - L| < \varepsilon \text{ whenever } n > N\)
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 2: Finding the Limit of a Sequence</h3>
+                        <p>Find the limit of the sequence \(\{a_n\} = \{\frac{n+1}{n^2}\}_{n=1}^{\infty}\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \lim_{n \to \infty} \frac{n+1}{n^2} &= \lim_{n \to \infty} \frac{n}{n^2} + \lim_{n \to \infty} \frac{1}{n^2} \\
+                            &= \lim_{n \to \infty} \frac{1}{n} + \lim_{n \to \infty} \frac{1}{n^2} \\
+                            &= 0 + 0 \\
+                            &= 0
+                            \end{align}
+                        </div>
+                        <p>Therefore, \(\lim_{n \to \infty} \frac{n+1}{n^2} = 0\).</p>
+                    </div>
+                </section>
+
+                <section id="convergence">
+                    <h2>Convergence & Divergence</h2>
+                    
+                    <div class="definition-box">
+                        <h3>Convergent Sequence</h3>
+                        <p>A sequence \(\{a_n\}\) is said to be <strong>convergent</strong> if its limit exists and is finite.</p>
+                        <p>\(\lim_{n \to \infty} a_n = L\) where L is a finite number.</p>
+                    </div>
+                    
+                    <div class="definition-box">
+                        <h3>Divergent Sequence</h3>
+                        <p>A sequence \(\{a_n\}\) is said to be <strong>divergent</strong> if its limit does not exist or is infinite.</p>
+                    </div>
+                    
+                    <h3>Types of Divergence</h3>
+                    <p>A sequence can diverge in several ways:</p>
+                    <ul class="inner-list">
+                        <li>It can grow without bound: \(\lim_{n \to \infty} a_n = \infty\)</li>
+                        <li>It can decrease without bound: \(\lim_{n \to \infty} a_n = -\infty\)</li>
+                        <li>It can oscillate without approaching any specific value</li>
+                    </ul>
+                    
+                    <div class="theorem-box">
+                        <h3>Properties of Convergent Sequences</h3>
+                        <p>If \(\{a_n\}\) and \(\{b_n\}\) are convergent sequences with \(\lim_{n \to \infty} a_n = L\) and \(\lim_{n \to \infty} b_n = M\), then:</p>
+                        <ol class="inner-list">
+                            <li>\(\lim_{n \to \infty} (a_n + b_n) = L + M\)</li>
+                            <li>\(\lim_{n \to \infty} (a_n - b_n) = L - M\)</li>
+                            <li>\(\lim_{n \to \infty} (a_n \cdot b_n) = L \cdot M\)</li>
+                            <li>\(\lim_{n \to \infty} \frac{a_n}{b_n} = \frac{L}{M}\) (provided \(M \neq 0\) and \(b_n \neq 0\) for all \(n\))</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="examples">
+                    <h2>Examples</h2>
+                    
+                    <div class="example-box">
+                        <h3>Example 3: Determining Convergence</h3>
+                        <p>Determine whether the following sequences converge or diverge. If they converge, find the limit.</p>
+                        
+                        <p>(a) \(\{a_n\} = \{\frac{2n^2 + 3n}{n^2 + 1}\}_{n=1}^{\infty}\)</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \lim_{n \to \infty} \frac{2n^2 + 3n}{n^2 + 1} &= \lim_{n \to \infty} \frac{2n^2 + 3n}{n^2 + 1} \cdot \frac{\frac{1}{n^2}}{\frac{1}{n^2}} \\
+                            &= \lim_{n \to \infty} \frac{2 + \frac{3}{n}}{1 + \frac{1}{n^2}} \\
+                            &= \frac{2 + 0}{1 + 0} \\
+                            &= 2
+                            \end{align}
+                        </div>
+                        <p>Therefore, the sequence converges to 2.</p>
+                        
+                        <p>(b) \(\{a_n\} = \{(-1)^n\}_{n=1}^{\infty}\)</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>This sequence alternates between -1 and 1:</p>
+                        <div class="math-formula">
+                            \(a_1 = -1, a_2 = 1, a_3 = -1, a_4 = 1, \ldots\)
+                        </div>
+                        <p>Since the sequence oscillates between two values and does not approach any single value, it diverges.</p>
+                        
+                        <p>(c) \(\{a_n\} = \{n\}_{n=1}^{\infty}\)</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>This sequence grows without bound as \(n\) increases:</p>
+                        <div class="math-formula">
+                            \(a_1 = 1, a_2 = 2, a_3 = 3, a_4 = 4, \ldots\)
+                        </div>
+                        <p>Therefore, \(\lim_{n \to \infty} n = \infty\), and the sequence diverges.</p>
+                    </div>
+                </section>
+
+                <section id="interactive">
+                    <h2>Interactive Visualizations</h2>
+                    
+                    <div class="interactive-container">
+                        <h3>Explore Sequence Behavior</h3>
+                        <p>Use the controls below to explore different sequences and observe their behavior as \(n\) increases.</p>
+                        
+                        <div class="control-panel">
+                            <label for="sequence-select">Select a sequence:</label>
+                            <select id="sequence-select">
+                                <option value="1">a_n = 1/n</option>
+                                <option value="2">a_n = n/(n+1)</option>
+                                <option value="3">a_n = (n+1)/n^2</option>
+                                <option value="4">a_n = (-1)^n</option>
+                                <option value="5">a_n = n</option>
+                                <option value="6">a_n = 1 + 1/n</option>
+                            </select>
+                            
+                            <div class="slider-container">
+                                <label for="terms-slider">Number of terms to display:</label>
+                                <input type="range" id="terms-slider" class="slider" min="5" max="50" value="20">
+                                <span id="terms-value">20</span>
+                            </div>
+                        </div>
+                        
+                        <div id="interactive-sequence-graph" class="graph-container">
+                            <!-- Interactive graph will be inserted here by JavaScript -->
+                        </div>
+                        
+                        <div class="sequence-info">
+                            <h4>Sequence Information</h4>
+                            <p id="sequence-formula">Formula: a_n = 1/n</p>
+                            <p id="sequence-behavior">Behavior: Converges to 0</p>
+                            <p id="sequence-first-terms">First 5 terms: 1, 0.5, 0.333, 0.25, 0.2</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="exercises">
+                    <h2>Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1</h3>
+                        <p>Find the first five terms of the sequence \(\{a_n\} = \{\frac{3n-2}{n+1}\}_{n=1}^{\infty}\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <div class="math-formula">
+                                \begin{align}
+                                a_1 &= \frac{3(1)-2}{1+1} = \frac{1}{2} = 0.5 \\
+                                a_2 &= \frac{3(2)-2}{2+1} = \frac{4}{3} \approx 1.333 \\
+                                a_3 &= \frac{3(3)-2}{3+1} = \frac{7}{4} = 1.75 \\
+                                a_4 &= \frac{3(4)-2}{4+1} = \frac{10}{5} = 2 \\
+                                a_5 &= \frac{3(5)-2}{5+1} = \frac{13}{6} \approx 2.167
+                                \end{align}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2</h3>
+                        <p>Determine whether the following sequences converge or diverge. If they converge, find the limit.</p>
+                        <p>(a) \(\{a_n\} = \{\frac{5n^3 + 2n}{3n^3 + n^2}\}_{n=1}^{\infty}\)</p>
+                        <p>(b) \(\{a_n\} = \{\frac{(-1)^n n}{n+1}\}_{n=1}^{\infty}\)</p>
+                        <p>(c) \(\{a_n\} = \{\frac{2^n}{n!}\}_{n=1}^{\infty}\)</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>(a) \(\{a_n\} = \{\frac{5n^3 + 2n}{3n^3 + n^2}\}_{n=1}^{\infty}\)</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \frac{5n^3 + 2n}{3n^3 + n^2} &= \lim_{n \to \infty} \frac{5n^3 + 2n}{3n^3 + n^2} \cdot \frac{\frac{1}{n^3}}{\frac{1}{n^3}} \\
+                                &= \lim_{n \to \infty} \frac{5 + \frac{2}{n^2}}{3 + \frac{1}{n}} \\
+                                &= \frac{5 + 0}{3 + 0} \\
+                                &= \frac{5}{3}
+                                \end{align}
+                            </div>
+                            <p>Therefore, the sequence converges to \(\frac{5}{3}\).</p>
+                            
+                            <p>(b) \(\{a_n\} = \{\frac{(-1)^n n}{n+1}\}_{n=1}^{\infty}\)</p>
+                            <p>First, let's examine the behavior of \(\frac{n}{n+1}\):</p>
+                            <div class="math-formula">
+                                \(\lim_{n \to \infty} \frac{n}{n+1} = \lim_{n \to \infty} \frac{1}{1 + \frac{1}{n}} = 1\)
+                            </div>
+                            <p>However, the factor \((-1)^n\) causes the sequence to oscillate between positive and negative values. As \(n\) increases, the terms approach 1 in magnitude but alternate in sign:</p>
+                            <div class="math-formula">
+                                \(\lim_{n \to \infty} \left|\frac{(-1)^n n}{n+1}\right| = 1\)
+                            </div>
+                            <p>Since the sequence oscillates between values approaching -1 and 1, it diverges.</p>
+                            
+                            <p>(c) \(\{a_n\} = \{\frac{2^n}{n!}\}_{n=1}^{\infty}\)</p>
+                            <p>Let's compute a few terms:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                a_1 &= \frac{2^1}{1!} = \frac{2}{1} = 2 \\
+                                a_2 &= \frac{2^2}{2!} = \frac{4}{2} = 2 \\
+                                a_3 &= \frac{2^3}{3!} = \frac{8}{6} = \frac{4}{3} \approx 1.333 \\
+                                a_4 &= \frac{2^4}{4!} = \frac{16}{24} = \frac{2}{3} \approx 0.667 \\
+                                a_5 &= \frac{2^5}{5!} = \frac{32}{120} = \frac{4}{15} \approx 0.267
+                                \end{align}
+                            </div>
+                            <p>We can show that \(\lim_{n \to \infty} \frac{2^n}{n!} = 0\) by using the ratio test:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \frac{a_{n+1}}{a_n} &= \lim_{n \to \infty} \frac{\frac{2^{n+1}}{(n+1)!}}{\frac{2^n}{n!}} \\
+                                &= \lim_{n \to \infty} \frac{2^{n+1}}{(n+1)!} \cdot \frac{n!}{2^n} \\
+                                &= \lim_{n \to \infty} \frac{2^{n+1} \cdot n!}{(n+1)! \cdot 2^n} \\
+                                &= \lim_{n \to \infty} \frac{2 \cdot 2^n \cdot n!}{(n+1) \cdot n! \cdot 2^n} \\
+                                &= \lim_{n \to \infty} \frac{2}{n+1} \\
+                                &= 0
+                                \end{align}
+                            </div>
+                            <p>Since the ratio approaches 0, which is less than 1, the sequence converges to 0.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 3</h3>
+                        <p>Prove that if \(\lim_{n \to \infty} a_n = L\) and \(\lim_{n \to \infty} b_n = M\), then \(\lim_{n \to \infty} (a_n + b_n) = L + M\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p><strong>Proof:</strong></p>
+                            <p>Given that \(\lim_{n \to \infty} a_n = L\) and \(\lim_{n \to \infty} b_n = M\), we need to prove that \(\lim_{n \to \infty} (a_n + b_n) = L + M\).</p>
+                            <p>By the definition of limits, for any \(\varepsilon > 0\), there exists an integer \(N_1\) such that:</p>
+                            <div class="math-formula">
+                                \(|a_n - L| < \frac{\varepsilon}{2} \text{ whenever } n > N_1\)
+                            </div>
+                            <p>Similarly, there exists an integer \(N_2\) such that:</p>
+                            <div class="math-formula">
+                                \(|b_n - M| < \frac{\varepsilon}{2} \text{ whenever } n > N_2\)
+                            </div>
+                            <p>Let \(N = \max(N_1, N_2)\). Then for all \(n > N\), we have:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                |(a_n + b_n) - (L + M)| &= |(a_n - L) + (b_n - M)| \\
+                                &\leq |a_n - L| + |b_n - M| \\
+                                &< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+                                &= \varepsilon
+                                \end{align}
+                            </div>
+                            <p>Therefore, by the definition of the limit, \(\lim_{n \to \infty} (a_n + b_n) = L + M\).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="navigation-buttons">
+                    <a href="index.html" class="btn">Previous: Home</a>
+                    <a href="series.html" class="btn">Next: Series</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="exercises.html">Practice Exercises</a></li>
+                    <li><a href="resources.html">External Resources</a></li>
+                    <li><a href="https://www.numberphile.com/" target="_blank">Numberphile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Calculus Explorer is designed to help college students master sequences, series, and power series concepts through clear explanations and interactive examples.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Calculus Explorer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/sequences.js"></script>
+</body>
+</html>

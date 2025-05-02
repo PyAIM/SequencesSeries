@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series - Calculus Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Calculus<span>Explorer</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html" class="active">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                    <li><a href="applications.html">Applications</a></li>
+                    <li><a href="exercises.html">Exercises</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Series</h1>
+            <p>Understanding infinite series, convergence, divergence, and tests for determining their behavior.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container content-container">
+            <aside class="sidebar">
+                <h3>In This Section</h3>
+                <ul>
+                    <li><a href="#definition">Definition & Notation</a></li>
+                    <li><a href="#partial-sums">Partial Sums</a></li>
+                    <li><a href="#convergence">Convergence & Divergence</a></li>
+                    <li><a href="#tests">Convergence Tests</a>
+                        <ul>
+                            <li><a href="#divergence-test">Divergence Test</a></li>
+                            <li><a href="#integral-test">Integral Test</a></li>
+                            <li><a href="#comparison-test">Comparison Test</a></li>
+                            <li><a href="#limit-comparison">Limit Comparison Test</a></li>
+                            <li><a href="#ratio-test">Ratio Test</a></li>
+                            <li><a href="#root-test">Root Test</a></li>
+                            <li><a href="#alternating-test">Alternating Series Test</a></li>
+                            <li><a href="#absolute-convergence">Absolute Convergence</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#interactive">Interactive Visualizations</a></li>
+                    <li><a href="#exercises">Practice Exercises</a></li>
+                </ul>
+            </aside>
+
+            <div class="main-content">
+                <section id="definition">
+                    <h2>Definition & Notation</h2>
+                    
+                    <div class="definition-box">
+                        <h3>What is a Series?</h3>
+                        <p>An infinite series is the sum of the terms of an infinite sequence. If \(\{a_n\}_{n=1}^{\infty}\) is a sequence, then the corresponding series is denoted by:</p>
+                        <div class="math-formula">
+                            \(\sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \ldots + a_n + \ldots\)
+                        </div>
+                    </div>
+                    
+                    <p>The notation \(\sum_{n=1}^{\infty} a_n\) represents the sum of all terms in the sequence \(\{a_n\}\) from \(n=1\) to infinity. The starting index can be any integer, not necessarily 1.</p>
+                    
+                    <div class="example-box">
+                        <h3>Example 1: Series Notation</h3>
+                        <p>The series \(\sum_{n=1}^{\infty} \frac{1}{n^2}\) represents the sum:</p>
+                        <div class="math-formula">
+                            \(\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{4^2} + \ldots = 1 + \frac{1}{4} + \frac{1}{9} + \frac{1}{16} + \ldots\)
+                        </div>
+                        <p>This particular series is known as the "Basel problem" and converges to \(\frac{\pi^2}{6}\).</p>
+                    </div>
+                </section>
+
+                <section id="partial-sums">
+                    <h2>Partial Sums</h2>
+                    
+                    <div class="definition-box">
+                        <h3>Partial Sums of a Series</h3>
+                        <p>The partial sum \(S_n\) of a series \(\sum_{i=1}^{\infty} a_i\) is the sum of the first \(n\) terms of the series:</p>
+                        <div class="math-formula">
+                            \(S_n = \sum_{i=1}^{n} a_i = a_1 + a_2 + a_3 + \ldots + a_n\)
+                        </div>
+                    </div>
+                    
+                    <p>The sequence of partial sums \(\{S_n\}\) is fundamental to understanding the behavior of a series. The value of the infinite series, if it exists, is the limit of this sequence of partial sums:</p>
+                    
+                    <div class="math-formula">
+                        \(\sum_{i=1}^{\infty} a_i = \lim_{n \to \infty} S_n\)
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 2: Partial Sums</h3>
+                        <p>Find the first few partial sums of the series \(\sum_{n=1}^{\infty} \frac{1}{n(n+1)}\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>First, let's find a simpler form for the general term using partial fractions:</p>
+                        <div class="math-formula">
+                            \(\frac{1}{n(n+1)} = \frac{A}{n} + \frac{B}{n+1}\)
+                        </div>
+                        <p>Multiplying both sides by \(n(n+1)\):</p>
+                        <div class="math-formula">
+                            1 = A(n+1) + Bn
+                        </div>
+                        <p>Setting \(n=0\): \(1 = A\)</p>
+                        <p>Setting \(n=1\): \(1 = A(2) + B = 2 + B\), so \(B = -1\)</p>
+                        <p>Therefore:</p>
+                        <div class="math-formula">
+                            \(\frac{1}{n(n+1)} = \frac{1}{n} - \frac{1}{n+1}\)
+                        </div>
+                        <p>Now we can find the partial sums:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            S_1 &= \frac{1}{1(1+1)} = \frac{1}{2} \\
+                            S_2 &= \frac{1}{1(1+1)} + \frac{1}{2(2+1)} = \frac{1}{2} + \frac{1}{6} = \frac{3}{6} + \frac{1}{6} = \frac{4}{6} = \frac{2}{3} \\
+                            S_3 &= \frac{1}{1(1+1)} + \frac{1}{2(2+1)} + \frac{1}{3(3+1)} = \frac{1}{2} + \frac{1}{6} + \frac{1}{12} = \frac{6}{12} + \frac{2}{12} + \frac{1}{12} = \frac{9}{12} = \frac{3}{4}
+                            \end{align}
+                        </div>
+                        <p>Using our partial fraction decomposition, we can find a pattern:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            S_n &= \sum_{i=1}^{n} \left(\frac{1}{i} - \frac{1}{i+1}\right) \\
+                            &= \left(1 - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \left(\frac{1}{3} - \frac{1}{4}\right) + \ldots + \left(\frac{1}{n} - \frac{1}{n+1}\right) \\
+                            &= 1 - \frac{1}{n+1}
+                            \end{align}
+                        </div>
+                        <p>This is a telescoping series where most terms cancel out, leaving only the first and last terms.</p>
+                    </div>
+                </section>
+
+                <section id="convergence">
+                    <h2>Convergence & Divergence</h2>
+                    
+                    <div class="definition-box">
+                        <h3>Convergent Series</h3>
+                        <p>A series \(\sum_{n=1}^{\infty} a_n\) is said to be <strong>convergent</strong> if the sequence of partial sums \(\{S_n\}\) converges to a finite limit. That is, there exists a finite number \(S\) such that:</p>
+                        <div class="math-formula">
+                            \(\lim_{n \to \infty} S_n = S\)
+                        </div>
+                        <p>In this case, we say that the series converges to \(S\), and we write:</p>
+                        <div class="math-formula">
+                            \(\sum_{n=1}^{\infty} a_n = S\)
+                        </div>
+                    </div>
+                    
+                    <div class="definition-box">
+                        <h3>Divergent Series</h3>
+                        <p>A series \(\sum_{n=1}^{\infty} a_n\) is said to be <strong>divergent</strong> if the sequence of partial sums \(\{S_n\}\) does not converge to a finite limit. This can happen if:</p>
+                        <ul class="inner-list">
+                            <li>The partial sums grow without bound: \(\lim_{n \to \infty} S_n = \infty\)</li>
+                            <li>The partial sums decrease without bound: \(\lim_{n \to \infty} S_n = -\infty\)</li>
+                            <li>The partial sums oscillate without approaching any specific value</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem-box">
+                        <h3>Necessary Condition for Convergence</h3>
+                        <p>If a series \(\sum_{n=1}^{\infty} a_n\) converges, then the sequence \(\{a_n\}\) must converge to 0:</p>
+                        <div class="math-formula">
+                            \(\lim_{n \to \infty} a_n = 0\)
+                        </div>
+                        <p><strong>Note:</strong> This is a necessary but not sufficient condition. That is, if \(\lim_{n \to \infty} a_n \neq 0\), then the series diverges. However, if \(\lim_{n \to \infty} a_n = 0\), the series may still diverge.</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 3: Convergence of a Series</h3>
+                        <p>Determine whether the series \(\sum_{n=1}^{\infty} \frac{1}{n(n+1)}\) converges or diverges. If it converges, find its sum.</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>From Example 2, we found that the partial sum \(S_n = 1 - \frac{1}{n+1}\).</p>
+                        <p>To determine if the series converges, we find the limit of the partial sums:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \lim_{n \to \infty} S_n &= \lim_{n \to \infty} \left(1 - \frac{1}{n+1}\right) \\
+                            &= 1 - \lim_{n \to \infty} \frac{1}{n+1} \\
+                            &= 1 - 0 \\
+                            &= 1
+                            \end{align}
+                        </div>
+                        <p>Therefore, the series \(\sum_{n=1}^{\infty} \frac{1}{n(n+1)}\) converges to 1.</p>
+                    </div>
+                </section>
+
+                <section id="tests">
+                    <h2>Convergence Tests</h2>
+                    
+                    <p>Determining whether a series converges or diverges can be challenging. Fortunately, there are several tests that can help us analyze the behavior of series without having to find the exact sum.</p>
+                    
+                    <div id="divergence-test">
+                        <h3>Divergence Test (n-th Term Test)</h3>
+                        
+                        <div class="theorem-box">
+                            <p>If \(\lim_{n \to \infty} a_n \neq 0\), then the series \(\sum_{n=1}^{\infty} a_n\) diverges.</p>
+                            <p><strong>Contrapositive:</strong> If the series \(\sum_{n=1}^{\infty} a_n\) converges, then \(\lim_{n \to \infty} a_n = 0\).</p>
+                        </div>
+                        
+                        <div class="note-box">
+                            <p><strong>Important:</strong> If \(\lim_{n \to \infty} a_n = 0\), the series may still diverge. The divergence test can only be used to prove divergence, not convergence.</p>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>Example 4: Divergence Test</h3>
+                            <p>Use the divergence test to determine if the series \(\sum_{n=1}^{\infty} \frac{n+1}{n}\) converges or diverges.</p>
+                            <p><strong>Solution:</strong></p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \frac{n+1}{n} &= \lim_{n \to \infty} \left(1 + \frac{1}{n}\right) \\
+                                &= 1 + 0 \\
+                                &= 1
+                                \end{align}
+                            </div>
+                            <p>Since \(\lim_{n \to \infty} a_n = 1 \neq 0\), the series diverges by the divergence test.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="integral-test">
+                        <h3>Integral Test</h3>
+                        
+                        <div class="theorem-box">
+                            <p>Let \(\{a_n\}\) be a sequence of positive terms. If there exists a continuous, positive, decreasing function \(f(x)\) such that \(f(n) = a_n\) for all integers \(n \geq N\) (for some integer \(N \geq 1\)), then:</p>
+                            <ul class="inner-list">
+                                <li>If \(\int_{N}^{\infty} f(x) \, dx\) converges, then \(\sum_{n=N}^{\infty} a_n\) converges.</li>
+                                <li>If \(\int_{N}^{\infty} f(x) \, dx\) diverges, then \(\sum_{n=N}^{\infty} a_n\) diverges.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>Example 5: Integral Test</h3>
+                            <p>Use the integral test to determine if the series \(\sum_{n=1}^{\infty} \frac{1}{n^2}\) converges or diverges.</p>
+                            <p><strong>Solution:</strong></p>
+                            <p>Let \(f(x) = \frac{1}{x^2}\). This function is continuous, positive, and decreasing for \(x \geq 1\), and \(f(n) = \frac{1}{n^2} = a_n\).</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \int_{1}^{\infty} \frac{1}{x^2} \, dx &= \lim_{b \to \infty} \int_{1}^{b} \frac{1}{x^2} \, dx \\
+                                &= \lim_{b \to \infty} \left[ -\frac{1}{x} \right]_{1}^{b} \\
+                                &= \lim_{b \to \infty} \left( -\frac{1}{b} - (-1) \right) \\
+                                &= \lim_{b \to \infty} \left( 1 - \frac{1}{b} \right) \\
+                                &= 1
+                                \end{align}
+                            </div>
+                            <p>Since the improper integral converges to 1, the series \(\sum_{n=1}^{\infty} \frac{1}{n^2}\) also converges by the integral test.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="comparison-test">
+                        <h3>Comparison Test</h3>
+                        
+                        <div class="theorem-box">
+                            <p>Let \(\{a_n\}\) and \(\{b_n\}\) be sequences of positive terms.</p>
+                            <ul class="inner-list">
+                                <li>If \(a_n \leq b_n\) for all \(n \geq N\) (for some integer \(N \geq 1\)) and \(\sum_{n=N}^{\infty} b_n\) converges, then \(\sum_{n=N}^{\infty} a_n\) also converges.</li>
+                                <li>If \(a_n \geq b_n\) for all \(n \geq N\) and \(\sum_{n=N}^{\infty} b_n\) diverges, then \(\sum_{n=N}^{\infty} a_n\) also diverges.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>Example 6: Comparison Test</h3>
+                            <p>Use the comparison test to determine if the series \(\sum_{n=1}^{\infty} \frac{1}{n^2 + 1}\) converges or diverges.</p>
+                            <p><strong>Solution:</strong></p>
+                            <p>For \(n \geq 1\), we have \(n^2 + 1 > n^2\), which implies \(\frac{1}{n^2 + 1} < \frac{1}{n^2}\).</p>
+                            <p>We know from Example 5 that \(\sum_{n=1}^{\infty} \frac{1}{n^2}\) converges.</p>
+                            <p>Since \(\frac{1}{n^2 + 1} < \frac{1}{n^2}\) for all \(n \geq 1\) and \(\sum_{n=1}^{\infty} \frac{1}{n^2}\) converges, the series \(\sum_{n=1}^{\infty} \frac{1}{n^2 + 1}\) also converges by the comparison test.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="limit-comparison">
+                        <h3>Limit Comparison Test</h3>
+                        
+                        <div class="theorem-box">
+                            <p>Let \(\{a_n\}\) and \(\{b_n\}\) be sequences of positive terms. If \(\lim_{n \to \infty} \frac{a_n}{b_n} = L\), where \(L\) is a positive finite number, then either both series \(\sum_{n=1}^{\infty} a_n\) and \(\sum_{n=1}^{\infty} b_n\) converge or both diverge.</p>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>Example 7: Limit Comparison Test</h3>
+                            <p>Use the limit comparison test to determine if the series \(\sum_{n=1}^{\infty} \frac{n+3}{n^3+1}\) converges or diverges.</p>
+                            <p><strong>Solution:</strong></p>
+                            <p>Let's compare with \(b_n = \frac{1}{n^2}\), which we know converges.</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \frac{a_n}{b_n} &= \lim_{n \to \infty} \frac{\frac{n+3}{n^3+1}}{\frac{1}{n^2}} \\
+                                &= \lim_{n \to \infty} \frac{(n+3)n^2}{n^3+1} \\
+                                &= \lim_{n \to \infty} \frac{n^3+3n^2}{n^3+1} \\
+                                &= \lim_{n \to \infty} \frac{n^3\left(1+\frac{3}{n}\right)}{n^3\left(1+\frac{1}{n^3}\right)} \\
+                                &= \lim_{n \to \infty} \frac{1+\frac{3}{n}}{1+\frac{1}{n^3}} \\
+                                &= \frac{1+0}{1+0} \\
+                                &= 1
+                                \end{align}
+                            </div>
+                            <p>Since \(\lim_{n \to \infty} \frac{a_n}{b_n} = 1\) (a positive finite number) and \(\sum_{n=1}^{\infty} \frac{1}{n^2}\) converges, the series \(\sum_{n=1}^{\infty} \frac{n+3}{n^3+1}\) also converges by the limit comparison test.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="ratio-test">
+                        <h3>Ratio Test</h3>
+                        
+                        <div class="theorem-box">
+                            <p>Let \(\{a_n\}\) be a sequence of nonzero terms, and let \(\rho = \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right|\).</p>
+                            <ul class="inner-list">
+                                <li>If \(\rho < 1\), then the series \(\sum_{n=1}^{\infty} a_n\) converges absolutely.</li>
+                                <li>If \(\rho > 1\) or \(\rho = \infty\), then the series \(\sum_{n=1}^{\infty} a_n\) diverges.</li>
+                                <li>If \(\rho = 1\), the test is inconclusive.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>Example 8: Ratio Test</h3>
+                            <p>Use the ratio test to determine if the series \(\sum_{n=1}^{\infty} \frac{2^n}{n!}\) converges or diverges.</p>
+                            <p><strong>Solution:</strong></p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \rho &= \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{\frac{2^{n+1}}{(n+1)!}}{\frac{2^n}{n!}}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{2^{n+1} \cdot n!}{(n+1)! \cdot 2^n}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{2 \cdot 2^n \cdot n!}{(n+1) \cdot n! \cdot 2^n}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{2}{n+1}\right| \\
+                                &= \lim_{n \to \infty} \frac{2}{n+1} \\
+                                &= 0
+                                \end{align}
+                            </div>
+                            <p>Since \(\rho = 0 < 1\), the series \(\sum_{n=1}^{\infty} \frac{2^n}{n!}\) converges by the ratio test.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="root-test">
+                        <h3>Root Test</h3>
+                        
+                        <div class="theorem-box">
+                            <p>Let \(\{a_n\}\) be a sequence of terms, and let \(\rho = \lim_{n \to \infty} \sqrt[n]{|a_n|}\).</p>
+                            <ul class="inner-list">
+                                <li>If \(\rho < 1\), then the series \(\sum_{n=1}^{\infty} a_n\) converges absolutely.</li>
+                                <li>If \(\rho > 1\) or \(\rho = \infty\), then the series \(\sum_{n=1}^{\infty} a_n\) diverges.</li>
+                                <li>If \(\rho = 1\), the test is inconclusive.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>Example 9: Root Test</h3>
+                            <p>Use the root test to determine if the series \(\sum_{n=1}^{\infty} \left(\frac{3n}{n+5}\right)^n\) converges or diverges.</p>
+                            <p><strong>Solution:</strong></p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \rho &= \lim_{n \to \infty} \sqrt[n]{|a_n|} \\
+                                &= \lim_{n \to \infty} \sqrt[n]{\left|\left(\frac{3n}{n+5}\right)^n\right|} \\
+                                &= \lim_{n \to \infty} \left|\frac{3n}{n+5}\right| \\
+                                &= \lim_{n \to \infty} \frac{3n}{n+5} \\
+                                &= \lim_{n \to \infty} \frac{3}{1+\frac{5}{n}} \\
+                                &= \frac{3}{1+0} \\
+                                &= 3
+                                \end{align}
+                            </div>
+                            <p>Since \(\rho = 3 > 1\), the series \(\sum_{n=1}^{\infty} \left(\frac{3n}{n+5}\right)^n\) diverges by the root test.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="alternating-test">
+                        <h3>Alternating Series Test</h3>
+                        
+                        <div class="theorem-box">
+                            <p>If the series \(\sum_{n=1}^{\infty} (-1)^{n+1} b_n\) or \(\sum_{n=1}^{\infty} (-1)^{n} b_n\) satisfies:</p>
+                            <ol class="inner-list">
+                                <li>\(b_n > 0\) for all \(n\)</li>
+                                <li>\(b_{n+1} \leq b_n\) for all \(n\) (the sequence \(\{b_n\}\) is decreasing)</li>
+                                <li>\(\lim_{n \to \infty} b_n = 0\)</li>
+                            </ol>
+                            <p>then the alternating series converges.</p>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>Example 10: Alternating Series Test</h3>
+                            <p>Use the alternating series test to determine if the series \(\sum_{n=1}^{\infty} (-1)^{n+1} \frac{1}{n}\) converges or diverges.</p>
+                            <p><strong>Solution:</strong></p>
+                            <p>Let \(b_n = \frac{1}{n}\). We need to check the three conditions:</p>
+                            <ol class="inner-list">
+                                <li>\(b_n = \frac{1}{n} > 0\) for all \(n \geq 1\). ✓</li>
+                                <li>\(b_{n+1} = \frac{1}{n+1} < \frac{1}{n} = b_n\) for all \(n \geq 1\), so the sequence is decreasing. ✓</li>
+                                <li>\(\lim_{n \to \infty} b_n = \lim_{n \to \infty} \frac{1}{n} = 0\). ✓</li>
+                            </ol>
+                            <p>Since all three conditions are satisfied, the alternating series \(\sum_{n=1}^{\infty} (-1)^{n+1} \frac{1}{n}\) converges by the alternating series test.</p>
+                            <p>Note: This series is known as the alternating harmonic series and converges to \(\ln(2)\).</p>
+                        </div>
+                    </div>
+                    
+                    <div id="absolute-convergence">
+                        <h3>Absolute Convergence</h3>
+                        
+                        <div class="definition-box">
+                            <h3>Absolute Convergence</h3>
+                            <p>A series \(\sum_{n=1}^{\infty} a_n\) is said to be <strong>absolutely convergent</strong> if the series of absolute values \(\sum_{n=1}^{\infty} |a_n|\) converges.</p>
+                        </div>
+                        
+                        <div class="theorem-box">
+                            <p>If a series \(\sum_{n=1}^{\infty} a_n\) is absolutely convergent, then it is also convergent.</p>
+                        </div>
+                        
+                        <div class="definition-box">
+                            <h3>Conditional Convergence</h3>
+                            <p>A series \(\sum_{n=1}^{\infty} a_n\) is said to be <strong>conditionally convergent</strong> if it converges but is not absolutely convergent.</p>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>Example 11: Absolute Convergence</h3>
+                            <p>Determine whether the series \(\sum_{n=1}^{\infty} \frac{(-1)^n}{n^2}\) is absolutely convergent, conditionally convergent, or divergent.</p>
+                            <p><strong>Solution:</strong></p>
+                            <p>To determine absolute convergence, we examine \(\sum_{n=1}^{\infty} \left|\frac{(-1)^n}{n^2}\right| = \sum_{n=1}^{\infty} \frac{1}{n^2}\).</p>
+                            <p>We know from previous examples that \(\sum_{n=1}^{\infty} \frac{1}{n^2}\) converges (to \(\frac{\pi^2}{6}\)).</p>
+                            <p>Therefore, the series \(\sum_{n=1}^{\infty} \frac{(-1)^n}{n^2}\) is absolutely convergent, which means it is also convergent.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="examples">
+                    <h2>Examples</h2>
+                    
+                    <div class="example-box">
+                        <h3>Example 12: Choosing the Right Test</h3>
+                        <p>Determine whether each of the following series converges or diverges. Use the most appropriate test for each.</p>
+                        
+                        <p>(a) \(\sum_{n=1}^{\infty} \frac{3^n + n}{4^n}\)</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>Let's try the ratio test:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \rho &= \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{\frac{3^{n+1} + (n+1)}{4^{n+1}}}{\frac{3^n + n}{4^n}}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{(3^{n+1} + n+1) \cdot 4^n}{4^{n+1} \cdot (3^n + n)}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{3 \cdot 3^n + n+1}{4 \cdot (3^n + n)}\right| \\
+                            &= \lim_{n \to \infty} \frac{3 \cdot 3^n + n+1}{4 \cdot (3^n + n)} \\
+                            &= \lim_{n \to \infty} \frac{3^n \left(3 + \frac{n+1}{3^n}\right)}{4 \cdot 3^n \left(1 + \frac{n}{3^n}\right)} \\
+                            &= \lim_{n \to \infty} \frac{3 + \frac{n+1}{3^n}}{4 \left(1 + \frac{n}{3^n}\right)} \\
+                            &= \frac{3 + 0}{4 \cdot (1 + 0)} \\
+                            &= \frac{3}{4}
+                            \end{align}
+                        </div>
+                        <p>Since \(\rho = \frac{3}{4} < 1\), the series \(\sum_{n=1}^{\infty} \frac{3^n + n}{4^n}\) converges by the ratio test.</p>
+                        
+                        <p>(b) \(\sum_{n=2}^{\infty} \frac{1}{n \ln n}\)</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>Let's try the integral test with \(f(x) = \frac{1}{x \ln x}\) for \(x \geq 2\).</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \int_{2}^{\infty} \frac{1}{x \ln x} \, dx &= \lim_{b \to \infty} \int_{2}^{b} \frac{1}{x \ln x} \, dx
+                            \end{align}
+                        </div>
+                        <p>Let \(u = \ln x\), then \(du = \frac{1}{x} \, dx\), so \(dx = x \, du\).</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \int_{2}^{b} \frac{1}{x \ln x} \, dx &= \int_{\ln 2}^{\ln b} \frac{1}{x \cdot u} \cdot x \, du \\
+                            &= \int_{\ln 2}^{\ln b} \frac{1}{u} \, du \\
+                            &= \left[ \ln |u| \right]_{\ln 2}^{\ln b} \\
+                            &= \ln(\ln b) - \ln(\ln 2)
+                            \end{align}
+                        </div>
+                        <p>As \(b \to \infty\), \(\ln(\ln b) \to \infty\), so the integral diverges.</p>
+                        <p>Therefore, the series \(\sum_{n=2}^{\infty} \frac{1}{n \ln n}\) diverges by the integral test.</p>
+                        <p>Note: It is important when applying the Integral Test (or the Alternating Series Test) to carefully verify the conditions of the test and support any claim we make.</p>
+                        <p>In this case, the function \(f(x) = \frac{1}{x \ln x}\) is continuous, positive, and decreasing for \(x \geq 2\). For example we can confirm the function is decreasing by analyzing the sign of its derivative.</p>
+                        
+                        <div class="math-formula">
+                            \begin{align}
+                            f'(x) &= \frac{d}{dx} \left(\frac{1}{x \ln x}\right) \\
+                            &= -\frac{\ln x + 1}{x^2 (\ln x)^2}
+                            \end{align}
+                        </div>
+                        <p>Since \(\ln x + 1 > 0\) for \(x \geq 2\), we have \(f'(x) < 0\) for \(x \geq 2\). Thus, \(f(x)\) is decreasing for \(x \geq 2\).</p>
+                        <p>So we can conclude that the series \(\sum_{n=2}^{\infty} \frac{1}{n \ln n}\) diverges by the integral test.</p>
+                        <p>(c) \(\sum_{n=1}^{\infty} (-1)^n \frac{\ln n}{n}\)</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>This is an alternating series, so let's check if it satisfies the conditions of the alternating series test.</p>
+                        <p>Let \(b_n = \frac{\ln n}{n}\).</p>
+                        <ol class="inner-list">
+                            <li>\(b_n = \frac{\ln n}{n} > 0\) for all \(n \geq 2\). ✓</li>
+                            <li>To check if \(b_n\) is decreasing, we can find the derivative of \(f(x) = \frac{\ln x}{x}\):
+                                <div class="math-formula">
+                                    \begin{align}
+                                    f'(x) &= \frac{1}{x} \cdot \frac{1}{x} - \frac{\ln x}{x^2} \\
+                                    &= \frac{1 - \ln x}{x^2}
+                                    \end{align}
+                                </div>
+                                This is negative for \(x > e\), so \(b_n\) is decreasing for \(n \geq 3\). ✓</li>
+                            <li>\(\lim_{n \to \infty} b_n = \lim_{n \to \infty} \frac{\ln n}{n}\). Using L'Hôpital's rule for the corresponding real-valued function:
+                                <div class="math-formula">
+                                    \begin{align}
+                                    \lim_{x \to \infty} \frac{\ln x}{x} &= \lim_{x \to \infty} \frac{\frac{1}{x}}{1} \\
+                                    &= \lim_{x \to \infty} \frac{1}{x} \\
+                                    &= 0
+                                    \end{align}
+                                </div>
+                                So it follows that \(\lim_{n \to \infty} b_n = 0\). ✓</li>
+                        </ol>
+                        <p>Since all three conditions are satisfied (after the first few terms), the alternating series \(\sum_{n=3}^{\infty} (-1)^n \frac{\ln n}{n}\) converges by the alternating series test and hence \(\sum_{n=1}^{\infty} (-1)^n \frac{\ln n}{n}\) also converges.</p>
+                    </div>
+                </section>
+
+                <section id="interactive">
+                    <h2>Interactive Visualizations</h2>
+                    
+                    <div class="interactive-container">
+                        <h3>Explore Series Behavior</h3>
+                        <p>Use the controls below to explore different series and observe the behavior of their partial sums.</p>
+                        
+                        <div class="control-panel">
+                            <label for="series-select">Select a series:</label>
+                            <select id="series-select">
+                                <option value="1">Harmonic Series: \(\sum_{n=1}^{\infty} 1/n\)</option>
+                                <option value="2">p-Series (p=2): \(\sum_{n=1}^{\infty} 1/n^2\)</option>
+                                <option value="3">Alternating Harmonic Series: \(\sum_{n=1}^{\infty} (-1)^{n+1}/n\)</option>
+                                <option value="4">Geometric Series (r=0.5): \(\sum_{n=0}^{\infty} \left(1/2\right)^n\)</option>
+                                <option value="5">Telescoping Series: \(\sum_{n=1}^{\infty} 1/n(n+1)\)</option>
+                            </select>
+                            
+                            <div class="slider-container">
+                                <label for="terms-slider">Number of terms to include:</label>
+                                <input type="range" id="terms-slider" class="slider" min="5" max="100" value="20">
+                                <span id="terms-value">20</span>
+                            </div>
+                        </div>
+                        
+                        <div id="interactive-series-graph" class="graph-container">
+                            <!-- Interactive graph will be inserted here by JavaScript -->
+                        </div>
+                        
+                        <div class="series-info">
+                            <h4>Series Information</h4>
+                            <p id="series-formula">Formula: \(\sum_{n=1}^{\infty} 1/n\)</p>
+                            <p id="series-behavior">Behavior: Diverges</p>
+                            <p id="series-partial-sums">Partial sums: S₁ = 1, S₂ = 1.5, S₃ = 1.833, S₄ = 2.083, S₅ = 2.283</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="exercises">
+                    <h2>Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1</h3>
+                        <p>Find the sum of the series \(\sum_{n=0}^{\infty} \frac{3}{4^n}\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>This is a geometric series with first term \(a = 3\) and common ratio \(r = \frac{1}{4}\).</p>
+                            <p>For a geometric series \(\sum_{n=0}^{\infty} ar^n\) with \(|r| < 1\), the sum is \(\frac{a}{1-r}\).</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=0}^{\infty} \frac{3}{4^n} &= \sum_{n=0}^{\infty} 3 \left(\frac{1}{4}\right)^n \\
+                                &= \frac{3}{1-\frac{1}{4}} \\
+                                &= \frac{3}{\frac{3}{4}} \\
+                                &= 4
+                                \end{align}
+                            </div>
+                            <p>Therefore, \(\sum_{n=0}^{\infty} \frac{3}{4^n} = 4\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2</h3>
+                        <p>Determine whether each of the following series converges or diverges. Justify your answer using an appropriate test.</p>
+                        <p>(a) \(\sum_{n=1}^{\infty} \frac{n^2+1}{n^4+2}\)</p>
+                        <p>(b) \(\sum_{n=1}^{\infty} \frac{n!}{n^n}\)</p>
+                        <p>(c) \(\sum_{n=1}^{\infty} \frac{(-1)^n n}{n^2+1}\)</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>(a) \(\sum_{n=1}^{\infty} \frac{n^2+1}{n^4+2}\)</p>
+                            <p>Let's use the limit comparison test with \(b_n = \frac{1}{n^2}\).</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \frac{a_n}{b_n} &= \lim_{n \to \infty} \frac{\frac{n^2+1}{n^4+2}}{\frac{1}{n^2}} \\
+                                &= \lim_{n \to \infty} \frac{(n^2+1)n^2}{n^4+2} \\
+                                &= \lim_{n \to \infty} \frac{n^4+n^2}{n^4+2} \\
+                                &= \lim_{n \to \infty} \frac{1+\frac{1}{n^2}}{1+\frac{2}{n^4}} \\
+                                &= \frac{1+0}{1+0} \\
+                                &= 1
+                                \end{align}
+                            </div>
+                            <p>Since \(\lim_{n \to \infty} \frac{a_n}{b_n} = 1\) (a positive finite number) and \(\sum_{n=1}^{\infty} \frac{1}{n^2}\) converges, the series \(\sum_{n=1}^{\infty} \frac{n^2+1}{n^4+2}\) also converges by the limit comparison test.</p>
+                            
+                            <p>(b) \(\sum_{n=1}^{\infty} \frac{n!}{n^n}\)</p>
+                            <p>Let's use the ratio test:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \rho &= \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{\frac{(n+1)!}{(n+1)^{n+1}}}{\frac{n!}{n^n}}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{(n+1)! \cdot n^n}{(n+1)^{n+1} \cdot n!}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{(n+1) \cdot n^n}{(n+1)^{n+1}}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{n^n}{(n+1)^n}\right| \\
+                                &= \lim_{n \to \infty} \left(\frac{n}{n+1}\right)^n \\
+                                &= \lim_{n \to \infty} \left(\frac{1}{1+\frac{1}{n}}\right)^n \\
+                                &= \frac{1}{e}
+                                \end{align}
+                            </div>
+                            <p>Since \(\rho = \frac{1}{e} \approx 0.368 < 1\), the series \(\sum_{n=1}^{\infty} \frac{n!}{n^n}\) converges by the ratio test.</p>
+                            
+                            <p>(c) \(\sum_{n=1}^{\infty} \frac{(-1)^n n}{n^2+1}\)</p>
+                            <p>Let's first check if the terms approach zero:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \lim_{n \to \infty} \left|\frac{(-1)^n n}{n^2+1}\right| &= \lim_{n \to \infty} \frac{n}{n^2+1} \\
+                                &= \lim_{n \to \infty} \frac{1}{n+\frac{1}{n}} \\
+                                &= 0
+                                \end{align}
+                            </div>
+                            <p>Now let's check if this is an alternating series. Let \(b_n = \frac{n}{n^2+1}\).</p>
+                            <ol class="inner-list">
+                                <li>\(b_n = \frac{n}{n^2+1} > 0\) for all \(n \geq 1\). ✓</li>
+                                <li>To check if \(b_n\) is decreasing, we can find the derivative of \(f(x) = \frac{x}{x^2+1}\):
+                                    <div class="math-formula">
+                                        \begin{align}
+                                        f'(x) &= \frac{1 \cdot (x^2+1) - x \cdot 2x}{(x^2+1)^2} \\
+                                        &= \frac{x^2+1 - 2x^2}{(x^2+1)^2} \\
+                                        &= \frac{1-x^2}{(x^2+1)^2}
+                                        \end{align}
+                                    </div>
+                                    This is negative for \(x > 1\), so \(b_n\) is decreasing for \(n \geq 2\). ✓</li>
+                                <li>We already showed that \(\lim_{n \to \infty} b_n = 0\). ✓</li>
+                            </ol>
+                            <p>Since all three conditions are satisfied (after the first term), the alternating series \(\sum_{n=1}^{\infty} \frac{(-1)^n n}{n^2+1}\) converges by the alternating series test.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 3</h3>
+                        <p>Find the sum of the telescoping series \(\sum_{n=1}^{\infty} \left(\frac{1}{n} - \frac{1}{n+2}\right)\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's find the partial sum \(S_n\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                S_n &= \sum_{i=1}^{n} \left(\frac{1}{i} - \frac{1}{i+2}\right) \\
+                                &= \left(\frac{1}{1} - \frac{1}{3}\right) + \left(\frac{1}{2} - \frac{1}{4}\right) + \left(\frac{1}{3} - \frac{1}{5}\right) + \ldots + \left(\frac{1}{n} - \frac{1}{n+2}\right) \\
+                                &= 1 + \frac{1}{2} - \frac{1}{n+1} - \frac{1}{n+2}
+                                \end{align}
+                            </div>
+                            <p>Now we can find the sum of the series by taking the limit of the partial sums:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \sum_{n=1}^{\infty} \left(\frac{1}{n} - \frac{1}{n+2}\right) &= \lim_{n \to \infty} S_n \\
+                                &= \lim_{n \to \infty} \left(1 + \frac{1}{2} - \frac{1}{n+1} - \frac{1}{n+2}\right) \\
+                                &= 1 + \frac{1}{2} - 0 - 0 \\
+                                &= \frac{3}{2}
+                                \end{align}
+                            </div>
+                            <p>Therefore, \(\sum_{n=1}^{\infty} \left(\frac{1}{n} - \frac{1}{n+2}\right) = \frac{3}{2}\).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="navigation-buttons">
+                    <a href="sequences.html" class="btn">Previous: Sequences</a>
+                    <a href="power-series.html" class="btn">Next: Power Series</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="exercises.html">Practice Exercises</a></li>
+                    <li><a href="resources.html">External Resources</a></li>
+                    <li><a href="https://www.numberphile.com/" target="_blank">Numberphile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Calculus Explorer is designed to help college students master sequences, series, and power series concepts through clear explanations and interactive examples.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Calculus Explorer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/series.js"></script>
+</body>
+</html>

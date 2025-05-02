@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Series - Calculus Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Calculus<span>Explorer</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html" class="active">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                    <li><a href="applications.html">Applications</a></li>
+                    <li><a href="exercises.html">Exercises</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Power Series</h1>
+            <p>Understanding power series, radius of convergence, and interval of convergence.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container content-container">
+            <aside class="sidebar">
+                <h3>In This Section</h3>
+                <ul>
+                    <li><a href="#definition">Definition & Notation</a></li>
+                    <li><a href="#radius">Radius of Convergence</a></li>
+                    <li><a href="#interval">Interval of Convergence</a></li>
+                    <li><a href="#operations">Operations with Power Series</a></li>
+                    <li><a href="#differentiation">Differentiation & Integration</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#interactive">Interactive Visualizations</a></li>
+                    <li><a href="#exercises">Practice Exercises</a></li>
+                </ul>
+            </aside>
+
+            <div class="main-content">
+                <section id="definition">
+                    <h2>Definition & Notation</h2>
+                    
+                    <div class="definition-box">
+                        <h3>What is a Power Series?</h3>
+                        <p>A power series is a series of the form:</p>
+                        <div class="math-formula">
+                            \sum_{n=0}^{\infty} c_n(x-a)^n = c_0 + c_1(x-a) + c_2(x-a)^2 + c_3(x-a)^3 + \ldots
+                        </div>
+                        <p>where:</p>
+                        <ul>
+                            <li>\(a\) is a fixed number (the center of the power series)</li>
+                            <li>\(c_n\) are constants (the coefficients of the power series)</li>
+                            <li>\(x\) is a variable</li>
+                        </ul>
+                    </div>
+                    
+                    <p>A power series is a function of \(x\). Unlike the series we've studied previously, the convergence of a power series depends on the value of \(x\).</p>
+                    
+                    <div class="example-box">
+                        <h3>Example 1: Power Series Notation</h3>
+                        <p>The power series \(\sum_{n=0}^{\infty} \frac{x^n}{n!}\) can be written as:</p>
+                        <div class="math-formula">
+                            \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \ldots
+                        </div>
+                        <p>This particular power series represents the exponential function \(e^x\).</p>
+                    </div>
+                    
+                    <div class="note-box">
+                        <h3>Special Case: Maclaurin Series</h3>
+                        <p>When the center of a power series is \(a = 0\), the power series takes the form:</p>
+                        <div class="math-formula">
+                            \sum_{n=0}^{\infty} c_n x^n = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + \ldots
+                        </div>
+                        <p>This special case is called a Maclaurin series.</p>
+                    </div>
+                </section>
+
+                <section id="radius">
+                    <h2>Radius of Convergence</h2>
+                    
+                    <div class="definition-box">
+                        <h3>Radius of Convergence</h3>
+                        <p>For a power series \(\sum_{n=0}^{\infty} c_n(x-a)^n\), there is a number \(R\) (possibly 0, possibly \(\infty\)) such that:</p>
+                        <ul>
+                            <li>The series converges absolutely for \(|x-a| < R\)</li>
+                            <li>The series diverges for \(|x-a| > R\)</li>
+                        </ul>
+                        <p>This number \(R\) is called the radius of convergence of the power series.</p>
+                    </div>
+                    
+                    <div class="theorem-box">
+                        <h3>Finding the Radius of Convergence</h3>
+                        <p>The radius of convergence \(R\) of a power series \(\sum_{n=0}^{\infty} c_n(x-a)^n\) can be found using:</p>
+                        <ol>
+                            <li>The Ratio Test: \(R = \frac{1}{\rho}\) where \(\rho = \lim_{n \to \infty} \left|\frac{c_{n+1}}{c_n}\right|\) (if this limit exists)</li>
+                            <li>The Root Test: \(R = \frac{1}{\rho}\) where \(\rho = \lim_{n \to \infty} \sqrt[n]{|c_n|}\) (if this limit exists)</li>
+                        </ol>
+                        <p>If \(\rho = 0\), then \(R = \infty\) (the series converges for all \(x\)).</p>
+                        <p>If \(\rho = \infty\), then \(R = 0\) (the series converges only at \(x = a\)).</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 2: Finding the Radius of Convergence</h3>
+                        <p>Find the radius of convergence of the power series \(\sum_{n=0}^{\infty} \frac{x^n}{n!}\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>Let's use the ratio test:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \rho &= \lim_{n \to \infty} \left|\frac{c_{n+1}}{c_n}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{\frac{1}{(n+1)!}}{\frac{1}{n!}}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{n!}{(n+1)!}\right| \\
+                            &= \lim_{n \to \infty} \frac{1}{n+1} \\
+                            &= 0
+                            \end{align}
+                        </div>
+                        <p>Since \(\rho = 0\), the radius of convergence is \(R = \frac{1}{0} = \infty\).</p>
+                        <p>Therefore, the power series \(\sum_{n=0}^{\infty} \frac{x^n}{n!}\) converges for all values of \(x\).</p>
+                    </div>
+                </section>
+
+                <section id="interval">
+                    <h2>Interval of Convergence</h2>
+                    
+                    <div class="definition-box">
+                        <h3>Interval of Convergence</h3>
+                        <p>The interval of convergence of a power series is the set of all values of \(x\) for which the series converges.</p>
+                        <p>If the radius of convergence is \(R\), then the interval of convergence includes at least the open interval \((a-R, a+R)\).</p>
+                        <p>To determine the full interval of convergence, we need to check the endpoints \(x = a-R\) and \(x = a+R\) separately.</p>
+                    </div>
+                    
+                    <div class="note-box">
+                        <h3>Possible Intervals of Convergence</h3>
+                        <p>The interval of convergence can be one of the following:</p>
+                        <ul>
+                            <li>Just the point \(\{a\}\) (when \(R = 0\))</li>
+                            <li>The open interval \((a-R, a+R)\)</li>
+                            <li>The half-open interval \([a-R, a+R)\) or \((a-R, a+R]\)</li>
+                            <li>The closed interval \([a-R, a+R]\)</li>
+                            <li>The entire real line \(\mathbb{R}\) (when \(R = \infty\))</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 3: Finding the Interval of Convergence</h3>
+                        <p>Find the interval of convergence of the power series \(\sum_{n=1}^{\infty} \frac{(x-2)^n}{n}\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>First, let's find the radius of convergence using the ratio test:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \rho &= \lim_{n \to \infty} \left|\frac{c_{n+1}}{c_n}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{\frac{1}{n+1}}{\frac{1}{n}}\right| \\
+                            &= \lim_{n \to \infty} \frac{n}{n+1} \\
+                            &= 1
+                            \end{align}
+                        </div>
+                        <p>So the radius of convergence is \(R = \frac{1}{1} = 1\).</p>
+                        <p>This means the series converges absolutely for \(|x-2| < 1\), or \(1 < x < 3\).</p>
+                        <p>Now we need to check the endpoints:</p>
+                        <p>At \(x = 1\) (or \(x-2 = -1\)), the series becomes \(\sum_{n=1}^{\infty} \frac{(-1)^n}{n}\), which is the alternating harmonic series. This series converges by the alternating series test.</p>
+                        <p>At \(x = 3\) (or \(x-2 = 1\)), the series becomes \(\sum_{n=1}^{\infty} \frac{1}{n}\), which is the harmonic series. This series diverges.</p>
+                        <p>Therefore, the interval of convergence is \([1, 3)\).</p>
+                    </div>
+                </section>
+
+                <section id="operations">
+                    <h2>Operations with Power Series</h2>
+                    
+                    <div class="theorem-box">
+                        <h3>Operations on Power Series</h3>
+                        <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\) and \(g(x) = \sum_{n=0}^{\infty} b_n(x-a)^n\) are power series with radii of convergence \(R_f\) and \(R_g\) respectively, then:</p>
+                        <ol>
+                            <li><strong>Addition:</strong> \(f(x) + g(x) = \sum_{n=0}^{\infty} (a_n + b_n)(x-a)^n\) with radius of convergence at least \(\min(R_f, R_g)\)</li>
+                            <li><strong>Scalar Multiplication:</strong> \(c \cdot f(x) = \sum_{n=0}^{\infty} (c \cdot a_n)(x-a)^n\) with the same radius of convergence as \(f(x)\)</li>
+                            <li><strong>Multiplication:</strong> \(f(x) \cdot g(x) = \sum_{n=0}^{\infty} c_n(x-a)^n\) where \(c_n = \sum_{k=0}^{n} a_k b_{n-k}\) with radius of convergence at least \(\min(R_f, R_g)\)</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 4: Adding Power Series</h3>
+                        <p>Find the sum of the power series \(f(x) = \sum_{n=0}^{\infty} x^n\) and \(g(x) = \sum_{n=0}^{\infty} nx^n\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>First, let's find the radius of convergence for each series:</p>
+                        <p>For \(f(x) = \sum_{n=0}^{\infty} x^n\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \rho_f &= \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{1}{1}\right| \\
+                            &= 1
+                            \end{align}
+                        </div>
+                        <p>So \(R_f = 1\).</p>
+                        <p>For \(g(x) = \sum_{n=0}^{\infty} nx^n\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \rho_g &= \lim_{n \to \infty} \left|\frac{b_{n+1}}{b_n}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{(n+1)}{n}\right| \\
+                            &= 1
+                            \end{align}
+                        </div>
+                        <p>So \(R_g = 1\).</p>
+                        <p>Now, the sum of the two power series is:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            f(x) + g(x) &= \sum_{n=0}^{\infty} x^n + \sum_{n=0}^{\infty} nx^n \\
+                            &= \sum_{n=0}^{\infty} (1 + n)x^n \\
+                            &= 1 + \sum_{n=1}^{\infty} (1 + n)x^n \\
+                            &= 1 + \sum_{n=1}^{\infty} (n+1)x^n
+                            \end{align}
+                        </div>
+                        <p>The radius of convergence of the sum is \(\min(R_f, R_g) = 1\).</p>
+                    </div>
+                </section>
+
+                <section id="differentiation">
+                    <h2>Differentiation & Integration</h2>
+                    
+                    <div class="theorem-box">
+                        <h3>Differentiation of Power Series</h3>
+                        <p>If \(f(x) = \sum_{n=0}^{\infty} c_n(x-a)^n\) has radius of convergence \(R > 0\), then \(f(x)\) is differentiable on \((a-R, a+R)\) and:</p>
+                        <div class="math-formula">
+                            f'(x) = \sum_{n=1}^{\infty} n \cdot c_n(x-a)^{n-1} = \sum_{n=0}^{\infty} (n+1) \cdot c_{n+1}(x-a)^n
+                        </div>
+                        <p>The radius of convergence of \(f'(x)\) is also \(R\).</p>
+                    </div>
+                    
+                    <div class="theorem-box">
+                        <h3>Integration of Power Series</h3>
+                        <p>If \(f(x) = \sum_{n=0}^{\infty} c_n(x-a)^n\) has radius of convergence \(R > 0\), then:</p>
+                        <div class="math-formula">
+                            \int f(x) \, dx = C + \sum_{n=0}^{\infty} \frac{c_n}{n+1}(x-a)^{n+1} = C + \sum_{n=1}^{\infty} \frac{c_{n-1}}{n}(x-a)^n
+                        </div>
+                        <p>where \(C\) is a constant of integration. The radius of convergence of the integrated series is also \(R\).</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 5: Differentiation of a Power Series</h3>
+                        <p>Find the derivative of the power series \(f(x) = \sum_{n=0}^{\infty} \frac{x^n}{n!}\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <div class="math-formula">
+                            \begin{align}
+                            f'(x) &= \sum_{n=1}^{\infty} n \cdot \frac{x^{n-1}}{n!} \\
+                            &= \sum_{n=1}^{\infty} \frac{n}{n!} \cdot x^{n-1} \\
+                            &= \sum_{n=1}^{\infty} \frac{1}{(n-1)!} \cdot x^{n-1} \\
+                            &= \sum_{k=0}^{\infty} \frac{x^k}{k!} \quad \text{(substituting } k = n-1 \text{)} \\
+                            &= f(x)
+                            \end{align}
+                        </div>
+                        <p>Therefore, \(f'(x) = f(x)\), which means \(f(x) = e^x\) (since the exponential function is the only function equal to its own derivative).</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 6: Integration of a Power Series</h3>
+                        <p>Find the indefinite integral of the power series \(f(x) = \sum_{n=0}^{\infty} x^n\) for \(|x| < 1\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>First, note that \(f(x) = \sum_{n=0}^{\infty} x^n = \frac{1}{1-x}\) for \(|x| < 1\) (this is the sum of a geometric series).</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \int f(x) \, dx &= \int \sum_{n=0}^{\infty} x^n \, dx \\
+                            &= \sum_{n=0}^{\infty} \int x^n \, dx \\
+                            &= \sum_{n=0}^{\infty} \frac{x^{n+1}}{n+1} + C \\
+                            &= \sum_{n=1}^{\infty} \frac{x^n}{n} + C
+                            \end{align}
+                        </div>
+                        <p>We can verify this by differentiating:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \frac{d}{dx}\left(\sum_{n=1}^{\infty} \frac{x^n}{n}\right) &= \sum_{n=1}^{\infty} \frac{d}{dx}\left(\frac{x^n}{n}\right) \\
+                            &= \sum_{n=1}^{\infty} x^{n-1} \\
+                            &= \sum_{n=0}^{\infty} x^n \\
+                            &= f(x)
+                            \end{align}
+                        </div>
+                        <p>Therefore, \(\int f(x) \, dx = \sum_{n=1}^{\infty} \frac{x^n}{n} + C = -\ln(1-x) + C\) for \(|x| < 1\).</p>
+                    </div>
+                </section>
+
+                <section id="examples">
+                    <h2>Examples</h2>
+                    
+                    <div class="example-box">
+                        <h3>Example 7: Representing Functions as Power Series</h3>
+                        <p>Find a power series representation for \(f(x) = \frac{1}{1-x}\) centered at \(a = 0\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We can use the formula for the sum of a geometric series:</p>
+                        <div class="math-formula">
+                            \sum_{n=0}^{\infty} r^n = \frac{1}{1-r} \quad \text{for } |r| < 1
+                        </div>
+                        <p>Setting \(r = x\), we get:</p>
+                        <div class="math-formula">
+                            \frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1
+                        </div>
+                        <p>The radius of convergence is \(R = 1\).</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 8: Using Differentiation to Find Power Series</h3>
+                        <p>Find a power series representation for \(f(x) = \frac{x}{(1-x)^2}\) centered at \(a = 0\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We know that \(\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n\) for \(|x| < 1\).</p>
+                        <p>Taking the derivative of both sides:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \frac{d}{dx}\left(\frac{1}{1-x}\right) &= \frac{d}{dx}\left(\sum_{n=0}^{\infty} x^n\right) \\
+                            \frac{1}{(1-x)^2} &= \sum_{n=1}^{\infty} nx^{n-1} \\
+                            \frac{1}{(1-x)^2} &= \sum_{n=0}^{\infty} (n+1)x^n
+                            \end{align}
+                        </div>
+                        <p>Multiplying both sides by \(x\):</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \frac{x}{(1-x)^2} &= x \cdot \sum_{n=0}^{\infty} (n+1)x^n \\
+                            &= \sum_{n=0}^{\infty} (n+1)x^{n+1} \\
+                            &= \sum_{n=1}^{\infty} nx^n
+                            \end{align}
+                        </div>
+                        <p>Therefore, \(f(x) = \frac{x}{(1-x)^2} = \sum_{n=1}^{\infty} nx^n = x + 2x^2 + 3x^3 + 4x^4 + \ldots\) for \(|x| < 1\).</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 9: Using Integration to Find Power Series</h3>
+                        <p>Find a power series representation for \(f(x) = \ln(1+x)\) centered at \(a = 0\).</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>We know that \(\frac{1}{1+x} = \sum_{n=0}^{\infty} (-1)^n x^n\) for \(|x| < 1\) (by substituting \(-x\) for \(x\) in the geometric series).</p>
+                        <p>Integrating both sides:</p>
+                        <div class="math-formula">
+                            \begin{align}
+                            \int \frac{1}{1+x} \, dx &= \int \sum_{n=0}^{\infty} (-1)^n x^n \, dx \\
+                            \ln(1+x) + C &= \sum_{n=0}^{\infty} (-1)^n \frac{x^{n+1}}{n+1} + C \\
+                            \ln(1+x) &= \sum_{n=0}^{\infty} (-1)^n \frac{x^{n+1}}{n+1} \\
+                            &= \sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^n}{n}
+                            \end{align}
+                        </div>
+                        <p>Therefore, \(f(x) = \ln(1+x) = \sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^n}{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \ldots\) for \(|x| < 1\).</p>
+                    </div>
+                </section>
+
+                <section id="interactive">
+                    <h2>Interactive Visualizations</h2>
+                    
+                    <div class="interactive-container">
+                        <h3>Explore Power Series Approximations</h3>
+                        <p>Use the controls below to explore how power series can approximate functions with increasing accuracy as more terms are included.</p>
+                        
+                        <div class="control-panel">
+                            <label for="function-select">Select a function:</label>
+                            <select id="function-select">
+                                <option value="1">f(x) = e^x</option>
+                                <option value="2">f(x) = 1/(1-x)</option>
+                                <option value="3">f(x) = ln(1+x)</option>
+                                <option value="4">f(x) = sin(x)</option>
+                                <option value="5">f(x) = cos(x)</option>
+                            </select>
+                            
+                            <div class="slider-container">
+                                <label for="terms-slider">Number of terms in approximation:</label>
+                                <input type="range" id="terms-slider" class="slider" min="1" max="10" value="3">
+                                <span id="terms-value">3</span>
+                            </div>
+                        </div>
+                        
+                        <div id="interactive-power-series-graph" class="graph-container">
+                            <!-- Interactive graph will be inserted here by JavaScript -->
+                        </div>
+                        
+                        <div class="power-series-info">
+                            <h4>Power Series Information</h4>
+                            <p id="function-formula">Function: f(x) = e^x</p>
+                            <p id="power-series-formula">Power Series: 1 + x + x²/2! + x³/3! + ...</p>
+                            <p id="approximation-formula">Current Approximation: 1 + x + x²/2</p>
+                            <p id="radius-convergence">Radius of Convergence: ∞</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="exercises">
+                    <h2>Practice Exercises</h2>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1</h3>
+                        <p>Find the radius and interval of convergence for the power series \(\sum_{n=1}^{\infty} \frac{(x+2)^n}{n \cdot 3^n}\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>Let's use the ratio test to find the radius of convergence:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \rho &= \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{\frac{(x+2)^{n+1}}{(n+1) \cdot 3^{n+1}}}{\frac{(x+2)^n}{n \cdot 3^n}}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{(x+2)^{n+1} \cdot n \cdot 3^n}{(n+1) \cdot 3^{n+1} \cdot (x+2)^n}\right| \\
+                                &= \lim_{n \to \infty} \left|\frac{(x+2) \cdot n}{(n+1) \cdot 3}\right| \\
+                                &= \lim_{n \to \infty} \frac{|x+2| \cdot n}{(n+1) \cdot 3} \\
+                                &= \frac{|x+2|}{3} \cdot \lim_{n \to \infty} \frac{n}{n+1} \\
+                                &= \frac{|x+2|}{3} \cdot 1 \\
+                                &= \frac{|x+2|}{3}
+                                \end{align}
+                            </div>
+                            <p>For convergence, we need \(\rho < 1\), which gives us:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{|x+2|}{3} &< 1 \\
+                                |x+2| &< 3 \\
+                                -3 &< x+2 < 3 \\
+                                -5 &< x < 1
+                                \end{align}
+                            </div>
+                            <p>So the radius of convergence is \(R = 3\), and the series converges absolutely for \(-5 < x < 1\).</p>
+                            <p>Now we need to check the endpoints:</p>
+                            <p>At \(x = -5\), the series becomes \(\sum_{n=1}^{\infty} \frac{(-3)^n}{n \cdot 3^n} = \sum_{n=1}^{\infty} \frac{(-1)^n}{n}\), which is the alternating harmonic series. This series converges by the alternating series test.</p>
+                            <p>At \(x = 1\), the series becomes \(\sum_{n=1}^{\infty} \frac{3^n}{n \cdot 3^n} = \sum_{n=1}^{\infty} \frac{1}{n}\), which is the harmonic series. This series diverges.</p>
+                            <p>Therefore, the interval of convergence is \([-5, 1)\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 2</h3>
+                        <p>Find a power series representation for \(f(x) = \frac{1}{(1-x)^3}\) centered at \(a = 0\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We know that \(\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n\) for \(|x| < 1\).</p>
+                            <p>Taking the derivative of both sides:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{d}{dx}\left(\frac{1}{1-x}\right) &= \frac{d}{dx}\left(\sum_{n=0}^{\infty} x^n\right) \\
+                                \frac{1}{(1-x)^2} &= \sum_{n=1}^{\infty} nx^{n-1} \\
+                                \frac{1}{(1-x)^2} &= \sum_{n=0}^{\infty} (n+1)x^n
+                                \end{align}
+                            </div>
+                            <p>Taking the derivative again:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{d}{dx}\left(\frac{1}{(1-x)^2}\right) &= \frac{d}{dx}\left(\sum_{n=0}^{\infty} (n+1)x^n\right) \\
+                                \frac{2}{(1-x)^3} &= \sum_{n=1}^{\infty} (n+1)nx^{n-1} \\
+                                \frac{2}{(1-x)^3} &= \sum_{n=0}^{\infty} (n+2)(n+1)x^n
+                                \end{align}
+                            </div>
+                            <p>Dividing both sides by 2:</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{1}{(1-x)^3} &= \frac{1}{2}\sum_{n=0}^{\infty} (n+2)(n+1)x^n \\
+                                &= \sum_{n=0}^{\infty} \frac{(n+2)(n+1)}{2}x^n \\
+                                &= \sum_{n=0}^{\infty} \binom{n+2}{2}x^n
+                                \end{align}
+                            </div>
+                            <p>Therefore, \(f(x) = \frac{1}{(1-x)^3} = \sum_{n=0}^{\infty} \binom{n+2}{2}x^n = 1 + 3x + 6x^2 + 10x^3 + \ldots\) for \(|x| < 1\).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 3</h3>
+                        <p>Find a power series representation for \(f(x) = \frac{x^2}{1+x^3}\) centered at \(a = 0\).</p>
+                        <button class="toggle-solution">Show Solution</button>
+                        <div class="solution" style="display: none;">
+                            <p>We can use the geometric series formula:</p>
+                            <div class="math-formula">
+                                \frac{1}{1-r} = \sum_{n=0}^{\infty} r^n \quad \text{for } |r| < 1
+                            </div>
+                            <p>Substituting \(r = -x^3\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{1}{1+x^3} &= \frac{1}{1-(-x^3)} \\
+                                &= \sum_{n=0}^{\infty} (-x^3)^n \\
+                                &= \sum_{n=0}^{\infty} (-1)^n x^{3n}
+                                \end{align}
+                            </div>
+                            <p>Multiplying both sides by \(x^2\):</p>
+                            <div class="math-formula">
+                                \begin{align}
+                                \frac{x^2}{1+x^3} &= x^2 \cdot \sum_{n=0}^{\infty} (-1)^n x^{3n} \\
+                                &= \sum_{n=0}^{\infty} (-1)^n x^{3n+2} \\
+                                &= \sum_{n=0}^{\infty} (-1)^n x^{3n+2}
+                                \end{align}
+                            </div>
+                            <p>Therefore, \(f(x) = \frac{x^2}{1+x^3} = \sum_{n=0}^{\infty} (-1)^n x^{3n+2} = x^2 - x^5 + x^8 - x^{11} + \ldots\) for \(|x^3| < 1\), or \(|x| < 1\).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="navigation-buttons">
+                    <a href="series.html" class="btn">Previous: Series</a>
+                    <a href="taylor-series.html" class="btn">Next: Taylor Series</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sequences.html">Sequences</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="power-series.html">Power Series</a></li>
+                    <li><a href="taylor-series.html">Taylor Series</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="exercises.html">Practice Exercises</a></li>
+                    <li><a href="resources.html">External Resources</a></li>
+                    <li><a href="https://www.numberphile.com/" target="_blank">Numberphile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Calculus Explorer is designed to help college students master sequences, series, and power series concepts through clear explanations and interactive examples.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Calculus Explorer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/power-series.js"></script>
+</body>
+</html>

@@ -66,7 +66,7 @@
                         <h3>What is a Taylor Series?</h3>
                         <p>A Taylor series is a representation of a function as an infinite sum of terms calculated from the values of the function's derivatives at a single point. If the function \(f(x)\) has derivatives of all orders at \(x = a\), then the Taylor series of \(f\) centered at \(a\) is:</p>
                         <div class="math-formula">
-                            f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \ldots
+                            \(f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \ldots\)
                         </div>
                         <p>where \(f^{(n)}(a)\) represents the \(n\)th derivative of \(f\) evaluated at \(x = a\), and \(n!\) is the factorial of \(n\).</p>
                     </div>
@@ -86,7 +86,7 @@
                         <h3>What is a Maclaurin Series?</h3>
                         <p>A Maclaurin series is a special case of a Taylor series centered at \(a = 0\). If the function \(f(x)\) has derivatives of all orders at \(x = 0\), then the Maclaurin series of \(f\) is:</p>
                         <div class="math-formula">
-                            f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}x^n = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \ldots
+                            \(f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}x^n = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \ldots\)
                         </div>
                     </div>
                     
@@ -175,7 +175,7 @@
                     <h3>Method 3: Using the Binomial Series</h3>
                     <p>The binomial series can be used to find Taylor series for functions of the form \((1+x)^k\):</p>
                     <div class="math-formula">
-                        (1+x)^k = \sum_{n=0}^{\infty} \binom{k}{n} x^n = 1 + kx + \frac{k(k-1)}{2!}x^2 + \frac{k(k-1)(k-2)}{3!}x^3 + \ldots
+                        \((1+x)^k = \sum_{n=0}^{\infty} \binom{k}{n} x^n = 1 + kx + \frac{k(k-1)}{2!}x^2 + \frac{k(k-1)(k-2)}{3!}x^3 + \ldots\)
                     </div>
                     <p>This series converges for \(|x| < 1\) when \(k\) is not a non-negative integer.</p>
                 </section>
@@ -187,7 +187,7 @@
                     
                     <div class="theorem-box">
                         <h3>Common Maclaurin Series</h3>
-                        <ol>
+                        <ol class="inner-list">
                             <li>\(e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots\) (for all \(x\))</li>
                             <li>\(\sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots\) (for all \(x\))</li>
                             <li>\(\cos(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \ldots\) (for all \(x\))</li>
@@ -207,32 +207,32 @@
                     <h3>1. Addition and Subtraction</h3>
                     <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\) and \(g(x) = \sum_{n=0}^{\infty} b_n(x-a)^n\), then:</p>
                     <div class="math-formula">
-                        f(x) \pm g(x) = \sum_{n=0}^{\infty} (a_n \pm b_n)(x-a)^n
+                        \(f(x) \pm g(x) = \sum_{n=0}^{\infty} (a_n \pm b_n)(x-a)^n\)
                     </div>
                     
                     <h3>2. Multiplication by a Constant</h3>
                     <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\) and \(c\) is a constant, then:</p>
                     <div class="math-formula">
-                        c \cdot f(x) = \sum_{n=0}^{\infty} (c \cdot a_n)(x-a)^n
+                        \(c \cdot f(x) = \sum_{n=0}^{\infty} (c \cdot a_n)(x-a)^n\)
                     </div>
                     
                     <h3>3. Substitution</h3>
                     <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\) and \(g(x)\) is another function, then:</p>
                     <div class="math-formula">
-                        f(g(x)) = \sum_{n=0}^{\infty} a_n(g(x)-a)^n
+                        \(f(g(x)) = \sum_{n=0}^{\infty} a_n(g(x)-a)^n\)
                     </div>
                     <p>This is valid when \(|g(x)-a| < R\), where \(R\) is the radius of convergence of the original series.</p>
                     
                     <h3>4. Differentiation</h3>
                     <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\), then:</p>
                     <div class="math-formula">
-                        f'(x) = \sum_{n=1}^{\infty} n \cdot a_n(x-a)^{n-1} = \sum_{n=0}^{\infty} (n+1) \cdot a_{n+1}(x-a)^n
+                        \(f'(x) = \sum_{n=1}^{\infty} n \cdot a_n(x-a)^{n-1} = \sum_{n=0}^{\infty} (n+1) \cdot a_{n+1}(x-a)^n\)
                     </div>
                     
                     <h3>5. Integration</h3>
                     <p>If \(f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\), then:</p>
                     <div class="math-formula">
-                        \int f(x) \, dx = C + \sum_{n=0}^{\infty} \frac{a_n}{n+1}(x-a)^{n+1} = C + \sum_{n=1}^{\infty} \frac{a_{n-1}}{n}(x-a)^n
+                        \(\int f(x) \, dx = C + \sum_{n=0}^{\infty} \frac{a_n}{n+1}(x-a)^{n+1} = C + \sum_{n=1}^{\infty} \frac{a_{n-1}}{n}(x-a)^n\)
                     </div>
                     <p>where \(C\) is a constant of integration.</p>
                     
@@ -242,7 +242,7 @@
                         <p><strong>Solution:</strong></p>
                         <p>We know the Maclaurin series for \(e^x\):</p>
                         <div class="math-formula">
-                            e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots
+                            \(e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots\)
                         </div>
                         <p>Using substitution with \(x\) replaced by \(x^2\):</p>
                         <div class="math-formula">
@@ -265,7 +265,7 @@
                         <h3>Taylor's Remainder Theorem</h3>
                         <p>If \(f\) has \(n+1\) continuous derivatives on an interval containing \(a\) and \(x\), then there exists a point \(c\) between \(a\) and \(x\) such that:</p>
                         <div class="math-formula">
-                            R_n(x) = f(x) - P_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}
+                            \(R_n(x) = f(x) - P_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}\)
                         </div>
                         <p>where \(P_n(x)\) is the \(n\)th-degree Taylor polynomial of \(f\) centered at \(a\), and \(R_n(x)\) is the remainder (error) term.</p>
                     </div>
@@ -276,16 +276,16 @@
                         <p><strong>Solution:</strong></p>
                         <p>The 3rd-degree Taylor polynomial for \(\sin(x)\) centered at \(a = 0\) is:</p>
                         <div class="math-formula">
-                            P_3(x) = x - \frac{x^3}{3!} = x - \frac{x^3}{6}
+                            \(P_3(x) = x - \frac{x^3}{3!} = x - \frac{x^3}{6}\)
                         </div>
                         <p>Using Taylor's Remainder Theorem, the error is:</p>
                         <div class="math-formula">
-                            R_3(x) = \frac{f^{(4)}(c)}{4!}x^4
+                            \(R_3(x) = \frac{f^{(4)}(c)}{4!}x^4\)
                         </div>
                         <p>where \(c\) is between 0 and \(x\), and \(f^{(4)}(c) = \sin(c)\).</p>
                         <p>Since \(|\sin(c)| \leq 1\) for all \(c\), we have:</p>
                         <div class="math-formula">
-                            |R_3(0.1)| \leq \frac{1}{4!}(0.1)^4 = \frac{1}{24} \cdot 0.0001 \approx 4.17 \times 10^{-6}
+                            \(|R_3(0.1)| \leq \frac{1}{4!}(0.1)^4 = \frac{1}{24} \cdot 0.0001 \approx 4.17 \times 10^{-6}\)
                         </div>
                         <p>Therefore, the error in approximating \(\sin(0.1)\) using \(P_3(0.1) = 0.1 - \frac{(0.1)^3}{6} \approx 0.09983\) is at most \(4.17 \times 10^{-6}\).</p>
                         <p>The actual value of \(\sin(0.1) \approx 0.09983\), so the approximation is quite accurate.</p>
@@ -328,7 +328,7 @@
                         <p><strong>Solution:</strong></p>
                         <p>We can use the geometric series formula:</p>
                         <div class="math-formula">
-                            \frac{1}{1-r} = \sum_{n=0}^{\infty} r^n \quad \text{for } |r| < 1
+                            \(\frac{1}{1-r} = \sum_{n=0}^{\infty} r^n \quad \text{for } |r| < 1\)
                         </div>
                         <p>Substituting \(r = -x\):</p>
                         <div class="math-formula">
@@ -349,7 +349,7 @@
                         <p>We know that \(\frac{d}{dx}[\arctan(x)] = \frac{1}{1+x^2}\).</p>
                         <p>From Example 7, we have:</p>
                         <div class="math-formula">
-                            \frac{1}{1+x} = \sum_{n=0}^{\infty} (-1)^n x^n \quad \text{for } |x| < 1
+                            \(\frac{1}{1+x} = \sum_{n=0}^{\infty} (-1)^n x^n \quad \text{for } |x| < 1\)
                         </div>
                         <p>Substituting \(x^2\) for \(x\):</p>
                         <div class="math-formula">
@@ -368,7 +368,7 @@
                         </div>
                         <p>Since \(\arctan(0) = 0\), we have \(C = 0\).</p>
                         <div class="math-formula">
-                            \arctan(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots
+                            \(\arctan(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots\)
                         </div>
                         <p>This series converges for \(|x| \leq 1\) (the radius of convergence is 1).</p>
                     </div>
@@ -428,7 +428,7 @@
                         <div class="solution" style="display: none;">
                             <p>We know the Maclaurin series for \(\cos(x)\):</p>
                             <div class="math-formula">
-                                \cos(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \ldots
+                                \(\cos(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \ldots\)
                             </div>
                             <p>Using substitution with \(x\) replaced by \(2x\):</p>
                             <div class="math-formula">
@@ -451,7 +451,7 @@
                         <div class="solution" style="display: none;">
                             <p>We know the Maclaurin series for \(\frac{1}{1-x}\):</p>
                             <div class="math-formula">
-                                \frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1
+                                \(\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1\)
                             </div>
                             <p>Taking the derivative of both sides:</p>
                             <div class="math-formula">
@@ -473,7 +473,7 @@
                         <div class="solution" style="display: none;">
                             <p>We know the Maclaurin series for \(\sin(x)\):</p>
                             <div class="math-formula">
-                                \sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots
+                                \(\sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots\)
                             </div>
                             <p>Multiplying both sides by \(x\):</p>
                             <div class="math-formula">
@@ -495,16 +495,16 @@
                         <div class="solution" style="display: none;">
                             <p>The 3rd-degree Taylor polynomial for \(e^x\) centered at \(a = 0\) is:</p>
                             <div class="math-formula">
-                                P_3(x) = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6}
+                                \(P_3(x) = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6}\)
                             </div>
                             <p>Using Taylor's Remainder Theorem, the error is:</p>
                             <div class="math-formula">
-                                R_3(x) = \frac{f^{(4)}(c)}{4!}x^4
+                                \(R_3(x) = \frac{f^{(4)}(c)}{4!}x^4\)
                             </div>
                             <p>where \(c\) is between 0 and \(x\), and \(f^{(4)}(c) = e^c\).</p>
                             <p>For \(x = 0.2\), we have \(0 < c < 0.2\), so \(e^c < e^{0.2} \approx 1.2214\).</p>
                             <div class="math-formula">
-                                |R_3(0.2)| < \frac{e^{0.2}}{4!}(0.2)^4 \approx \frac{1.2214}{24} \cdot 0.0016 \approx 8.14 \times 10^{-5}
+                                \(|R_3(0.2)| < \frac{e^{0.2}}{4!}(0.2)^4 \approx \frac{1.2214}{24} \cdot 0.0016 \approx 8.14 \times 10^{-5}\)
                             </div>
                             <p>Therefore, the error in approximating \(e^{0.2}\) using \(P_3(0.2) = 1 + 0.2 + \frac{(0.2)^2}{2} + \frac{(0.2)^3}{6} \approx 1.22133\) is less than \(8.14 \times 10^{-5}\).</p>
                             <p>The actual value of \(e^{0.2} \approx 1.22140\), so the approximation is quite accurate.</p>

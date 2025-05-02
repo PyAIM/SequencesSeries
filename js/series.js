@@ -83,7 +83,7 @@ function initSeriesVisualizer() {
         const points = partialSums.map((s, i) => ({ x: i + 1, y: s }));
 
         createLineChart('interactive-series-graph', [
-            { name: 'Partial Sums', points: points }
+            { name: 'Partial Sums', points: points, color: '#3498db', drawLine: false }
         ], {
             xLabel: 'n',
             yLabel: 'S_n'

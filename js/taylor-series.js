@@ -176,8 +176,8 @@ function updateTaylorSeriesVisualization() {
     
     // Update the visualization
     createLineChart('interactive-taylor-graph', [
-        { name: 'Actual Function', points: actualPoints },
-        { name: 'Taylor Polynomial', points: taylorPoints }
+        { name: 'Actual Function', points: actualPoints, color: '#FF5733' },
+        { name: 'Taylor Polynomial', points: taylorPoints, color: '#33FF57' }
     ], {
         xLabel: 'x',
         yLabel: 'f(x)',

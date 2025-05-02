@@ -84,7 +84,8 @@ function createLineChart(containerId, data, options = {}) {
         marginLeft: 60,
         xLabel: 'x',
         yLabel: 'y',
-        pointRadius: 4
+        pointRadius: 4,
+        tickCount: 5
     };
 
     const chartOptions = { ...defaultOptions, ...options };
@@ -118,6 +119,12 @@ function createLineChart(containerId, data, options = {}) {
     yMin -= yPadding;
     yMax += yPadding;
 
+    // Ensure xMin starts at 0 for proper axis alignment
+    xMin = Math.min(0, xMin);
+
+    // Adjust yMin to ensure the x-axis is always visible at the bottom
+    yMin = Math.min(0, yMin);
+
     // Create scales
     const xScale = value => chartOptions.marginLeft + (value - xMin) / (xMax - xMin) * chartWidth;
     const yScale = value => chartOptions.marginTop + chartHeight - (value - yMin) / (yMax - yMin) * chartHeight;
@@ -142,20 +149,64 @@ function createLineChart(containerId, data, options = {}) {
     yAxis.setAttribute('stroke-width', 1);
     svg.appendChild(yAxis);
 
-    // Draw data lines
-    data.forEach((series) => {
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        const pathData = series.points.map((point, i) => {
-            const x = xScale(point.x);
-            const y = yScale(point.y);
-            return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
-        }).join(' ');
+    // Draw x-axis ticks and labels
+    for (let i = 0; i <= chartOptions.tickCount; i++) {
+        const xValue = xMin + (i / chartOptions.tickCount) * (xMax - xMin);
+        const xPos = xScale(xValue);
 
-        path.setAttribute('d', pathData);
-        path.setAttribute('fill', 'none');
-        path.setAttribute('stroke', series.color || '#000'); // Use the color property or default to black
-        path.setAttribute('stroke-width', 2);
-        svg.appendChild(path);
+        // Tick
+        const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        tick.setAttribute('x1', xPos);
+        tick.setAttribute('y1', yScale(0) - 5);
+        tick.setAttribute('x2', xPos);
+        tick.setAttribute('y2', yScale(0) + 5);
+        tick.setAttribute('stroke', '#333');
+        svg.appendChild(tick);
+
+        // Label
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', xPos);
+        label.setAttribute('y', yScale(0) + 20);
+        label.setAttribute('text-anchor', 'middle');
+        label.setAttribute('font-size', '12px');
+        label.textContent = xValue.toFixed(1);
+        svg.appendChild(label);
+    }
+
+    // Draw y-axis ticks and labels
+    for (let i = 0; i <= chartOptions.tickCount; i++) {
+        const yValue = yMin + (i / chartOptions.tickCount) * (yMax - yMin);
+        const yPos = yScale(yValue);
+
+        // Tick
+        const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        tick.setAttribute('x1', xScale(0) - 5);
+        tick.setAttribute('y1', yPos);
+        tick.setAttribute('x2', xScale(0) + 5);
+        tick.setAttribute('y2', yPos);
+        tick.setAttribute('stroke', '#333');
+        svg.appendChild(tick);
+
+        // Label
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', xScale(0) - 10);
+        label.setAttribute('y', yPos + 4);
+        label.setAttribute('text-anchor', 'end');
+        label.setAttribute('font-size', '12px');
+        label.textContent = yValue.toFixed(1);
+        svg.appendChild(label);
+    }
+
+    // Draw data points as circles
+    data.forEach((series) => {
+        series.points.forEach((point) => {
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', xScale(point.x));
+            circle.setAttribute('cy', yScale(point.y));
+            circle.setAttribute('r', chartOptions.pointRadius);
+            circle.setAttribute('fill', series.color || '#000');
+            svg.appendChild(circle);
+        });
     });
 
     // Draw axis labels

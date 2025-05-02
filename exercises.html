@@ -310,13 +310,13 @@
                         <div class="solution" style="display: none;">
                             <p>This is an alternating series of the form \(\sum_{n=1}^{\infty} (-1)^n b_n\) where \(b_n = \frac{1}{\sqrt{n}}\).</p>
                             <p>To apply the alternating series test, we need to check two conditions:</p>
-                            <ol>
+                            <ol class="inner-list">
                                 <li>\(b_n > 0\) for all \(n\)</li>
                                 <li>\(b_n\) is decreasing</li>
                                 <li>\(\lim_{n \to \infty} b_n = 0\)</li>
                             </ol>
                             <p>Checking these conditions:</p>
-                            <ol>
+                            <ol class="inner-list">
                                 <li>\(b_n = \frac{1}{\sqrt{n}} > 0\) for all \(n \geq 1\). ✓</li>
                                 <li>To check if \(b_n\) is decreasing, we need to verify that \(b_{n+1} \leq b_n\) for all \(n\):
                                     <div class="math-formula">
@@ -330,7 +330,7 @@
                                 </li>
                                 <li>
                                     <div class="math-formula">
-                                        \lim_{n \to \infty} b_n = \lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0
+                                        \(\lim_{n \to \infty} b_n = \lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0\)
                                     </div>
                                     ✓
                                 </li>
@@ -385,7 +385,7 @@
                         <div class="solution" style="display: none;">
                             <p>We know that the power series for \(\frac{1}{1-x}\) is:</p>
                             <div class="math-formula">
-                                \frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1
+                                \(\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1\)
                             </div>
                             <p>Taking the derivative of both sides:</p>
                             <div class="math-formula">
@@ -494,7 +494,7 @@
                             </div>
                             <p>Therefore, the Taylor series for \(\ln(1+x)\) centered at \(a = 1\) is:</p>
                             <div class="math-formula">
-                                \ln(1+x) = \ln(2) + \frac{1}{2}(x-1) - \frac{1}{8}(x-1)^2 + \frac{1}{24}(x-1)^3 - \frac{3}{192}(x-1)^4 + \ldots
+                                \(\ln(1+x) = \ln(2) + \frac{1}{2}(x-1) - \frac{1}{8}(x-1)^2 + \frac{1}{24}(x-1)^3 - \frac{3}{192}(x-1)^4 + \ldots\)
                             </div>
                             <p>This series converges for \(|x-1| < 1\), or \(0 < x < 2\).</p>
                         </div>
@@ -507,20 +507,20 @@
                         <div class="solution" style="display: none;">
                             <p>We'll use the Taylor series for \(\sin(x)\) centered at \(a = 0\):</p>
                             <div class="math-formula">
-                                \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \ldots
+                                \(\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \ldots\)
                             </div>
                             <p>By Taylor's Remainder Theorem, if we use the \(n\)th-degree Taylor polynomial \(P_n(x)\), the error is:</p>
                             <div class="math-formula">
-                                |R_n(x)| = \left|\frac{f^{(n+1)}(c)}{(n+1)!}x^{n+1}\right|
+                                \(|R_n(x)| = \left|\frac{f^{(n+1)}(c)}{(n+1)!}x^{n+1}\right|\)
                             </div>
                             <p>where \(c\) is some point between 0 and \(x\).</p>
                             <p>For \(\sin(x)\), the derivatives cycle through \(\sin(x)\), \(\cos(x)\), \(-\sin(x)\), and \(-\cos(x)\). Since these functions are bounded by 1 in absolute value, we have:</p>
                             <div class="math-formula">
-                                |R_n(0.2)| \leq \frac{1}{(n+1)!}|0.2|^{n+1}
+                                \(|R_n(0.2)| \leq \frac{1}{(n+1)!}|0.2|^{n+1}\)
                             </div>
                             <p>We need to find the smallest \(n\) such that:</p>
                             <div class="math-formula">
-                                \frac{|0.2|^{n+1}}{(n+1)!} < 10^{-6}
+                                \(\frac{|0.2|^{n+1}}{(n+1)!} < 10^{-6}\)
                             </div>
                             <p>Let's try some values:</p>
                             <ul>
@@ -549,11 +549,11 @@
                         <div class="solution" style="display: none;">
                             <p>We know the Maclaurin series for \(\frac{1}{1-x}\):</p>
                             <div class="math-formula">
-                                \frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1
+                                \(\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots \quad \text{for } |x| < 1\)
                             </div>
                             <p>We can rewrite \(\frac{1}{1-x^2}\) as:</p>
                             <div class="math-formula">
-                                \frac{1}{1-x^2} = \frac{1}{1-(x^2)}
+                                \(\frac{1}{1-x^2} = \frac{1}{1-(x^2)}\)
                             </div>
                             <p>Substituting \(x^2\) for \(x\) in the known series:</p>
                             <div class="math-formula">
@@ -565,7 +565,7 @@
                             </div>
                             <p>Therefore, the Maclaurin series for \(f(x) = \frac{1}{1-x^2}\) is:</p>
                             <div class="math-formula">
-                                \frac{1}{1-x^2} = \sum_{n=0}^{\infty} x^{2n} = 1 + x^2 + x^4 + x^6 + \ldots \quad \text{for } |x| < 1
+                                \(\frac{1}{1-x^2} = \sum_{n=0}^{\infty} x^{2n} = 1 + x^2 + x^4 + x^6 + \ldots \quad \text{for } |x| < 1\)
                             </div>
                         </div>
                     </div>
@@ -619,7 +619,7 @@
                             </div>
                             <p>To estimate the error, we need to bound the next term:</p>
                             <div class="math-formula">
-                                \left|\frac{0.5^{11}}{11 \cdot 5!}\right| = \frac{0.00048828125}{1320} \approx 3.7 \times 10^{-7}
+                                \(\left|\frac{0.5^{11}}{11 \cdot 5!}\right| = \frac{0.00048828125}{1320} \approx 3.7 \times 10^{-7}\)
                             </div>
                             <p>Since this is less than \(10^{-4}\), our approximation is accurate enough.</p>
                             <p>Therefore, \(\int_0^{0.5} e^{-x^2} \, dx \approx 0.4613\) with an error less than \(10^{-4}\).</p>
@@ -633,11 +633,11 @@
                         <div class="solution" style="display: none;">
                             <p>Let's assume a solution of the form:</p>
                             <div class="math-formula">
-                                y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots
+                                \(y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots\)
                             </div>
                             <p>Taking the derivative:</p>
                             <div class="math-formula">
-                                y'(x) = \sum_{n=1}^{\infty} n a_n x^{n-1} = a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + \ldots
+                                \(y'(x) = \sum_{n=1}^{\infty} n a_n x^{n-1} = a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + \ldots\)
                             </div>
                             <p>Substituting into the differential equation \(y' + y = x\):</p>
                             <div class="math-formula">
@@ -691,7 +691,7 @@
                             <p>This is a famous problem known as the Basel problem, first solved by Euler. We'll use the Fourier series approach.</p>
                             <p>Consider the function \(f(x) = x^2\) for \(-\pi \leq x \leq \pi\). The Fourier series for this function is:</p>
                             <div class="math-formula">
-                                f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos(nx) + b_n \sin(nx)\right]
+                                \(f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos(nx) + b_n \sin(nx)\right]\)
                             </div>
                             <p>where:</p>
                             <div class="math-formula">
@@ -768,7 +768,7 @@
                         <div class="solution" style="display: none;">
                             <p>We know the Maclaurin series for \(\sin(t)\):</p>
                             <div class="math-formula">
-                                \sin(t) = \sum_{n=0}^{\infty} \frac{(-1)^n t^{2n+1}}{(2n+1)!} = t - \frac{t^3}{3!} + \frac{t^5}{5!} - \ldots
+                                \(\sin(t) = \sum_{n=0}^{\infty} \frac{(-1)^n t^{2n+1}}{(2n+1)!} = t - \frac{t^3}{3!} + \frac{t^5}{5!} - \ldots\)
                             </div>
                             <p>Dividing by \(t\):</p>
                             <div class="math-formula">
@@ -795,7 +795,7 @@
                             </div>
                             <p>Therefore, the power series representation for \(f(x) = \int_0^x \frac{\sin(t)}{t} \, dt\) is:</p>
                             <div class="math-formula">
-                                f(x) = x - \frac{x^3}{18} + \frac{x^5}{600} - \frac{x^7}{35280} + \ldots = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)(2n+1)!}
+                                \(f(x) = x - \frac{x^3}{18} + \frac{x^5}{600} - \frac{x^7}{35280} + \ldots = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)(2n+1)!}\)
                             </div>
                             <p>This function is known as the sine integral \(\text{Si}(x)\).</p>
                         </div>

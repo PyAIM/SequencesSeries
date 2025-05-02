@@ -156,8 +156,8 @@ function updatePowerSeriesVisualization() {
     
     // Update the visualization
     createLineChart('interactive-power-series-graph', [
-        { name: 'Actual Function', points: actualPoints },
-        { name: 'Power Series Approximation', points: approximationPoints }
+        { name: 'Actual Function', points: actualPoints, color: '#FF5733' },
+        { name: 'Power Series Approximation', points: approximationPoints, color: '#33FF57' }
     ], {
         xLabel: 'x',
         yLabel: 'f(x)',

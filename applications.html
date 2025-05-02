@@ -23,6 +23,7 @@
                     <li><a href="applications.html" class="active">Applications</a></li>
                     <li><a href="exercises.html">Exercises</a></li>
                     <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
                 </ul>
             </nav>
             <div class="hamburger">
@@ -67,11 +68,11 @@
                         <h3>Function Approximation Using Taylor Polynomials</h3>
                         <p>If \(f(x)\) has derivatives of all orders at \(x = a\), then the \(n\)th-degree Taylor polynomial:</p>
                         <div class="math-formula">
-                            P_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k
+                            \(P_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k\)
                         </div>
                         <p>provides an approximation of \(f(x)\) near \(x = a\). The error in this approximation is given by the remainder term:</p>
                         <div class="math-formula">
-                            R_n(x) = f(x) - P_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}
+                            \(R_n(x) = f(x) - P_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}\)
                         </div>
                         <p>where \(c\) is some point between \(a\) and \(x\).</p>
                     </div>
@@ -82,7 +83,7 @@
                         <p><strong>Solution:</strong></p>
                         <p>The 3rd-degree Taylor polynomial for \(\sin(x)\) centered at \(a = 0\) is:</p>
                         <div class="math-formula">
-                            P_3(x) = x - \frac{x^3}{3!} = x - \frac{x^3}{6}
+                            \(P_3(x) = x - \frac{x^3}{3!} = x - \frac{x^3}{6}\)
                         </div>
                         <p>Evaluating at \(x = 0.3\):</p>
                         <div class="math-formula">
@@ -96,7 +97,7 @@
                         <p>The actual value of \(\sin(0.3) \approx 0.29552\), so our approximation is very accurate.</p>
                         <p>The error can be estimated using Taylor's Remainder Theorem:</p>
                         <div class="math-formula">
-                            |R_3(0.3)| \leq \frac{|f^{(4)}(c)|}{4!}|0.3|^4 \leq \frac{1}{24} \cdot (0.3)^4 \approx 3.38 \times 10^{-4}
+                            \(|R_3(0.3)| \leq \frac{|f^{(4)}(c)|}{4!}|0.3|^4 \leq \frac{1}{24} \cdot (0.3)^4 \approx 3.38 \times 10^{-4}\)
                         </div>
                         <p>where we used the fact that \(|f^{(4)}(c)| = |\sin(c)| \leq 1\).</p>
                     </div>
@@ -114,11 +115,11 @@
                         <h3>Integration Using Power Series</h3>
                         <p>If a function \(f(x)\) can be represented as a power series:</p>
                         <div class="math-formula">
-                            f(x) = \sum_{n=0}^{\infty} a_n x^n
+                            \(f(x) = \sum_{n=0}^{\infty} a_n x^n\)
                         </div>
                         <p>Then its indefinite integral is:</p>
                         <div class="math-formula">
-                            \int f(x) \, dx = C + \sum_{n=0}^{\infty} \frac{a_n}{n+1} x^{n+1}
+                            \(\int f(x) \, dx = C + \sum_{n=0}^{\infty} \frac{a_n}{n+1} x^{n+1}\)
                         </div>
                         <p>where \(C\) is a constant of integration.</p>
                     </div>
@@ -164,7 +165,7 @@
                     <div class="theorem-box">
                         <h3>Power Series Method for Differential Equations</h3>
                         <p>To solve a differential equation using the power series method:</p>
-                        <ol>
+                        <ol class="inner-list">
                             <li>Assume a solution of the form \(y(x) = \sum_{n=0}^{\infty} a_n x^n\)</li>
                             <li>Substitute this series into the differential equation</li>
                             <li>Collect like terms and set the coefficient of each power of \(x\) equal to zero</li>
@@ -178,11 +179,11 @@
                         <p><strong>Solution:</strong></p>
                         <p>Let's assume a solution of the form:</p>
                         <div class="math-formula">
-                            y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots
+                            \(y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots\)
                         </div>
                         <p>Taking the derivative:</p>
                         <div class="math-formula">
-                            y'(x) = \sum_{n=1}^{\infty} n a_n x^{n-1} = a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + \ldots
+                            \(y'(x) = \sum_{n=1}^{\infty} n a_n x^{n-1} = a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + \ldots\)
                         </div>
                         <p>Substituting into the differential equation \(y' - y = 0\):</p>
                         <div class="math-formula">
@@ -216,7 +217,7 @@
                     
                     <h3>Important Differential Equations</h3>
                     <p>Many important differential equations in physics and engineering can be solved using power series methods, including:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Bessel's equation: \(x^2y'' + xy' + (x^2 - n^2)y = 0\)</li>
                         <li>Legendre's equation: \((1-x^2)y'' - 2xy' + n(n+1)y = 0\)</li>
                         <li>Airy's equation: \(y'' - xy = 0\)</li>
@@ -231,7 +232,7 @@
                     
                     <h3>Quantum Mechanics</h3>
                     <p>In quantum mechanics, power series are used to:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Solve the Schrödinger equation for various potentials</li>
                         <li>Develop perturbation theory for approximating solutions to complex problems</li>
                         <li>Express wave functions for quantum systems</li>
@@ -241,14 +242,14 @@
                         <h3>Example 4: Quantum Harmonic Oscillator</h3>
                         <p>The quantum harmonic oscillator is described by the differential equation:</p>
                         <div class="math-formula">
-                            \frac{d^2\psi}{dx^2} + (2E - x^2)\psi = 0
+                            \(\frac{d^2\psi}{dx^2} + (2E - x^2)\psi = 0\)
                         </div>
                         <p>This equation can be solved using power series methods, leading to the Hermite polynomials that describe the wave functions of the oscillator.</p>
                     </div>
                     
                     <h3>Electromagnetism</h3>
                     <p>In electromagnetism, power series are used to:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Expand electromagnetic potentials in multipole expansions</li>
                         <li>Solve Maxwell's equations in complex geometries</li>
                         <li>Analyze wave propagation in various media</li>
@@ -256,7 +257,7 @@
                     
                     <h3>Statistical Mechanics</h3>
                     <p>In statistical mechanics, power series are used to:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Develop virial expansions for non-ideal gases</li>
                         <li>Calculate partition functions and thermodynamic properties</li>
                         <li>Analyze phase transitions and critical phenomena</li>
@@ -270,7 +271,7 @@
                     
                     <h3>Control Systems</h3>
                     <p>In control systems engineering, power series are used to:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Analyze system stability through transfer functions</li>
                         <li>Design controllers for linear and nonlinear systems</li>
                         <li>Model time-delay systems using Padé approximations</li>
@@ -278,7 +279,7 @@
                     
                     <h3>Signal Processing</h3>
                     <p>In signal processing, power series are used to:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Develop Fourier series representations of periodic signals</li>
                         <li>Design digital filters</li>
                         <li>Analyze frequency responses of systems</li>
@@ -288,14 +289,14 @@
                         <h3>Example 5: Fourier Series</h3>
                         <p>The Fourier series represents a periodic function as a sum of sines and cosines:</p>
                         <div class="math-formula">
-                            f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos(nx) + b_n \sin(nx)\right]
+                            \(f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n \cos(nx) + b_n \sin(nx)\right]\)
                         </div>
                         <p>This is a type of power series that is particularly useful in signal processing and communications engineering.</p>
                     </div>
                     
                     <h3>Structural Analysis</h3>
                     <p>In structural engineering, power series are used to:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Analyze beam deflections under various loading conditions</li>
                         <li>Model vibrations in structures</li>
                         <li>Solve complex boundary value problems</li>
@@ -309,7 +310,7 @@
                     
                     <h3>Numerical Integration</h3>
                     <p>Power series can be used to develop numerical integration techniques, such as:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Gaussian quadrature methods</li>
                         <li>Romberg integration</li>
                         <li>Adaptive integration algorithms</li>
@@ -317,7 +318,7 @@
                     
                     <h3>Approximation Theory</h3>
                     <p>In approximation theory, power series are used to:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Develop Chebyshev approximations for functions</li>
                         <li>Create Padé approximants for rational function approximations</li>
                         <li>Design interpolation schemes</li>
@@ -327,14 +328,14 @@
                         <h3>Example 6: Padé Approximation</h3>
                         <p>A Padé approximant is a rational function approximation of a function. For example, a [2,2] Padé approximant for \(e^x\) is:</p>
                         <div class="math-formula">
-                            e^x \approx \frac{1 + \frac{x}{2} + \frac{x^2}{12}}{1 - \frac{x}{2} + \frac{x^2}{12}}
+                            \(e^x \approx \frac{1 + \frac{x}{2} + \frac{x^2}{12}}{1 - \frac{x}{2} + \frac{x^2}{12}}\)
                         </div>
                         <p>This approximation is more accurate than a Taylor polynomial of the same degree over a larger range of \(x\) values.</p>
                     </div>
                     
                     <h3>Computer Algebra Systems</h3>
                     <p>Power series methods are implemented in computer algebra systems to:</p>
-                    <ul>
+                    <ul class="inner-list">
                         <li>Solve differential equations symbolically</li>
                         <li>Compute limits and asymptotic expansions</li>
                         <li>Perform symbolic integration</li>
@@ -348,19 +349,19 @@
                         <h3>Example 7: Approximating \(\pi\) Using Power Series</h3>
                         <p>We can use the power series for \(\arctan(x)\) to approximate \(\pi\):</p>
                         <div class="math-formula">
-                            \arctan(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots
+                            \(\arctan(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots\)
                         </div>
                         <p>Since \(\arctan(1) = \frac{\pi}{4}\), we have:</p>
                         <div class="math-formula">
-                            \frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots
+                            \(\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots\)
                         </div>
                         <p>Therefore:</p>
                         <div class="math-formula">
-                            \pi = 4\left(1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots\right)
+                            \(\pi = 4\left(1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \ldots\right)\)
                         </div>
                         <p>This is known as the Leibniz formula for \(\pi\). However, it converges very slowly. A faster-converging formula uses \(\arctan\) identities:</p>
                         <div class="math-formula">
-                            \pi = 16\arctan\left(\frac{1}{5}\right) - 4\arctan\left(\frac{1}{239}\right)
+                            \(\pi = 16\arctan\left(\frac{1}{5}\right) - 4\arctan\left(\frac{1}{239}\right)\)
                         </div>
                         <p>Using the power series for \(\arctan\), this formula converges much more quickly.</p>
                     </div>
@@ -369,11 +370,11 @@
                         <h3>Example 8: Analyzing a Pendulum</h3>
                         <p>The period of a simple pendulum of length \(L\) with maximum angle \(\theta_0\) is given by:</p>
                         <div class="math-formula">
-                            T = 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{1}{4}\sin^2\left(\frac{\theta_0}{2}\right) + \frac{9}{64}\sin^4\left(\frac{\theta_0}{2}\right) + \ldots\right)
+                            \(T = 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{1}{4}\sin^2\left(\frac{\theta_0}{2}\right) + \frac{9}{64}\sin^4\left(\frac{\theta_0}{2}\right) + \ldots\right)\)
                         </div>
                         <p>This is a power series expansion of the complete elliptic integral of the first kind. For small angles, we can approximate:</p>
                         <div class="math-formula">
-                            T \approx 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{\theta_0^2}{16} + \ldots\right)
+                            \(T \approx 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{\theta_0^2}{16} + \ldots\right)\)
                         </div>
                         <p>For \(\theta_0 = 30°\) (or \(\frac{\pi}{6}\) radians), the first-order approximation gives:</p>
                         <div class="math-formula">
@@ -463,7 +464,7 @@
                             </div>
                             <p>To estimate the error, we need to find how many terms to include. The error after \(n\) terms is bounded by the first omitted term. For \(n = 2\) (including terms up to \(x^7\)), the error is approximately:</p>
                             <div class="math-formula">
-                                \left|\frac{(0.4)^{11}}{11 \cdot 5!}\right| \approx \frac{0.00000017}{1320} \approx 1.3 \times 10^{-10}
+                                \(\left|\frac{(0.4)^{11}}{11 \cdot 5!}\right| \approx \frac{0.00000017}{1320} \approx 1.3 \times 10^{-10}\)
                             </div>
                             <p>This is much less than \(10^{-4}\), so two terms are sufficient.</p>
                             <p>Therefore, \(\int_0^{0.4} \sin(x^2) \, dx \approx 0.02133 - 0.00001 = 0.02132\) with an error less than \(10^{-4}\).</p>
@@ -477,11 +478,11 @@
                         <div class="solution" style="display: none;">
                             <p>Let's assume a solution of the form:</p>
                             <div class="math-formula">
-                                y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots
+                                \(y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \ldots\)
                             </div>
                             <p>Taking the second derivative:</p>
                             <div class="math-formula">
-                                y''(x) = \sum_{n=2}^{\infty} n(n-1) a_n x^{n-2} = 2a_2 + 6a_3 x + 12a_4 x^2 + 20a_5 x^3 + \ldots
+                                \(y''(x) = \sum_{n=2}^{\infty} n(n-1) a_n x^{n-2} = 2a_2 + 6a_3 x + 12a_4 x^2 + 20a_5 x^3 + \ldots\)
                             </div>
                             <p>Substituting into the differential equation \(y'' + xy = 0\):</p>
                             <div class="math-formula">
@@ -508,7 +509,7 @@
                                 \end{align}
                             </div>
                             <p>Using the initial conditions:</p>
-                            <ul>
+                            <ul class="inner-list">
                                 <li>\(y(0) = 1 \implies a_0 = 1\)</li>
                                 <li>\(y'(0) = 0 \implies a_1 = 0\)</li>
                             </ul>
@@ -542,15 +543,15 @@
                         <div class="solution" style="display: none;">
                             <p>The equation of motion for the rocket is:</p>
                             <div class="math-formula">
-                                \frac{d^2y}{dt^2} = -g - k\left(\frac{dy}{dt}\right)^2
+                                \(\frac{d^2y}{dt^2} = -g - k\left(\frac{dy}{dt}\right)^2\)
                             </div>
                             <p>with initial conditions \(y(0) = 0\) and \(\frac{dy}{dt}(0) = 100\).</p>
                             <p>Let's use a Taylor series to approximate the solution:</p>
                             <div class="math-formula">
-                                y(t) = y(0) + y'(0)t + \frac{y''(0)}{2!}t^2 + \frac{y'''(0)}{3!}t^3 + \frac{y^{(4)}(0)}{4!}t^4 + \ldots
+                                \(y(t) = y(0) + y'(0)t + \frac{y''(0)}{2!}t^2 + \frac{y'''(0)}{3!}t^3 + \frac{y^{(4)}(0)}{4!}t^4 + \ldots\)
                             </div>
                             <p>We know:</p>
-                            <ul>
+                            <ul class="inner-list">
                                 <li>\(y(0) = 0\)</li>
                                 <li>\(y'(0) = 100\)</li>
                                 <li>\(y''(0) = -g - k(y'(0))^2 = -9.8 - 0.002 \cdot (100)^2 = -9.8 - 20 = -29.8\)</li>

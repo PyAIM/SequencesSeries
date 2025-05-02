@@ -267,14 +267,18 @@
                         <p>Determine whether the series \(\sum_{n=2}^{\infty} \frac{1}{n \ln(n)}\) converges or diverges using an appropriate test.</p>
                         <button class="toggle-solution">Show Solution</button>
                         <div class="solution" style="display: none;">
-                            <p>Let's use the integral test for this series. First we need to check the conditions of the integral test: the function \(f(x)=frac{1}/{x ln(x)}\) is 
+                            <p>Let's use the integral test for this series. First we need to check the conditions of the integral test: the function \(f(x)=\frac{1}/{x ln(x)}\) is 
                                 positive, decreasing, and continous on the interval \([2, \infty\)\. We can check that the function is positive for \(x \geq 2\) since both \(x\) and \(\ln(x)\) are positive in this interval.</p>
-                            <p>Next, we need to check if the function is decreasing. We can do this by taking the derivative:</p>
+                            <p>Next, we need to check if the function is continuous. The function \(f(x)\) is continuous for \(x > 1\) since \(\ln(x)\) is defined and positive in this interval.</p>
+                            <p>Finally, we need to check if the function is decreasing. We can do this by taking the derivative:</p>
                             <div class="math-formula">
                                 \begin{align}
                                 f'(x) &= \frac{d}{dx}\left(\frac{1}{x \ln(x)}\right) \\
                                 &= -\frac{\ln(x) + 1}{x^2 \ln^2(x)}
                                 \end{align} 
+                            </div>
+                            <p>Since \(\ln(x) + 1 > 0\) for \(x \geq 2\), we have \(f'(x) < 0\), which means that \(f(x)\) is decreasing.</p>
+                            <p>Now we can apply the integral test. We need to evaluate the improper integral:</p>
                             <p>We need to check if the improper integral \(\int_{2}^{\infty} \frac{1}{x \ln(x)} \, dx\) converges.</p>
                             <div class="math-formula">
                                 \begin{align}
@@ -523,7 +527,7 @@
                                 \(\frac{|0.2|^{n+1}}{(n+1)!} < 10^{-6}\)
                             </div>
                             <p>Let's try some values:</p>
-                            <ul>
+                            <ul class="inner-list">
                                 <li>For \(n = 3\): \(\frac{|0.2|^4}{4!} = \frac{0.0016}{24} \approx 6.67 \times 10^{-5}\) (not small enough)</li>
                                 <li>For \(n = 5\): \(\frac{|0.2|^6}{6!} = \frac{0.000064}{720} \approx 8.89 \times 10^{-8}\) (small enough)</li>
                             </ul>

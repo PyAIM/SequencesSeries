@@ -123,18 +123,19 @@
                         <h3>Example 2: Finding the Radius of Convergence</h3>
                         <p>Find the radius of convergence of the power series \(\sum_{n=0}^{\infty} \frac{x^n}{n!}\).</p>
                         <p><strong>Solution:</strong></p>
-                        <p>Let's use the ratio test:</p>
+                        <p>Let \(a_n = \frac{x^n}{n!}\). We apply the ratio test to the series terms:</p>
                         <div class="math-formula">
                             \begin{align}
-                            \rho &= \lim_{n \to \infty} \left|\frac{c_{n+1}}{c_n}\right| \\
-                            &= \lim_{n \to \infty} \left|\frac{\frac{1}{(n+1)!}}{\frac{1}{n!}}\right| \\
-                            &= \lim_{n \to \infty} \left|\frac{n!}{(n+1)!}\right| \\
-                            &= \lim_{n \to \infty} \frac{1}{n+1} \\
+                            \rho &= \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{\frac{x^{n+1}}{(n+1)!}}{\frac{x^n}{n!}}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{x^{n+1} \cdot n!}{(n+1)! \cdot x^n}\right| \\
+                            &= \lim_{n \to \infty} \left|\frac{x}{n+1}\right| \\
+                            &= |x| \cdot \lim_{n \to \infty} \frac{1}{n+1} \\
+                            &= |x| \cdot 0 \\
                             &= 0
                             \end{align}
                         </div>
-                        <p>Since \(\rho = 0\), the radius of convergence is \(R = \frac{1}{0} = \infty\).</p>
-                        <p>Therefore, the power series \(\sum_{n=0}^{\infty} \frac{x^n}{n!}\) converges for all values of \(x\).</p>
+                        <p>For convergence, we need \(\rho < 1\). Since \(\rho = 0 < 1\) for all values of \(x\), the series converges for all \(x\), and the radius of convergence is \(R = \infty\).</p>
                     </div>
                 </section>
 
@@ -265,7 +266,7 @@
                             &= f(x)
                             \end{align}
                         </div>
-                        <p>Therefore, \(f'(x) = f(x)\), which means \(f(x) = e^x\) (since the exponential function is the only function equal to its own derivative).</p>
+                        <p>Therefore, \(f'(x) = f(x)\), which means \(f(x) = e^x\) (this makes sense since \(f(x) = e^x\) is equal to its own derivative).</p>
                     </div>
                     
                     <div class="example-box">
@@ -345,11 +346,12 @@
                         <div class="math-formula">
                             \begin{align}
                             \int \frac{1}{1+x} \, dx &= \int \sum_{n=0}^{\infty} (-1)^n x^n \, dx \\
-                            \ln(1+x) + C &= \sum_{n=0}^{\infty} (-1)^n \frac{x^{n+1}}{n+1} + C \\
-                            \ln(1+x) &= \sum_{n=0}^{\infty} (-1)^n \frac{x^{n+1}}{n+1} \\
-                            &= \sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^n}{n}
+                            \ln(1+x) &= \sum_{n=0}^{\infty} (-1)^n \frac{x^{n+1}}{n+1} + C \\
+                            \ln(1+x) &= \sum_{n=0}^{\infty} (-1)^n \frac{x^{n+1}}{n+1} + C \\
+                            &= \sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^n}{n} + C
                             \end{align}
                         </div>
+                        <p>We can determine the constant \(C\) by evaluating at \(x = 0\): \(\ln(1+0) = 0 = 0 + C\), so \(C = 0\).</p>
                         <p>Therefore, \(f(x) = \ln(1+x) = \sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^n}{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \ldots\) for \(|x| < 1\).</p>
                     </div>
                 </section>

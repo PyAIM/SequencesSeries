@@ -146,6 +146,43 @@
                     </div>
                 </section>
 
+                <section id="interactive">
+                    <h2>Interactive Visualizations</h2>
+                    
+                    <div class="interactive-container">
+                        <h3>Explore Series Behavior</h3>
+                        <p>Use the controls below to explore different series and observe the behavior of their partial sums.</p>
+                        
+                        <div class="control-panel">
+                            <label for="series-select">Select a series:</label>
+                            <select id="series-select">
+                                <option value="1">Harmonic Series: \(\sum_{n=1}^{\infty} 1/n\)</option>
+                                <option value="2">p-Series (p=2): \(\sum_{n=1}^{\infty} 1/n^2\)</option>
+                                <option value="3">Alternating Harmonic Series: \(\sum_{n=1}^{\infty} (-1)^{n+1}/n\)</option>
+                                <option value="4">Geometric Series (r=0.5): \(\sum_{n=0}^{\infty} \left(1/2\right)^n\)</option>
+                                <option value="5">Telescoping Series: \(\sum_{n=1}^{\infty} 1/n(n+1)\)</option>
+                            </select>
+                            
+                            <div class="slider-container">
+                                <label for="terms-slider">Number of terms to include:</label>
+                                <input type="range" id="terms-slider" class="slider" min="5" max="100" value="20">
+                                <span id="terms-value">20</span>
+                            </div>
+                        </div>
+                        
+                        <div id="interactive-series-graph" class="graph-container">
+                            <!-- Interactive graph will be inserted here by JavaScript -->
+                        </div>
+                        
+                        <div class="series-info">
+                            <h4>Series Information</h4>
+                            <p id="series-formula">Formula: \(\sum_{n=1}^{\infty} 1/n\)</p>
+                            <p id="series-behavior">Behavior: Diverges</p>
+                            <p id="series-partial-sums">Partial sums: S₁ = 1, S₂ = 1.5, S₃ = 1.833, S₄ = 2.083, S₅ = 2.283</p>
+                        </div>
+                    </div>
+                </section>
+
                 <section id="convergence">
                     <h2>Convergence & Divergence</h2>
                     
@@ -535,44 +572,6 @@
                         <p>Since all three conditions are satisfied (after the first few terms), the alternating series \(\sum_{n=3}^{\infty} (-1)^n \frac{\ln n}{n}\) converges by the alternating series test and hence \(\sum_{n=1}^{\infty} (-1)^n \frac{\ln n}{n}\) also converges.</p>
                     </div>
                 </section>
-
-                <section id="interactive">
-                    <h2>Interactive Visualizations</h2>
-                    
-                    <div class="interactive-container">
-                        <h3>Explore Series Behavior</h3>
-                        <p>Use the controls below to explore different series and observe the behavior of their partial sums.</p>
-                        
-                        <div class="control-panel">
-                            <label for="series-select">Select a series:</label>
-                            <select id="series-select">
-                                <option value="1">Harmonic Series: \(\sum_{n=1}^{\infty} 1/n\)</option>
-                                <option value="2">p-Series (p=2): \(\sum_{n=1}^{\infty} 1/n^2\)</option>
-                                <option value="3">Alternating Harmonic Series: \(\sum_{n=1}^{\infty} (-1)^{n+1}/n\)</option>
-                                <option value="4">Geometric Series (r=0.5): \(\sum_{n=0}^{\infty} \left(1/2\right)^n\)</option>
-                                <option value="5">Telescoping Series: \(\sum_{n=1}^{\infty} 1/n(n+1)\)</option>
-                            </select>
-                            
-                            <div class="slider-container">
-                                <label for="terms-slider">Number of terms to include:</label>
-                                <input type="range" id="terms-slider" class="slider" min="5" max="100" value="20">
-                                <span id="terms-value">20</span>
-                            </div>
-                        </div>
-                        
-                        <div id="interactive-series-graph" class="graph-container">
-                            <!-- Interactive graph will be inserted here by JavaScript -->
-                        </div>
-                        
-                        <div class="series-info">
-                            <h4>Series Information</h4>
-                            <p id="series-formula">Formula: \(\sum_{n=1}^{\infty} 1/n\)</p>
-                            <p id="series-behavior">Behavior: Diverges</p>
-                            <p id="series-partial-sums">Partial sums: S₁ = 1, S₂ = 1.5, S₃ = 1.833, S₄ = 2.083, S₅ = 2.283</p>
-                        </div>
-                    </div>
-                </section>
-
                 <section id="exercises">
                     <h2>Practice Exercises</h2>
                     

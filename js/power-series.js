@@ -96,13 +96,11 @@ function updatePowerSeriesVisualization() {
             xMax = 0.9;
             break;
         case '4': // sin(x)
+            // Each index n contributes exactly one nonzero term: (-1)^n * x^(2n+1) / (2n+1)!
+            // n=0 → x/1!, n=1 → -x³/3!, n=2 → x⁵/5!, ...
             actualFunction = x => Math.sin(x);
             for (let n = 0; n < numTerms; n++) {
-                if (n % 2 === 0) {
-                    powerSeriesTerms.push(x => Math.pow(-1, n/2) * Math.pow(x, 2*n+1) / factorial(2*n+1));
-                } else {
-                    powerSeriesTerms.push(x => 0);
-                }
+                powerSeriesTerms.push(x => Math.pow(-1, n) * Math.pow(x, 2*n+1) / factorial(2*n+1));
             }
             formulaText = 'f(x) = sin(x)';
             powerSeriesText = 'x - x³/3! + x⁵/5! - x⁷/7! + ...';
@@ -112,13 +110,11 @@ function updatePowerSeriesVisualization() {
             xMax = Math.PI;
             break;
         case '5': // cos(x)
+            // Each index n contributes exactly one nonzero term: (-1)^n * x^(2n) / (2n)!
+            // n=0 → 1, n=1 → -x²/2!, n=2 → x⁴/4!, ...
             actualFunction = x => Math.cos(x);
             for (let n = 0; n < numTerms; n++) {
-                if (n % 2 === 0) {
-                    powerSeriesTerms.push(x => Math.pow(-1, n/2) * Math.pow(x, 2*n) / factorial(2*n));
-                } else {
-                    powerSeriesTerms.push(x => 0);
-                }
+                powerSeriesTerms.push(x => Math.pow(-1, n) * Math.pow(x, 2*n) / factorial(2*n));
             }
             formulaText = 'f(x) = cos(x)';
             powerSeriesText = '1 - x²/2! + x⁴/4! - x⁶/6! + ...';
@@ -227,32 +223,23 @@ function getApproximationText(numTerms, functionType) {
             }
             return lnText;
         case 'sin(x)':
+            // n=0 → x, n=1 → -x³/3!, n=2 → x⁵/5!, ...
             if (numTerms <= 0) return '0';
             let sinText = 'x';
-            for (let i = 1; i < numTerms; i++) {
-                if (i % 2 === 0) {
-                    continue; // Skip even terms (they're zero)
-                }
-                const n = i * 2 + 1;
-                if (i % 4 === 1) {
-                    sinText += ` - x^${n}/${n}!`;
-                } else {
-                    sinText += ` + x^${n}/${n}!`;
-                }
+            for (let n = 1; n < numTerms; n++) {
+                const power = 2*n + 1;
+                const sign = (n % 2 === 0) ? '+' : '-';
+                sinText += ` ${sign} x^${power}/${power}!`;
             }
             return sinText;
         case 'cos(x)':
+            // n=0 → 1, n=1 → -x²/2!, n=2 → x⁴/4!, ...
+            if (numTerms <= 0) return '0';
             let cosText = '1';
-            for (let i = 1; i < numTerms; i++) {
-                if (i % 2 === 1) {
-                    continue; // Skip odd terms (they're zero)
-                }
-                const n = i * 2;
-                if (i % 4 === 0) {
-                    cosText += ` + x^${n}/${n}!`;
-                } else {
-                    cosText += ` - x^${n}/${n}!`;
-                }
+            for (let n = 1; n < numTerms; n++) {
+                const power = 2*n;
+                const sign = (n % 2 === 0) ? '+' : '-';
+                cosText += ` ${sign} x^${power}/${power}!`;
             }
             return cosText;
         default:
